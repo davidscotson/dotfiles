@@ -1,0 +1,21 @@
+# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
+--max-columns=150
+--max-columns-preview
+
+# Add my 'mustache' type.
+--type-add
+mustache:*.mustache
+
+# Add my 'behat' type.
+--type-add
+behat:*.feature
+
+# Add my 'web' type.
+--type-add
+web:include:php,html,css,js,mustache
+
+# add my 'mood' type for moodle files
+--type-add
+moo:include:php,css,js,mustache,behat
+
+--smart-case

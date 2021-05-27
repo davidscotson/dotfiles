@@ -1,0 +1,11 @@
+;; main contains multiple manip
+    ;; each manipulator has a description and multiple rules
+
+    ;; main                -> {:main [{:des "..." :rules [rule1 rule2 ...]}]}
+    ;; manipulator         -> {:des "..." :rules [rule1 rule2 ...]}
+    ;; manipulator's rules -> [rule1 rule2 ...]
+ {:main [{:des "simultaneous j k press to ESC" :rules [[:c, :v] :escape]}]}
+    ;; rule [[:j :l] :f19]
+    ;;       <from>  <to>
+    ;; it means from key a to key 1
+    ;; these keycode is just original karabiner keycode prefix with colon

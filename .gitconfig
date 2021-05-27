@@ -1,0 +1,26 @@
+[alias]
+	ack = -c color.grep.linenumber=\"bold yellow\"     -c color.grep.filename=\"bold green\"     -c color.grep.match=\"reverse yellow\"     grep --break --heading --line-number
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	editor = nvim
+	pager = nvim -R
+[user]
+	name = David Scotson
+	email = david.scotson@gmail.com
+[merge]
+	ff = only
+	conflictstyle = diff3
+[pull]
+	ff = only
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[color]
+   pager = no
