@@ -2,7 +2,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " shared lib for multiple lua plugins
 Plug 'nvim-lua/plenary.nvim'
-" test
 
 " lsp Plugins
 Plug 'neovim/nvim-lspconfig'
@@ -10,6 +9,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'wlemuel/vim-tldr'
 Plug 'kabouzeid/nvim-lspinstall'
 
 " editorconfig
@@ -18,6 +18,7 @@ Plug 'editorconfig/editorconfig-vim'
 " Better diff lines
 Plug 'rickhowe/diffchar.vim'
 
+Plug 'ActivityWatch/aw-watcher-vim'
 " Snippets via LSP
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -25,6 +26,10 @@ Plug 'rafamadriz/friendly-snippets'
 " browser wrapper
 Plug 'yuratomo/w3m.vim'
 
+" unit testing /coverage
+Plug 'im-test/vim-test'
+
+" terminals
 Plug 'oberblastmeister/termwrapper.nvim'
 Plug 'akinsho/nvim-toggleterm.lua'
 
@@ -66,9 +71,6 @@ Plug 'davidscotson/lush.nvim', {'branch': 'unreadable'}
 Plug 'savq/melange'
 Plug 'davidscotson/unreadable-nvim'
 
-" center window
-Plug 'kdav5758/TrueZen.nvim'
-
 Plug 'godlygeek/tabular'
 
 " gutter display
@@ -85,8 +87,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " keystroke to comment automatically depending on the file you're in
 Plug 'tpope/vim-commentary'
+" runs tests
 Plug 'tpope/vim-dispatch'
+" simpler file navigation with netrw
 Plug 'tpope/vim-vinegar'
+" DB plugin
 Plug 'tpope/vim-dadbod'
 
 " gitk in vim
@@ -99,6 +104,8 @@ Plug 'joonty/vdebug', {'for': 'php'}
 
 " php doc autocompletion revisit
 Plug 'tobyS/vmustache' | Plug 'tobyS/pdv', {'for': 'php'}
+
+Plug 'mustache/vim-mustache-handlebars'
 
 " TODO notes per repo
 "Original project 'vuciv/vim-bujo'
@@ -172,12 +179,6 @@ set colorcolumn=80
 " based on mode
 set number relativenumber
 
-" TODO Not sure folding makes sense if we can jump and get an overview
-" via telescope, but set up with treesitter just in case
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable
-
 " Make annoying invisible characters slightly visible.
 set list
 
@@ -203,12 +204,6 @@ nnoremap <leader>Y gg"+yG
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
-" Use Ctr-c instead of esc
-" inoremap <C-c> <esc>
-" trying  <C-[> instead
-
-" Wierd key on Mac, to avoid using touchbar escape
-inoremap § <esc>
 
 let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
 
@@ -260,41 +255,6 @@ require"telescope".load_extension("gh")
 -- express line statusline
 require('el').setup()
 
--- setup for TrueZen.nvim
-require("true-zen").setup({
-
-    true_false_commands = false,
-        bottom = {
-                hidden_laststatus = 0,
-                hidden_ruler = false,
-                hidden_showmode = false,
-                hidden_showcmd = false,
-                hidden_cmdheight = 1,
-
-                shown_laststatus = 2,
-                shown_ruler = true,
-                shown_showmode = false,
-                shown_showcmd = false,
-                shown_cmdheight = 1
-        },
-        top = {
-                hidden_showtabline = 0,
-
-                shown_showtabline = 2
-        },
-        left = {
-                hidden_number = false,
-                hidden_relativenumber = false,
-                hidden_signcolumn = "no",
-
-                shown_number = true,
-                shown_relativenumber = false,
-                shown_signcolumn = "no"
-        },
-        ataraxis = {
-                left_right_padding = 40
-        }
-})
 EOF
 
 augroup MYSTUFF
@@ -468,3 +428,77 @@ function ToggleWrap()
     onoremap <silent> k gk
   endif
 endfunction
+
+
+let g:vim_markdown_folding_disabled = 1
+" +-----------------+
+" | general binding |
+" +-----------------+
+
+syntax on
+
+" Act like D and C
+nnoremap Y y$
+
+" indent without kill the selection in vmode
+vmap < <gv
+vmap > >gv
+
+set tabstop=4
+set shiftwidth=0
+set expandtab
+
+" when at 3 spaces, and I hit > ... go to 4, not 7
+set shiftround
+
+
+" remap the annoying u in visual mode
+vmap u y
+
+" Change in next bracket
+nmap cinb cib
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+"Toggle between absolute -> relative line number
+nnoremap <C-n> :let [&nu, &rnu] = [&nu, &nu+&rnu==1]<CR>
+
+
+" Disable anoying ex mode
+nnoremap Q <Nop>
+
+" Save files as root
+cnoremap w!! execute ':w suda://%'
+
+" +----------------+
+" | general config |
+" +----------------+
+
+" colorscheme
+set termguicolors
+colorscheme unreadable
+
+let g:lexima_enable_basic_rules=0
+
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
+
+" vim test mapping
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+
+" Spelling corrections
+:iabbrev calandar calendar
+:iabbrev seperate separate
+
+set diffopt+=algorithm:histogram
+set diffopt+=indent-heuristic
+set diffopt+=vertical
