@@ -1,11 +1,177 @@
-;; main contains multiple manip
+;; edn is a clojure yaml-type-thing, spec https://github.com/edn-format/edn
+{;;;; define things
+
+;; Define different kinds of keyboards
+:devices {
+    :apple [
+            {:vendor_id 1452}
+            {:vendor_id 76}
+    ]
+    :kinesis [{:vendor_id 10730 }]
+    :gergoplex [{:vendor_id 11111111 }]
+} ;; devices
+
+;; TODO done: CMD standard on macbook, thumb on kinesis, release only?
+;; TODO done: ctrl, caps lock everywhere, thumb on kinesis, pointer bottom row combo
+;; TODO possible: alt on pg if combo'd ? do we need this? only with arrows and shift? Readline?
+;; TODO done: caps lock double shift
+;; TODO escape, ctrl-c, ctrl-[ 
+;; TODO ` ~ - _ \ | / ? = +  
+;; TODO  alt-key? control key?
+;; TODO number-symbol keys plus ctrl e.g. ctrl-6 clashes with f, ctrl-[
+; TODO  arrows on modifier hjkl is awkward on dvorak, use t/k as modifier? Do i need these or just next/previous, complete?
+;; TODO  arrows, change tab, bracket key left-right
+;; TODO  [ ] on <>, {} on brackets or vice versa?
+
+;; TODO map vim keys to standard controls? ctrl-o, i for back/forward?, change tab, bracket key left-right
+;; TODO an app switcher hyper key to jump between: terminal (tabs?), firefox (tabs?), chrome, finder (folders)?
+;; TODO better brackets based on dvorak <> location and (maybe) simultaneous presses
+;; TODO re-use normal keys as shift/ctrl
+;; TODO use ctr-h, m more.
+;; TODO use held tab for something, m more.
+;; TODO resolve clash between using special keys as hold modifiers vs re-using standard keys as simlayers
+;; TODO use alt key more
+;; TODO stop using ctr-c as escape (use ctrl-[ with new [ location?)
+;; TODO use bottom row as modifiers, start with shift then expand to more/ Cmd-alt-ctrl 
+;; TODO basic window management on a twin hyper key via hammerspoon, hjkl?
+;; TODO two hyper keys for numbers and symbols on top row
+
+;; layers are basically "hyper" keys
+;; press this in combination with something else and depending on your rule, make things happen
+;; this breaks key repeat and may cause false positives if common letters used.
+;; the only good keys for this will be missing on the gergoplex, so we need 2 options
+:layers {
+    :launch-mode {:key :tab}
+} ;; layers
+
+;; simlayers are basically "hyper" keys
+;; layers works too, but only recommended for non-typing keys like . or tab
+;; to use more regular typing keys, use simlayers
+;; can also trigger these with two keys
+:simlayers {
+  :symbol-mode-right {:key :m}
+  :symbol-mode-left {:key :c}
+  :number-mode-left {:key :b}
+  :number-mode-right {:key :n}
+} ;; simlayers
+
+;; main contains multiple manipulators
+:main [
+
     ;; each manipulator has a description and multiple rules
 
-    ;; main                -> {:main [{:des "..." :rules [rule1 rule2 ...]}]}
-    ;; manipulator         -> {:des "..." :rules [rule1 rule2 ...]}
-    ;; manipulator's rules -> [rule1 rule2 ...]
- {:main [{:des "simultaneous j k press to ESC" :rules [[:c, :v] :escape]}]}
-    ;; rule [[:j :l] :f19]
-    ;;       <from>  <to>
-    ;; it means from key a to key 1
-    ;; these keycode is just original karabiner keycode prefix with colon
+    ;;{:des "..."                               ;; -> description
+    ;; :rules[
+    ;;          [<from>  <to>  <conditions>]    ;; -> rule 1
+    ;;          [<from>  <to>  <conditions>]    ;; -> rule 2
+    ;; ]}
+
+    ;; rule [:period ["period-mode" 1] nil {:afterup ["period-mode" 0] :alone :period}]
+    ;;       |_____| |_______________| |_| |_________________________________________|
+    ;;        <from>    <to>      <conditions>         <other options>
+    ;;
+    ;; karabiner docs: ;; https://pqrs.org/osx/karabiner/json.html#complex_modifications-manipulator-definition
+    ;; <other options> includs ~to_if_alone~, ~to_if_held_down~,~to_after_key_up~, ~to_delayed_action~ and ~parameters~.
+    ;;
+
+    ;; (custom variables) & modifiers -> Advanced
+    ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
+
+    ;; ----------------------------------
+    ;; Hardware keyboard mappings
+    ;; ----------------------------------
+
+    {:des "Kinesis Advantage specific mappings"
+     :rules [:kinesis
+    ]}
+
+    ;; ----------------------------------
+    ;; Key mappings
+    ;; ----------------------------------
+    {:des "caps lock to control when combo, esc when alone"
+        :rules [[:caps_lock :left_control nil {:alone :escape}]]}
+
+    {:des "simultaneous < > press to  [ ]"
+        :rules [[[:shift :o :e] :b]]}
+
+    {:des "numbers and symbols on the top row"
+        :rules [
+              ;; shifted number row moved down one
+              [:q :!S1 :symbol-mode-right]
+              [:w :!S2 :symbol-mode-right]
+              [:e :!S3 :symbol-mode-right]
+              [:r :!S4 :symbol-mode-right]
+              [:t :!S5 :symbol-mode-right]
+              [:y :!S6 :symbol-mode-left]
+              [:u :!S7 :symbol-mode-left]
+              [:i :!S8 :symbol-mode-left]
+              [:o :!S9 :symbol-mode-left]
+              [:p :!S0 :symbol-mode-left]
+              [:z :!Sz :symbol-mode-right] ;;-left act like shift for z (colon in dvorak)
+              ;; number row moved down one
+              [:q :1 :number-mode-right]
+              [:w :2 :number-mode-right]
+              [:e :3 :number-mode-right]
+              [:r :4 :number-mode-right]
+              [:t :5 :number-mode-right]
+              [:y :6 :number-mode-left]
+              [:u :7 :number-mode-left]
+              [:i :8 :number-mode-left]
+              [:o :9 :number-mode-left]
+              [:p :0 :number-mode-left]
+              ;; 7,8,9 already in numpad location, add others too
+              ;; just use pinky 0
+              [:m :1 :number-mode-left]
+              [:comma :2 :number-mode-left]
+              [:period :3 :number-mode-left]
+              [:j :4 :number-mode-left]
+              [:k :5 :number-mode-left]
+              [:l :6 :number-mode-left]
+               ]}
+    {:des "bottom row as modifiers when used in combo"
+        :rules [
+          ;; easier reach to modifier keys
+          [:slash :right_shift  nil {:alone :slash}]
+          [:z     :left_shift   nil {:alone :z}]
+
+          ;; m and c are layer shift keys for numbers and symbols
+          ;; n + m and c + v as command number for switching?
+
+          ;; easier key launches
+          ;; double pointer, might be easy to trip by mistake shift up or down a row?
+          ;; shift up or down a row?
+          ;; also set up  pointer
+      ]
+    }
+    {:des "mouselayer"
+         :rules [
+                 [[:s :d] ["mouse-layer" 0] :mouse-layer]
+                 [[:s :d] ["mouse-layer" 1]]
+                 ]
+      }
+    {:des "mouse"
+         :rules [:mouse-layer
+                 [:c {:mkey {:y 2200}}]
+                 [:v {:mkey {:y -2200}}]
+                 [:j {:mkey {:x -2200}}]
+                 [:p {:mkey {:x 2200}}]
+                 [:spacebar {:pkey :button1}]
+                 [:!Cspacebar {:pkey :button2}]]}
+] ;; main list
+ ;; code won't read cheatsheet section
+ ;; ! stand for mandatory
+ ;; # stand for optional
+ ;; C T O S for left command control optional shift
+ ;; F for fn
+ ;; need to prefix C T O S F with ! or #
+ :cheatsheet {:!Ca "command a" ;; mandatory left_command
+              :!Ta "control a" ;; mandatory left_control
+              :!Oa "option a"
+              :!Sa "shift a"
+              :#Sa "shift a" ;; keycode a, optional left_shift
+              :!CTOa "command control option a"
+              :!Cspacebar "command space"
+              :!Fa "fn a"
+              :##a "keycode a optional any"
+              :!!a "mandatory hyper(control command option shift) a "}
+}
