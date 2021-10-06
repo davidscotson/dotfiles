@@ -235,11 +235,6 @@ nnoremap <leader>pb :lua require'telescope.builtin'.buffers()<CR>
 lua << EOF
 -- turn this into a telescope "theme"
 require('telescope').setup{
-    defaults = {
-            -- this makes more sense to me
-            prompt_position = "top",
-            sorting_strategy = "ascending",
-    },
     extensions = {
         fzf_writer = {
             minimum_grep_characters = 2,
@@ -298,14 +293,14 @@ cnoremap w!! execute ':w suda://%'
 " +----------------+
 let g:PHP_removeCRwhenUnix = 1
 
-" move this to project specific location
-au BufNewFile,BufRead *.py
-                        \ set tabstop=4 |
-                        \ set softtabstop=4 |
-                        \ set shiftwidth=4 |
-                        \ set textwidth=79 |
-                        \ set noexpandtab |
-                        \ set fileformat=unix
+" " move this to project specific location for standardebooks
+" au BufNewFile,BufRead *.py
+"                         \ set tabstop=4 |
+"                         \ set softtabstop=4 |
+"                         \ set shiftwidth=4 |
+"                         \ set textwidth=79 |
+"                         \ set noexpandtab |
+"                         \ set fileformat=unix
 
 
 " Use <C-L> to clear the highlighting of :set hlsearch.

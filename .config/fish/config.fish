@@ -21,3 +21,6 @@ set fish_cursor_replace_one underscore
 # The following variable can be used to configure cursor shape in
 # visual mode, but due to fish_cursor_default, is redundant here
 set fish_cursor_visual block
+
+
+fish_ssh_agent
