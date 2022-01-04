@@ -6,8 +6,6 @@ lua require("plugins")
 "lua require("options")
 "lua require("mappings")
 
-set completeopt=menu,menuone,noselect
-lua require('Comment').setup()
 " General setttings
 
 " Sets
@@ -25,9 +23,6 @@ set shiftround
 set nowrap
 set termguicolors
 set signcolumn=yes
-
-" TODO for css naming of words, only in CSS?
-set isfname+=@-@
 
 if !&scrolloff
         set scrolloff=8     " Show next 8 lines while scrolling.
@@ -69,6 +64,8 @@ let g:maplocalleader = ','
 " Remaps
 nnoremap <Leader>so :w<CR>:so %<CR>
 
+nnoremap q: <nop>
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -83,16 +80,6 @@ nnoremap <leader>Y gg"+yG
 " delete and send to black hole, don't update yank buffer
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
-
-
-let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla'
-
-let g:bujo#window_width = 45
-
-let g:vim_markdown_conceal = 1
-let g:vim_markdown_new_list_item_indent = 0
-
-let g:markdown_fenced_languages = ['html', 'php', 'python', 'shell=sh', 'bash=sh']
 
 " Syntax print
 nmap <leader>sp :call <SID>SynStack()<CR>
@@ -110,21 +97,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fp <cmd>Telescope project<cr>
 
- 
 lua << EOF
--- turn this into a telescope "theme"
-require('telescope').setup{
-    extensions = {
-        fzf_writer = {
-            minimum_grep_characters = 2,
-            minimum_files_characters = 2,
-            use_highlighter = true,
-        }
-    }
-}
-
-require"telescope".load_extension("ghq")
-require"telescope".load_extension("gh")
 
 -- express line statusline
 require('el').setup()
@@ -249,16 +222,7 @@ nmap <Leader>s :%s//g<Left><Left>
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-let g:python_host_prog = '~/.asdf/installs/python/2.7.16/bin/python'
-let g:python3_host_prog = '~/.asdf/installs/python/3.10.0/bin/python'
-
 lua << EOF
-require"toggleterm".setup{
-  -- using Tag mapping.
-  open_mapping = [[<c-t>]],
-  shade_terminals = true,
-  start_in_insert = true,
-}
 
 local nvim_lsp = require('lspconfig')
 
@@ -424,15 +388,11 @@ function ToggleWrap()
 endfunction
 
 
-let g:vim_markdown_folding_disabled = 1
 " +-----------------+
 " | general binding |
 " +-----------------+
 
 syntax on
-
-" Act like D and C
-nnoremap Y y$
 
 " indent without kill the selection in vmode
 vmap < <gv

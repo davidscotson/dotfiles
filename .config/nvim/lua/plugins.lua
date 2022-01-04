@@ -67,6 +67,7 @@ return require('packer').startup(function(use)
                             neorg_leader = "<Leader>o" -- This is the default if unspecified
                         }
                     },
+                    ["core.integrations.telescope"] = {}, -- Enable the telescope module
                     ["core.norg.dirman"] = { -- Manage your directories with Neorg
                         config = {
                             workspaces = {
@@ -168,13 +169,15 @@ return require('packer').startup(function(use)
     use 'tami5/sql.nvim' -- needed for frecency
     use 'nvim-telescope/telescope-frecency.nvim'
     use 'LinArcX/telescope-command-palette.nvim'
+    use({ 'mrjones2014/tldr.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
+
     -- icons for developer filetypes
     use 'kyazdani42/nvim-web-devicons'
     -- nicer SVG versions of the above
     use 'yamatsum/nvim-web-nonicons'
 
     -- color highlighter
-    use {'rrethy/vim-hexokinase', { run = 'make hexokinase' }}
+    --use {'rrethy/vim-hexokinase', { run = 'make hexokinase' }}
 
     -- treesitter themes
     use 'rktjmp/lush.nvim'
@@ -219,18 +222,11 @@ return require('packer').startup(function(use)
 
     use 'mustache/vim-mustache-handlebars'
 
-    -- TODO notes per repo
-    -- Original project 'vuciv/vim-bujo'
-    use 'davidscotson/vim-bujo'
-
     -- browser integration
      use {
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end
     }
-
-    -- Split arrays in PHP / struct in Go / other things
-    use {'AndrewRadev/splitjoin.vim', ft = {'php'}}
 
     -- Write file with sudo
     use 'lambdalisue/suda.vim'

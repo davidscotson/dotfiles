@@ -2,8 +2,6 @@ cask_args appdir: "/Applications"
 
 # Tap Homebrew
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 
@@ -43,7 +41,7 @@ brew "neovim"
 brew "ripgrep"
 brew "exa"
 brew "w3m"
-brew "tealdear"
+brew "tealdeer"
 brew "optipng"
 brew "ssh-copy-id"
 brew "screen"
