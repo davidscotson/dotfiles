@@ -1,130 +1,13 @@
-call plug#begin('~/.local/share/nvim/plugged')
+if &shell =~# 'fish$'
+    set shell=sh
+endif
 
-" shared lib for multiple lua plugins
-Plug 'nvim-lua/plenary.nvim'
+lua require("plugins")
+"lua require("options")
+"lua require("mappings")
 
-" lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'tjdevries/nlua.nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
-Plug 'wlemuel/vim-tldr'
-Plug 'kabouzeid/nvim-lspinstall'
-
-" editorconfig
-Plug 'editorconfig/editorconfig-vim'
-
-" Better diff lines
-Plug 'rickhowe/diffchar.vim'
-
-Plug 'ActivityWatch/aw-watcher-vim'
-" Snippets via LSP
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
-
-" browser wrapper
-Plug 'yuratomo/w3m.vim'
-
-" unit testing /coverage
-Plug 'im-test/vim-test'
-
-" terminals
-Plug 'oberblastmeister/termwrapper.nvim'
-Plug 'akinsho/nvim-toggleterm.lua'
-
-" REPL
-Plug 'metakirby5/codi.vim'
-
-" status line, requires plenary
-Plug 'tjdevries/express_line.nvim'
-
-" Neovim Tree sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-Plug 'windwp/nvim-ts-autotag'
-Plug 'p00f/nvim-ts-rainbow'
-
-" telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim'
-Plug 'nvim-telescope/telescope-fzf-writer.nvim'
-Plug 'nvim-telescope/telescope-media-files.nvim'
-Plug 'nvim-telescope/telescope-ghq.nvim'
-Plug 'nvim-telescope/telescope-github.nvim'
-Plug 'nvim-telescope/telescope-project.nvim'
-Plug 'tami5/sql.nvim' " needed for frecency
-Plug 'nvim-telescope/telescope-frecency.nvim'
-
-" icons for developer filetypes
-Plug 'kyazdani42/nvim-web-devicons'
-" nicer SVG versions of the above
-Plug 'yamatsum/nvim-web-nonicons'
-
-" color highlighter
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-" treesitter themes
-"Plug 'rktjmp/lush.nvim', {'branch': 'feat-mix'}
-Plug 'davidscotson/lush.nvim', {'branch': 'unreadable'}
-Plug 'savq/melange'
-Plug 'davidscotson/unreadable-nvim'
-
-Plug 'godlygeek/tabular'
-
-" gutter display
-Plug 'airblade/vim-gitgutter'
-
-" wrapper for git
-Plug 'tpope/vim-fugitive'
-" fugitive for the hub
-Plug 'tpope/vim-rhubarb'
-" surrounding text objects with whatever you want (paranthesis, quotes, html tags...)
-Plug 'tpope/vim-surround'
-" the . command can repeat whatever you want!
-" http://vimcasts.org/episodes/creating-repeatable-mappings-with-repeat-vim/
-Plug 'tpope/vim-repeat'
-" keystroke to comment automatically depending on the file you're in
-Plug 'tpope/vim-commentary'
-" runs tests
-Plug 'tpope/vim-dispatch'
-" simpler file navigation with netrw
-Plug 'tpope/vim-vinegar'
-" DB plugin
-Plug 'tpope/vim-dadbod'
-
-" gitk in vim
-Plug 'junegunn/gv.vim'
-
-" php
-Plug 'alvan/vim-php-manual', {'for': 'php'}
-" can vimspector do this
-Plug 'joonty/vdebug', {'for': 'php'}
-
-" php doc autocompletion revisit
-Plug 'tobyS/vmustache' | Plug 'tobyS/pdv', {'for': 'php'}
-
-Plug 'mustache/vim-mustache-handlebars'
-
-" TODO notes per repo
-"Original project 'vuciv/vim-bujo'
-Plug 'davidscotson/vim-bujo'
-
-" browser integration
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-" Split arrays in PHP / struct in Go / other things
-Plug 'AndrewRadev/splitjoin.vim', {'for': 'php'}
-
-" Write file with sudo
-Plug 'lambdalisue/suda.vim'
-
-" switch number mode automaticall
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-
-call plug#end()
-
+set completeopt=menu,menuone,noselect
+lua require('Comment').setup()
 " General setttings
 
 " Sets
@@ -142,9 +25,6 @@ set shiftround
 set nowrap
 set termguicolors
 set signcolumn=yes
-
-" show command effects as you write them
-set inccommand=nosplit
 
 " TODO for css naming of words, only in CSS?
 set isfname+=@-@
@@ -223,14 +103,13 @@ function! <SID>SynStack()
         echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fp <cmd>Telescope project<cr>
 
-nnoremap <leader>ps :lua require'telescope'.extensions.fzf_writer.staged_grep()<CR>
-nnoremap <leader>pg :lua require'telescope.builtin'.git_files()<CR>
-nnoremap <leader>pf :lua require'telescope'.extensions.fzf_writer.find_files()<CR>
-nnoremap <leader>pp :lua require'telescope'.extensions.project.project{ display_type = 'full'}<CR>
-
-nnoremap <leader>pw :lua require'telescope'.extensions.fzf_writer.staged_grep { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>pb :lua require'telescope.builtin'.buffers()<CR>
  
 lua << EOF
 -- turn this into a telescope "theme"
@@ -250,6 +129,52 @@ require"telescope".load_extension("gh")
 -- express line statusline
 require('el').setup()
 
+ local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      { name = 'neorg' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  --
 EOF
 
 augroup MYSTUFF
@@ -324,8 +249,8 @@ nmap <Leader>s :%s//g<Left><Left>
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-let g:python_host_prog = '/Users/davidscotson/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/davidscotson/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '~/.asdf/installs/python/2.7.16/bin/python'
+let g:python3_host_prog = '~/.asdf/installs/python/3.10.0/bin/python'
 
 lua << EOF
 require"toggleterm".setup{
@@ -335,7 +260,58 @@ require"toggleterm".setup{
   start_in_insert = true,
 }
 
-require'lspinstall'.setup() -- important
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keyjap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+end
+local lsp_installer = require("nvim-lsp-installer")
+
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(function(server)
+  -- Enable completion triggered by <c-x><c-o>
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local opts = {
+        capabilities = capabilities
+    }
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
 
 require'nvim-treesitter.configs'.setup {
     highlight = { enable = true },
@@ -355,6 +331,29 @@ parser_config.mustache = {
   used_by = {
     "html.mustache",
   }
+}
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+        files = { "src/parser.c", "src/scanner.cc" },
+        branch = "main"
+    },
+}
+
+parser_configs.norg_meta = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
+        files = { "src/parser.c" },
+        branch = "main"
+    },
+}
+
+parser_configs.norg_table = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+        files = { "src/parser.c" },
+        branch = "main"
+    },
 }
 EOF
 
@@ -497,3 +496,5 @@ nmap <silent> t<C-g> :TestVisit<CR>
 set diffopt+=algorithm:histogram
 set diffopt+=indent-heuristic
 set diffopt+=vertical
+
+

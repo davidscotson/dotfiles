@@ -18,12 +18,11 @@
 
 ;; TODO map vim keys to standard controls? ctrl-o, i for back/forward?, change tab, bracket key left-right
 ;; TODO an app switcher hyper key to jump between: terminal (tabs?), firefox (tabs?), chrome, finder (folders)?
-;; TODO better brackets based on dvorak <> location and (maybe) simultaneous presses
+;; TODO leader double?
 ;; TODO use ctr-h, m more.
 ;; TODO use held tab for something, m more.
 ;; TODO use alt key more
 ;; TODO basic window management on a twin hyper key via hammerspoon, hjkl?
-;; TODO two hyper keys for numbers and symbols on top row
 
 ;; layers are basically "hyper" keys
 ;; press this in combination with something else and depending on your rule, make things happen
@@ -41,15 +40,17 @@
   :number-mode {:key :spacebar}
   :ctrl-mode-left {:key :a}
   :ctrl-mode-right {:key :semicolon}
+  :shift-mode-left {:key :z}
+  :shift-mode-right {:key :slash}
 } ;; simlayers
 
 ;; main contains multiple manipulators
 :main [
 
-    {:des "esc" :rules [[[:w :e] :escape]]}
-    {:des "tab" :rules [[[:s :d] :tab]]}
-    {:des "backspace left" :rules [[[:d :f] :delete_or_backspace]]}
-    {:des "enter" :rules [[[:k :l] :return_or_enter]]}
+    {:des "esc" :rules [[[:spacebar :w :e] :escape]]}
+    {:des "tab" :rules [[[:spacebar :s :d] :tab]]}
+    {:des "backspace left" :rules [[[:spacebar :d :f] :delete_or_backspace]]}
+    {:des "enter" :rules [[[:spacebar :k :l] :return_or_enter]]}
     ;; each manipulator has a description and multiple rules
     ;;{:des "..."                               ;; -> description
     ;; :rules[
@@ -79,36 +80,35 @@
     ;; ----------------------------------
     ;; Key mappings
     ;; ----------------------------------
-    ; {:des "disable number/symbol row for training purposes"
-    ;     :rules[
-    ;           [:1 :vk_none]
-    ;           [:2 :vk_none]
-    ;           [:3 :vk_none]
-    ;           [:4 :vk_none]
-    ;           [:5 :vk_none]
-    ;           [:6 :vk_none]
-    ;           [:7 :vk_none]
-    ;           [:8 :vk_none]
-    ;           [:9 :vk_none]
-    ;           [:0 :vk_none]
-    ;           [:!S1 :vk_none]
-    ;           [:!S2 :vk_none]
-    ;           [:!S3 :vk_none]
-    ;           [:!S4 :vk_none]
-    ;           [:!S5 :vk_none]
-    ;           [:!S6 :vk_none]
-    ;           [:!S7 :vk_none]
-    ;           [:!S8 :vk_none]
-    ;           [:!S9 :vk_none]
-    ;           [:!S0 :vk_none]
-    ;           ]}
-    ; {:des "disable standard modifiers for training purposes"
-    ;     :rules[
-    ;           [:left_shift :vk_none]
-    ;           [:left_control :vk_none]
-    ;           [:right_shift :vk_none]
-    ;           [:right_control :vk_none]
-    ;           ]}
+    {:des "disable number/symbol row for training purposes"
+        :rules[
+              [:2 :vk_none]
+              [:3 :vk_none]
+              [:4 :vk_none]
+              [:5 :vk_none]
+              [:6 :vk_none]
+              [:7 :vk_none]
+              [:8 :vk_none]
+              [:9 :vk_none]
+              [:0 :vk_none]
+              [:!S1 :vk_none]
+              [:!S2 :vk_none]
+              [:!S3 :vk_none]
+              [:!S4 :vk_none]
+              [:!S5 :vk_none]
+              [:!S6 :vk_none]
+              [:!S7 :vk_none]
+              [:!S8 :vk_none]
+              [:!S9 :vk_none]
+              [:!S0 :vk_none]
+              ]}
+    {:des "disable standard modifiers for training purposes"
+        :rules[
+              [:left_shift :vk_none]
+              [:left_control :vk_none]
+              [:right_shift :vk_none]
+              [:right_control :vk_none]
+              ]}
     {:des "caps lock to control when combo, esc when alone"
         :rules [[:caps_lock :left_control nil {:alone :escape}]]}
 
@@ -118,7 +118,7 @@
     {:des "left-command to backspace when alone"
           :rules [[:left_command :left_command  nil {:alone :delete_or_backspace}]]}
 
-    {:des "numbers and symbols on the top row"
+    {:des "numbers and symbols layer"
         :rules [
               ;; symbols on number row moved down one
               [:q :!S1 :number-mode]
@@ -129,36 +129,32 @@
               ;; skip hat, move & over 1 place
               [:y :!S7 :number-mode]
 
-              ;; number row moved down one
-              [:u :7 :number-mode]
-              [:i :8 :number-mode]
-              [:o :9 :number-mode]
-              [:p :0 :number-mode]
-              ;; 7,8,9 already in numpad location, add others too
-              ;; just use pinky 0
+              ;; embedded numpad
+              [:n :0 :number-mode]
               [:m :1 :number-mode]
               [:comma :2 :number-mode]
               [:period :3 :number-mode]
               [:j :4 :number-mode]
               [:k :5 :number-mode]
               [:l :6 :number-mode]
+              [:u :7 :number-mode]
+              [:i :8 :number-mode]
+              [:o :9 :number-mode]
 
               ;; brackets symbols
-              [:a :!S9 :number-mode] ;; (
-              [:s :!S0 :number-mode] ;; )
-              [:d :!Shyphen :number-mode] ;; {
+              [:s :!S9 :number-mode] ;; (
+              [:d :!S0 :number-mode] ;; )
+              [:a :!Shyphen :number-mode] ;; {
               [:f :!Sequal_sign :number-mode] ;; }
               [:x :hyphen :number-mode] ;; [
               [:c :equal_sign :number-mode] ;; ]
 
-              ;; math symbols
-              [:h :!Sclose_bracket :number-mode] ;; + plus
+              ;; math url/programming symbols
+              [:p :open_bracket :number-mode] ;; / divide
+              [:slash :!Sclose_bracket :number-mode] ;; + plus
               [:semicolon :quote :number-mode] ;; - minus
-              [:slash :open_bracket :number-mode] ;; / divide
-              [:n :!S8 :number-mode] ;; * asterisk
+              [:h :!S8 :number-mode] ;; * asterisk
               [:g :close_bracket :number-mode] ;; = equals
-
-              ;; url/programming symbols
               [:z :!Sgrave_accent_and_tilde :number-mode] ;; ~ tilde
               [:v :!Squote :number-mode] ;; _ underscore
               [:b :!Sopen_bracket :number-mode] ;; ? question mark
@@ -169,8 +165,45 @@
     {:des "hold z or / for left-right shift in combo"
         :rules [
           ;; easier reach to modifier keys
-          [:z     :left_shift   nil {:alone :z}]
-          [:slash :right_shift  nil {:alone :slash}]
+          ;; need to split the keyboard in half to avoid rolls
+            [:q :!Sq :shift-mode-right]
+            [:w :!Sw :shift-mode-right]
+            [:e :!Se :shift-mode-right]
+            [:r :!Sr :shift-mode-right]
+            [:t :!St :shift-mode-right]
+            [:y :!Sy :shift-mode-right]
+
+            [:a :!Sa :shift-mode-right]
+            [:s :!Ss :shift-mode-right]
+            [:d :!Sd :shift-mode-right]
+            [:f :!Sf :shift-mode-right]
+            [:g :!Sg :shift-mode-right]
+            [:h :!Sh :shift-mode-right]
+
+            [:z :!Sz :shift-mode-right]
+            [:x :!Sx :shift-mode-right]
+            [:c :!Sc :shift-mode-right]
+            [:v :!Sv :shift-mode-right]
+            [:b :!Sb :shift-mode-right]
+            [:n :!Sn :shift-mode-right]
+
+            [:y :!Sy :shift-mode-left]
+            [:u :!Su :shift-mode-left]
+            [:i :!Si :shift-mode-left]
+            [:o :!So :shift-mode-left]
+            [:p :!Sp :shift-mode-left]
+            [:h :!Sh :shift-mode-left]
+            [:j :!Sj :shift-mode-left]
+            [:k :!Sk :shift-mode-left]
+            [:l :!Sl :shift-mode-left]
+            [:semicolon :!Ssemicolon :shift-mode-left]
+            [:backslash :!Sbackslash :shift-mode-left] ;; | pipe
+
+            [:n :!Sn :shift-mode-left]
+            [:m :!Sm :shift-mode-left]
+            [:comma :!Scomma :shift-mode-left]
+            [:period :!Speriod :shift-mode-left]
+            [:slash :!Sslash :shift-mode-left]
       ]
     }
     {:des "hold a or s for left-right control in combo"
@@ -189,10 +222,11 @@
             [:g :!Tg :ctrl-mode-right]
             [:z :!Tz :ctrl-mode-right]
             [:x :!Tx :ctrl-mode-right]
+            [:c :!Tc :ctrl-mode-right]
             [:v :!Tv :ctrl-mode-right]
             [:b :!Tb :ctrl-mode-right]
 
-            [:y :!Tf :ctrl-mode-left]
+            [:y :!Ty :ctrl-mode-left]
             [:u :!Tu :ctrl-mode-left]
             [:i :!Ti :ctrl-mode-left]
             [:o :!To :ctrl-mode-left]

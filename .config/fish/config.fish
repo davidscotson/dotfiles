@@ -24,3 +24,5 @@ set fish_cursor_visual block
 
 
 fish_ssh_agent
+
+source (brew --prefix asdf)/libexec/asdf.fish

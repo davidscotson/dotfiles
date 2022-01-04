@@ -24,3 +24,5 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [color]
    pager = no
+[init]
+	defaultBranch = main
