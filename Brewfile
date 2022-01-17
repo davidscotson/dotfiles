@@ -18,7 +18,6 @@ cask "1password-cli"
 cask "optimage"
 cask "pomotroid"
 cask "kitty"
-cask "vimr"
 cask "karabiner-elements"
 cask "activitywatch"
 
