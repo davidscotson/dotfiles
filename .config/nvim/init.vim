@@ -72,15 +72,12 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " paste from system clipboard
+" can we do <leader>"" and then re-use the second "?
 " mnemonic, you've just y'd, oops, <leader>y to fix
 nnoremap <leader>y :let @"=@+<cr>
 " mnemonic, you've just p'd, oops, <leader>p to fix
 nnoremap <leader>p :let @+=@"<cr>
-" delete and send to black hole, don't update yank buffer
-"  this takes too much thinking ahead, just use registers to access the
-"  previous thing, or the remaps above to swich between registers.
-"nnoremap <leader>d "_d
-"vnoremap <leader>d "_d
+" delete and send to black hole, don't update yank buff
 
 " Sync
 lua << EOF
@@ -116,6 +113,15 @@ nnoremap <leader>tr <cmd>lua require'telescope'.extensions.repo.list{cwd='~/ghq/
 nnoremap <leader>t' <cmd>Telescope marks<cr>
 nnoremap <leader>t" <cmd>Telescope registers<cr>
 
+" Vim Script
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+" TODO collapse/open folds
+
 " copy vim-vinegar hotkey, still need to go up one
 nnoremap - <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
 
@@ -137,7 +143,7 @@ require('el').setup()
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disabl` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
@@ -147,8 +153,6 @@ require('el').setup()
     sources = cmp.config.sources({
     --  { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
-      { name = 'neorg' },
-    }, {
       { name = 'buffer' },
     })
   })
@@ -180,6 +184,7 @@ augroup MYSTUFF
         autocmd FileType css,scss setlocal iskeyword+=-
         autocmd FileType scss setlocal iskeyword+=@-@
 augroup END
+
 augroup neovim_terminal
     autocmd!
     " Enter Terminal-mode (insert) automatically
@@ -267,10 +272,9 @@ lsp_installer.on_server_ready(function(server)
         capabilities = capabilities
     }
 
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
+     if server.name == "lua" then
+         opts.settings.Lua.diagnostics.globals = {'vim'}
+     end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -330,8 +334,6 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_liststyle=1
 
-" Do this in lua?? maybe...
-" vim.o is short for something teej thinks makes sense.
 set completeopt=menu,menuone,longest,noselect,preview
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
@@ -355,7 +357,7 @@ let fc['https://.*gmail.com.*'] = { 'takeover': 'never', 'priority': 1 }
 augroup MY_FIRENVIM
         autocmd!
         au BufEnter github.com_*.txt set filetype=markdown
-        au BufEnter stackoverflow_*.txt filetype=markdown
+        au BufEnter stackoverflow_*.txt set filetype=markdown
 augroup END
 
 nnoremap <silent> <Leader>w :call ToggleWrap()<CR>

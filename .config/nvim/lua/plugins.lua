@@ -48,6 +48,19 @@ return packer.startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+    -- Lua
+use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+        position = "right",
+        padding = false,
+        indent_lines = false,
+        use_diagnostic_signs = true,
+    }
+  end
+}
 
     use 'hrsh7th/cmp-vsnip' -- Snippets via LSP
 
@@ -130,7 +143,7 @@ return packer.startup(function(use)
   requires = { "nvim-lua/plenary.nvim" },
   config = function()
     require("rest-nvim").setup({
-      -- Open request results in a horizontal split
+      -- Open request results in a horizontal spli:h alpha-examplet
       result_split_horizontal = false,
       -- Skip SSL verification, useful for unknown certificates
       skip_ssl_verification = false,

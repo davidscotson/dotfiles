@@ -11,18 +11,22 @@
     :gergoplex [{:vendor_id 4294976620 }]
 } ;; devices
 
-;; TODO done: caps lock double shift
-;; TODO  arrows on modifier hjkl is awkward on dvorak, use t/k as modifier? Do i need these or just next/previous, complete?
-;; TODO  arrows, change tab, bracket key left-right
-;; TODO  [ ] on <>, {} on brackets or vice versa?
+;; TODO done: caps lock double shift, gu'[ etc.
+;; TODO  arrows on alt/opt hjkl, means can use jk for other menus
+;; TODO  tab, change tab, change tab backwards (actual tab, plus mirror?)
 
 ;; TODO map vim keys to standard controls? ctrl-o, i for back/forward?, change tab, bracket key left-right
 ;; TODO an app switcher hyper key to jump between: terminal (tabs?), firefox (tabs?), chrome, finder (folders)?
 ;; TODO leader double?
 ;; TODO use ctr-h, m more.
 ;; TODO use held tab for something, m more.
-;; TODO use alt key more
+;; TODO use alt key more, arrows but others too.
+;; TODO do i need arrows in vim, re-use for window controls?
 ;; TODO basic window management on a twin hyper key via hammerspoon, hjkl?
+;; TODO ctrl-w or ctrl-ww for window toggle?
+;; TODO hold tab, then left right (up-down) or alpha for jump to app
+;; TODO two keys plus modifier with karabiner and goku
+;; TODO remap ctrl-c to beep in vim, goku beep generally
 
 ;; layers are basically "hyper" keys
 ;; press this in combination with something else and depending on your rule, make things happen
@@ -46,8 +50,12 @@
 
 ;; main contains multiple manipulators
 :main [
-    {:des "esc" :rules [[[:w :e] :escape]]}
-    {:des "tab" :rules [[[:spacebar :s :d] :tab]]}
+    {:des "esc or alternative?" :rules [[[:w :e] :escape]]}
+    {:des "esc jk" :rules [[[:c :v] :escape]]}
+    ;;{:des "command tab" :rules [[[:e :r] :!Ctab]]}
+
+    {:des "tab" :rules [[[:e :r] :tab]]} ;; :
+    {:des "something else, ctrl-shift-6?" :rules [[[:q :w] :!TS6]]}
     ;; each manipulator has a description and multiple rules
     ;;{:des "..."                               ;; -> description
     ;; :rules[
@@ -99,6 +107,17 @@
               [:!S9 :vk_none]
               [:!S0 :vk_none]
               ]}
+    {:des "option hjkl = arrows"
+        :rules[
+              [:left_arrow :vk_none]
+              [:right_arrow :vk_none]
+              [:up_arrow :vk_none]
+              [:down_arrow :vk_none]
+              [:!Oc :down_arrow]
+              [:!Ov :up_arrow]
+              [:!Op :right_arrow]
+              [:!Oj :left_arrow]
+              ]}
     {:des "disable standard modifiers for training purposes"
         :rules[
               [:left_shift :vk_none]
@@ -137,8 +156,8 @@
               [:u :7 :number-mode]
               [:i :8 :number-mode]
               [:o :9 :number-mode]
-              [[:j :k] :0 :number-mode]
-              [[:k :l] :period :number-mode]
+              ;; [[:4 :5] :e :number-mode] ;; . period
+              ;; [[:5 :6] :n :number-mode] ;; 0550555vvvvvvvv0550 
               ;; brackets symbols
               [:s :!S9 :number-mode] ;; (
               [:d :!S0 :number-mode] ;; )
@@ -156,7 +175,6 @@
               [:z :!Sgrave_accent_and_tilde :number-mode] ;; ~ tilde
               [:v :!Squote :number-mode] ;; _ underscore
               [:b :!Sopen_bracket :number-mode] ;; ? question mark
-
           ]
         }
 
@@ -195,7 +213,7 @@
             [:k :!Sk :shift-mode-left]
             [:l :!Sl :shift-mode-left]
             [:semicolon :!Ssemicolon :shift-mode-left]
-            [:backslash :!Sbackslash :shift-mode-left] ;; | pipe
+            [:backslash :!Sbackslash :shift-mode-left] ;; pipe
 
             [:n :!Sn :shift-mode-left]
             [:m :!Sm :shift-mode-left]

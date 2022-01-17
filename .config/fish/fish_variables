@@ -11,6 +11,7 @@ SETUVAR _fisher_dteoh_2F_fish_2D_homebrew_2D_asdf_files:/Users/davidscotson/\x2e
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/davidscotson/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/davidscotson/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_jorgebucaran_2F_hydro_files:/Users/davidscotson/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e/Users/davidscotson/\x2econfig/fish/functions/fish_prompt\x2efish\x1e/Users/davidscotson/\x2econfig/fish/functions/fish_title\x2efish\x1e/Users/davidscotson/\x2econfig/fish/conf\x2ed/hydro\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/hydro\x1edteoh/fish\x2dhomebrew\x2dasdf\x1ePatrickF1/fzf\x2efish
+SETUVAR _hydro_git_16364:\x1d
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:81a1c1
