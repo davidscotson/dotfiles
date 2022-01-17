@@ -14,7 +14,8 @@ colorscheme unreadable
 " Keep buffers with unsaved changes around
 set hidden
 
-set tabstop=8
+set noshowmode
+
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -65,37 +66,58 @@ let g:maplocalleader = ','
 nnoremap <Leader>so :w<CR>:so %<CR>
 
 nnoremap q: <nop>
+nnoremap Q <nop>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " paste from system clipboard
-vnoremap <leader>p "+p
-nnoremap <leader>p "+p
-" yank to system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
-
+" mnemonic, you've just y'd, oops, <leader>y to fix
+nnoremap <leader>y :let @"=@+<cr>
+" mnemonic, you've just p'd, oops, <leader>p to fix
+nnoremap <leader>p :let @+=@"<cr>
 " delete and send to black hole, don't update yank buffer
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
+"  this takes too much thinking ahead, just use registers to access the
+"  previous thing, or the remaps above to swich between registers.
+"nnoremap <leader>d "_d
+"vnoremap <leader>d "_d
 
-" Syntax print
-nmap <leader>sp :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-        if !exists("*synstack")
-                return
-        endif
-        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+" Sync
+lua << EOF
+require('telescope').setup{
+ extensions = {
+  },
+    defaults = {
+      border = true,
+      borderchars = {
+        prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+        results = { " ", " ", " ", " ", " ", " ", " ", " " },
+        preview = { " ", " ", " ", "⎸", " ", " ", " ", " " },
+        },
+        layout_config = {
+            horizontal = { width = 0.9999, height = 0.9999 },
+        }
+    }
+}
+
+EOF
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fp <cmd>Telescope project<cr>
+" find in current, find files in cwd, find files anywhere
+nnoremap <leader>tf <cmd>Telescope find_files<cr>
+" tp find files in project
+nnoremap <leader>tk <cmd>Telescope keymaps<cr>
+nnoremap <leader>tb <cmd>Telescope buffers<cr>
+nnoremap <leader>tw <cmd>Telescope grep_string<cr>
+nnoremap <leader>th <cmd>Telescope history<cr>
+nnoremap <leader>t? <cmd>Telescope help_tags<cr>
+nnoremap <leader>tl <cmd>Telescope tldr<cr>
+nnoremap <leader>tr <cmd>lua require'telescope'.extensions.repo.list{cwd='~/ghq/',fd_opts={'-td','--prune','--max-depth=5','--ignore=~/.config/ghqfdignore'}}<cr>
+nnoremap <leader>t' <cmd>Telescope marks<cr>
+nnoremap <leader>t" <cmd>Telescope registers<cr>
+
+" copy vim-vinegar hotkey, still need to go up one
+nnoremap - <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
 
 lua << EOF
 
@@ -141,8 +163,7 @@ require('el').setup()
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
+      { name = 'path' },
       { name = 'cmdline' }
     })
   })
@@ -156,6 +177,8 @@ augroup MYSTUFF
         autocmd WinNew * wincmd L
         " briefly higlight yanked text
         autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 400})
+        autocmd FileType css,scss setlocal iskeyword+=-
+        autocmd FileType scss setlocal iskeyword+=@-@
 augroup END
 augroup neovim_terminal
     autocmd!
@@ -169,9 +192,6 @@ augroup END
 
 " vertical line for instert,underline for normal, block for visual
 set guicursor=i-c-ci:ver25,o-v-ve:block,cr-sm-n-r:hor20
-
-" Act like D and C
-nnoremap Y y$
 
 " indent without kill the selection in vmode
 vmap < <gv
@@ -191,24 +211,9 @@ cnoremap w!! execute ':w suda://%'
 " +----------------+
 let g:PHP_removeCRwhenUnix = 1
 
-" " move this to project specific location for standardebooks
-" au BufNewFile,BufRead *.py
-"                         \ set tabstop=4 |
-"                         \ set softtabstop=4 |
-"                         \ set shiftwidth=4 |
-"                         \ set textwidth=79 |
-"                         \ set noexpandtab |
-"                         \ set fileformat=unix
-
-
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-        nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
-
 " Remaps
 nnoremap <leader>ga :Git fetch --all<CR>
-nnoremap <leader>grum :Git rebase upstream/master<CR>
+nnoremap <leader>grum :Git rebase upstream/master<cR>
 nnoremap <leader>grom :Git rebase origin/master<CR>
 
 nmap <leader>gh :diffget //3<CR>
@@ -228,34 +233,29 @@ local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local oK_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<cmd>Telescope lsp_definitions<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keyjap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
+  -- buf_set_keyjap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  -- buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  -- buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  -- buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
+
 local lsp_installer = require("nvim-lsp-installer")
 
 -- Register a handler that will be called for all installed servers.
@@ -284,8 +284,9 @@ require'nvim-treesitter.configs'.setup {
     autotag = { enable = true, filetypes = { "html" , "xml", "html.mustache" } }
 }
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.mustache = {
+local parser_configs = require "nvim-treesitter.parsers".get_parser_configs()
+
+parser_configs.mustache = {
   install_info = {
     url = "~/github/davidscotson/tree-sitter-mustache",
     files = {
@@ -319,6 +320,7 @@ parser_configs.norg_table = {
         branch = "main"
     },
 }
+
 EOF
 
 set mouse=a
@@ -330,19 +332,8 @@ let g:netrw_liststyle=1
 
 " Do this in lua?? maybe...
 " vim.o is short for something teej thinks makes sense.
-set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,longest,noselect,preview
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
-nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
-nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics()<CR>
-nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
 
 " Firenvim
 let g:firenvim_config = {
@@ -367,7 +358,7 @@ augroup MY_FIRENVIM
         au BufEnter stackoverflow_*.txt filetype=markdown
 augroup END
 
-noremap <silent> <Leader>w :call ToggleWrap()<CR>
+nnoremap <silent> <Leader>w :call ToggleWrap()<CR>
 function ToggleWrap()
   if &wrap
     echo "Wrap OFF"
@@ -394,54 +385,16 @@ endfunction
 
 syntax on
 
-" indent without kill the selection in vmode
-vmap < <gv
-vmap > >gv
-
 set tabstop=4
-set shiftwidth=0
-set expandtab
-
-" when at 3 spaces, and I hit > ... go to 4, not 7
-set shiftround
-
-
-" remap the annoying u in visual mode
-vmap u y
-
-" Change in next bracket
-nmap cinb cib
-
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 "Toggle between absolute -> relative line number
-nnoremap <C-n> :let [&nu, &rnu] = [&nu, &nu+&rnu==1]<CR>
-
-
-" Disable anoying ex mode
-nnoremap Q <Nop>
-
-" Save files as root
-cnoremap w!! execute ':w suda://%'
+nnoremap <Leader>nn :let [&nu, &rnu] = [&nu, &nu+&rnu==1]<CR>
 
 " +----------------+
 " | general config |
 " +----------------+
 
-" colorscheme
-set termguicolors
-colorscheme unreadable
-
-let g:lexima_enable_basic_rules=0
-
-" When the type of shell script is /bin/sh, assume a POSIX-compatible
-" shell for syntax highlighting purposes.
-let g:is_posix = 1
-
-" vim test mapping
+" vim test mapping, not using currently
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>

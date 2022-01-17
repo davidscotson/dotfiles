@@ -12,7 +12,7 @@
 } ;; devices
 
 ;; TODO done: caps lock double shift
-; TODO  arrows on modifier hjkl is awkward on dvorak, use t/k as modifier? Do i need these or just next/previous, complete?
+;; TODO  arrows on modifier hjkl is awkward on dvorak, use t/k as modifier? Do i need these or just next/previous, complete?
 ;; TODO  arrows, change tab, bracket key left-right
 ;; TODO  [ ] on <>, {} on brackets or vice versa?
 
@@ -46,11 +46,8 @@
 
 ;; main contains multiple manipulators
 :main [
-
-    {:des "esc" :rules [[[:spacebar :w :e] :escape]]}
+    {:des "esc" :rules [[[:w :e] :escape]]}
     {:des "tab" :rules [[[:spacebar :s :d] :tab]]}
-    {:des "backspace left" :rules [[[:spacebar :d :f] :delete_or_backspace]]}
-    {:des "enter" :rules [[[:spacebar :k :l] :return_or_enter]]}
     ;; each manipulator has a description and multiple rules
     ;;{:des "..."                               ;; -> description
     ;; :rules[
@@ -140,7 +137,8 @@
               [:u :7 :number-mode]
               [:i :8 :number-mode]
               [:o :9 :number-mode]
-
+              [[:j :k] :0 :number-mode]
+              [[:k :l] :period :number-mode]
               ;; brackets symbols
               [:s :!S9 :number-mode] ;; (
               [:d :!S0 :number-mode] ;; )

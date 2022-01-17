@@ -1,47 +1,67 @@
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+local fn = vim.fn
 
-    -- shared lib for multiple lua plugins
-    use 'nvim-lua/plenary.nvim'
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
+end
 
-    -- lsp Plugins
-    use 'neovim/nvim-lspconfig'
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+return packer.startup(function(use)
+    use 'wbthomason/packer.nvim' -- Packer can manage itself
+
+    use 'nvim-lua/plenary.nvim' -- shared lib for multiple lua plugins
+
+    use 'airblade/vim-rooter'
+    use 'neovim/nvim-lspconfig' -- lsp Plugins
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/diagnostic-nvim'
     use 'tjdevries/nlua.nvim'
     use 'tjdevries/lsp_extensions.nvim'
-    use 'wlemuel/vim-tldr'
     use 'williamboman/nvim-lsp-installer'
+    use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+    use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-    -- completion
-    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lsp' -- completion
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
 
-    -- Snippets via LSP
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/cmp-vsnip' -- Snippets via LSP
 
-    -- editorconfig
-    use 'editorconfig/editorconfig-vim'
-
-    -- Better diff lines
-    use 'rickhowe/diffchar.vim'
+    use 'rickhowe/diffchar.vim' -- Better diff lines
 
     -- use 'ActivityWatch/aw-watcher-vim'
 
-    -- browser wrapper
-    use 'yuratomo/w3m.vim'
+    use 'yuratomo/w3m.vim' -- browser wrapper
 
     -- unit testing /coverage
-    use 'vim-test/vim-test'
+    -- use 'vim-test/vim-test' --
 
     -- terminals
-    use 'oberblastmeister/termwrapper.nvim'
-    use 'akinsho/nvim-toggleterm.lua'
     use {
         'jghauser/kitty-runner.nvim',
         config = function()
@@ -68,18 +88,12 @@ return require('packer').startup(function(use)
                         }
                     },
                     ["core.integrations.telescope"] = {}, -- Enable the telescope module
-                    ["core.norg.dirman"] = { -- Manage your directories with Neorg
-                        config = {
-                            workspaces = {
-                                my_workspace = "~/neorg"
-                            }
-                        }
-                    }
                 },
             }
         end,
         requires = {"nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope"}
     }
+    use "Pocco81/TrueZen.nvim"
 
     use {
         'lewis6991/spellsitter.nvim',
@@ -88,40 +102,23 @@ return require('packer').startup(function(use)
         end
     }
     use {
-        'goolord/alpha-nvim',
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-        end
-    }
-    use {
-        'ruifm/gitlinker.nvim',
+        'ruifm/gitlinker.nvim', -- fugitive inspired range links
         requires = 'nvim-lua/plenary.nvim',
     }
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require("todo-comments").setup {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-            }
-        end
-        }
     -- REPL
     use 'metakirby5/codi.vim'
 
-    use 'ggandor/lightspeed.nvim'
-    use 'f-person/git-blame.nvim'
+    --use 'ggandor/lightspeed.nvim'
+    --use 'f-person/git-blame.nvim'
 
     -- status line, requires plenary
     use 'tjdevries/express_line.nvim'
 
     -- Neovim Tree sitter
-    use({
+    use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate"
-    })
+    }
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'windwp/nvim-ts-autotag'
@@ -157,27 +154,35 @@ return require('packer').startup(function(use)
     })
   end
 }
-    -- telescope requirements...
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-fzf-native.nvim'
+
+    use 'duane9/nvim-rg'
+
+    use{
+  'nvim-telescope/telescope.nvim',
+    requires = {
+        'nvim-telescope/telescope-ghq.nvim',
+        'cljoly/telescope-repo.nvim',
+        'nvim-lua/plenary.nvim',
+        'mrjones2014/tldr.nvim',
+        "nvim-telescope/telescope-file-browser.nvim",
+        'nvim-telescope/telescope-rg.nvim',
+    },
+    config = function()
+        require'telescope'.load_extension'ghq'
+        require'telescope'.load_extension'repo'
+        require'telescope'.load_extension'fzf'
+    end,
+}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'nvim-telescope/telescope-fzf-writer.nvim'
-    use 'nvim-telescope/telescope-media-files.nvim'
-    use 'nvim-telescope/telescope-ghq.nvim'
-    use 'nvim-telescope/telescope-github.nvim'
-    use 'nvim-telescope/telescope-project.nvim'
     use 'tami5/sql.nvim' -- needed for frecency
-    use 'nvim-telescope/telescope-frecency.nvim'
-    use 'LinArcX/telescope-command-palette.nvim'
-    use({ 'mrjones2014/tldr.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
+    -- use 'nvim-telescope/telescope-frecency.nvim'
+    -- use 'LinArcX/telescope-command-palette.nvim'
 
-    -- icons for developer filetypes
-    use 'kyazdani42/nvim-web-devicons'
-    -- nicer SVG versions of the above
-    use 'yamatsum/nvim-web-nonicons'
-
-    -- color highlighter
-    --use {'rrethy/vim-hexokinase', { run = 'make hexokinase' }}
+    use {
+    'yamatsum/nvim-nonicons',
+    requires = {'kyazdani42/nvim-web-devicons'}
+    }
 
     -- treesitter themes
     use 'rktjmp/lush.nvim'
@@ -187,29 +192,21 @@ return require('packer').startup(function(use)
 
     use 'godlygeek/tabular'
 
-    -- gutter display
-    use 'airblade/vim-gitgutter'
-
     -- wrapper for git
     use 'tpope/vim-fugitive'
-    -- fugitive for the hub
-    use 'tpope/vim-rhubarb'
     -- surrounding text objects with whatever you want (paranthesis, quotes, html tags...)
     use 'tpope/vim-surround'
     -- the . command can repeat whatever you want!
     -- http://vimcasts.org/episodes/creating-repeatable-mappings-with-repeat-vim/
     use 'tpope/vim-repeat'
-    -- keystroke to comment automatically depending on the file you're in
-    -- use 'tpope/vim-commentary'
-    -- runs tests
-    use 'tpope/vim-dispatch'
-    -- simpler file navigation with netrw
-    use 'tpope/vim-vinegar'
+
+    use 'tpope/vim-unimpaired'
+
     -- DB plugin
     use 'tpope/vim-dadbod'
 
     -- gitk in vim
-    use 'junegunn/gv.vim'
+--    use 'junegunn/gv.vim' -- lazy load?
 
     -- php
     use {'alvan/vim-php-manual', ft = {'php'}}
@@ -220,7 +217,7 @@ return require('packer').startup(function(use)
     use {'tobyS/vmustache', ft = {'php'}}
     use {'tobyS/pdv', ft = {'php'}}
 
-    use 'mustache/vim-mustache-handlebars'
+    use 'mustache/vim-mustache-handlebars' -- filetype
 
     -- browser integration
      use {
@@ -241,4 +238,8 @@ return require('packer').startup(function(use)
         end
     }
 
-    end)
+  -- Put this at the end after all plugins
+  if PACKER_BOOTSTRAP then
+    require("packer").sync()
+  end
+end)

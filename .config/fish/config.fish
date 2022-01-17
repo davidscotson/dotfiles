@@ -22,6 +22,10 @@ set fish_cursor_replace_one underscore
 # visual mode, but due to fish_cursor_default, is redundant here
 set fish_cursor_visual block
 
+if status is-interactive && test -f ~/.config/fish/custom/git_fzf.fish
+    source ~/.config/fish/custom/git_fzf.fish
+    git_fzf_key_bindings
+end
 
 fish_ssh_agent
 
