@@ -36,7 +36,6 @@ return packer.startup(function(use)
 
     use 'airblade/vim-rooter'
     use 'neovim/nvim-lspconfig' -- lsp Plugins
-    use 'nvim-lua/completion-nvim'
     use 'nvim-lua/diagnostic-nvim'
     use 'tjdevries/nlua.nvim'
     use 'tjdevries/lsp_extensions.nvim'
@@ -44,7 +43,7 @@ return packer.startup(function(use)
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-    use 'hrsh7th/cmp-nvim-lsp' -- completion
+    --use 'hrsh7th/cmp-nvim-lsp' -- completion
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
@@ -155,11 +154,12 @@ return packer.startup(function(use)
   end
 }
 
-    use 'duane9/nvim-rg'
+use 'duane9/nvim-rg'
 
-    use{
-  'nvim-telescope/telescope.nvim',
+use {'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
     requires = {
+        'nvim-telescope/telescope.nvim',
         'nvim-telescope/telescope-ghq.nvim',
         'cljoly/telescope-repo.nvim',
         'nvim-lua/plenary.nvim',
@@ -173,8 +173,6 @@ return packer.startup(function(use)
         require'telescope'.load_extension'fzf'
     end,
 }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use 'nvim-telescope/telescope-fzf-writer.nvim'
     use 'tami5/sql.nvim' -- needed for frecency
     -- use 'nvim-telescope/telescope-frecency.nvim'
     -- use 'LinArcX/telescope-command-palette.nvim'
