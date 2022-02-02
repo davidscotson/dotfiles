@@ -31,3 +31,4 @@ fish_ssh_agent
 
 source (brew --prefix asdf)/libexec/asdf.fish
 fish_add_path /usr/local/sbin
+caniuse --completion-fish | source

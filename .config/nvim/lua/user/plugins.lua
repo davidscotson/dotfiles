@@ -34,20 +34,30 @@ return packer.startup(function(use)
 
     use 'nvim-lua/plenary.nvim' -- shared lib for multiple lua plugins
 
+
+    use 'dstein64/vim-startuptime'
+    use 'tridactyl/vim-tridactyl'
     use 'airblade/vim-rooter'
     use 'neovim/nvim-lspconfig' -- lsp Plugins
     use 'nvim-lua/diagnostic-nvim'
     use 'tjdevries/nlua.nvim'
     use 'tjdevries/lsp_extensions.nvim'
     use 'williamboman/nvim-lsp-installer'
+    use "akinsho/toggleterm.nvim"
+    use "windwp/nvim-autopairs"
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-    --use 'hrsh7th/cmp-nvim-lsp' -- completion
+    use 'hrsh7th/cmp-nvim-lsp' -- completion
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+    use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
+    -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
     -- Lua
 use {
   "folke/trouble.nvim",
@@ -61,8 +71,6 @@ use {
     }
   end
 }
-
-    use 'hrsh7th/cmp-vsnip' -- Snippets via LSP
 
     use 'rickhowe/diffchar.vim' -- Better diff lines
 
@@ -82,27 +90,6 @@ use {
     }
     use {
         "nvim-neorg/neorg",
-        config = function()
-            require('neorg').setup {
-                -- Tell Neorg what modules to load
-                load = {
-                    ["core.defaults"] = {}, -- Load all the default modules
-                    ["core.norg.concealer"] = {}, -- Allows for use of icons
-                    ["core.norg.completion"] = {
-                        config = {
-                            engine = "nvim-cmp" -- We current support nvim-compe and nvim-cmp only
-                        }
-                    },
-                    ["core.keybinds"] = { -- Configure core.keybinds
-                        config = {
-                            default_keybinds = true, -- Generate the default keybinds
-                            neorg_leader = "<Leader>o" -- This is the default if unspecified
-                        }
-                    },
-                    ["core.integrations.telescope"] = {}, -- Enable the telescope module
-                },
-            }
-        end,
         requires = {"nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope"}
     }
     use "Pocco81/TrueZen.nvim"
@@ -113,6 +100,8 @@ use {
             require('spellsitter').setup()
         end
     }
+    use "lewis6991/gitsigns.nvim"
+    use 'TimUntersberger/neogit'
     use {
         'ruifm/gitlinker.nvim', -- fugitive inspired range links
         requires = 'nvim-lua/plenary.nvim',
@@ -122,9 +111,10 @@ use {
 
     --use 'ggandor/lightspeed.nvim'
     --use 'f-person/git-blame.nvim'
-
-    -- status line, requires plenary
-    use 'tjdevries/express_line.nvim'
+    use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- Neovim Tree sitter
     use {
@@ -133,6 +123,7 @@ use {
     }
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
+    use "JoosepAlviste/nvim-ts-context-commentstring"
     use 'windwp/nvim-ts-autotag'
     use 'p00f/nvim-ts-rainbow'
 
@@ -201,10 +192,12 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
     use 'savq/melange'
     use 'davidscotson/unreadable-nvim'
 
+
     use 'godlygeek/tabular'
 
     -- wrapper for git
     use 'tpope/vim-fugitive'
+
     -- surrounding text objects with whatever you want (paranthesis, quotes, html tags...)
     use 'tpope/vim-surround'
     -- the . command can repeat whatever you want!
@@ -213,7 +206,8 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
 
     use 'tpope/vim-unimpaired'
 
-    -- DB plugin
+    use 'tpope/vinegar'
+
     use 'tpope/vim-dadbod'
 
     -- gitk in vim
