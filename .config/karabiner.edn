@@ -34,6 +34,7 @@
 ;; the only good keys for this will be missing on the gergoplex, so we need 2 options
 :layers {
     :launch-mode {:key :tab}
+    :number-mode {:key :spacebar}
 } ;; layers
 
 ;; simlayers are basically "hyper" keys
@@ -41,16 +42,20 @@
 ;; to use more regular typing keys, use simlayers
 ;; can also trigger these with two keys
 :simlayers {
-  :number-mode {:key :spacebar}
-  :ctrl-mode-left {:key :a}
-  :ctrl-mode-right {:key :semicolon}
   :shift-mode-left {:key :z}
   :shift-mode-right {:key :slash}
 } ;; simlayers
 
 ;; main contains multiple manipulators
 :main [
-    {:des "esc or alternative?" :rules [[[:w :e] :escape]]}
+    {:des "double key shift/command layers"
+     :rules [
+          [[:s :d] ["ctrl-mode-left" 1] nil {:afterup ["ctrl-mode-left" 0]}]
+          [[:k :l] ["ctrl-mode-right" 1] nil {:afterup ["ctrl-mode-right" 0]}]
+          [[:x :c] ["shift-mode-left" 1] nil {:afterup ["shift-mode-left" 0]}]
+          [[:comma :period] ["shift-mode-right" 1] nil {:afterup ["shift-mode-right" 0]}]
+          ]}
+    {:des "double key number mode" :rules [[[:w :q] ["shift-mode-left" 0]]]}
     {:des "esc jk" :rules [[[:c :v] :escape]]}
     ;;{:des "command tab" :rules [[[:e :r] :!Ctab]]}
 

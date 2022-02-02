@@ -100,7 +100,12 @@ use {
             require('spellsitter').setup()
         end
     }
-    use "lewis6991/gitsigns.nvim"
+    use {
+"lewis6991/gitsigns.nvim",
+      config = function()
+    require('gitsigns').setup()
+  end
+}
     use 'TimUntersberger/neogit'
     use {
         'ruifm/gitlinker.nvim', -- fugitive inspired range links
@@ -206,7 +211,7 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
 
     use 'tpope/vim-unimpaired'
 
-    use 'tpope/vinegar'
+    use 'tpope/vim-vinegar'
 
     use 'tpope/vim-dadbod'
 

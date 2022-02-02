@@ -3,7 +3,7 @@
 # for user {{ yadm.user }}
 #
 [core]
-    pager = delta --hyperlinks
+    pager = delta
     editor = nvim
 [user]
     name = David Scotson
