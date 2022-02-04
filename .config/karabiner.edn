@@ -12,20 +12,18 @@
 } ;; devices
 
 ;; TODO done: caps lock double shift, gu'[ etc.
-;; TODO  arrows on alt/opt hjkl, means can use jk for other menus
+;  ; TODO  arrows on alt/opt hjkl, means can use jk for other menus
 ;; TODO  tab, change tab, change tab backwards (actual tab, plus mirror?)
 
 ;; TODO map vim keys to standard controls? ctrl-o, i for back/forward?, change tab, bracket key left-right
 ;; TODO an app switcher hyper key to jump between: terminal (tabs?), firefox (tabs?), chrome, finder (folders)?
 ;; TODO leader double?
 ;; TODO use ctr-h, m more.
-;; TODO use held tab for something, m more.
 ;; TODO use alt key more, arrows but others too.
 ;; TODO do i need arrows in vim, re-use for window controls?
 ;; TODO basic window management on a twin hyper key via hammerspoon, hjkl?
 ;; TODO ctrl-w or ctrl-ww for window toggle?
 ;; TODO hold tab, then left right (up-down) or alpha for jump to app
-;; TODO two keys plus modifier with karabiner and goku
 ;; TODO remap ctrl-c to beep in vim, goku beep generally
 
 ;; layers are basically "hyper" keys
@@ -33,8 +31,6 @@
 ;; this breaks key repeat and may cause false positives if common letters used.
 ;; the only good keys for this will be missing on the gergoplex, so we need 2 options
 :layers {
-    :launch-mode {:key :tab}
-    :number-mode {:key :spacebar}
 } ;; layers
 
 ;; simlayers are basically "hyper" keys
@@ -42,25 +38,24 @@
 ;; to use more regular typing keys, use simlayers
 ;; can also trigger these with two keys
 :simlayers {
-  :shift-mode-left {:key :z}
-  :shift-mode-right {:key :slash}
+  :number-mode {:key :spacebar}
 } ;; simlayers
 
 ;; main contains multiple manipulators
 :main [
     {:des "double key shift/command layers"
      :rules [
-          [[:s :d] ["ctrl-mode-left" 1] nil {:afterup ["ctrl-mode-left" 0]}]
-          [[:k :l] ["ctrl-mode-right" 1] nil {:afterup ["ctrl-mode-right" 0]}]
-          [[:x :c] ["shift-mode-left" 1] nil {:afterup ["shift-mode-left" 0]}]
-          [[:comma :period] ["shift-mode-right" 1] nil {:afterup ["shift-mode-right" 0]}]
+          [[:s :d] [:left_control] nil {:alone :!Stab}]
+          [[:k :l] [:right_control] nil {:alone :tab}]
+          [[:c :v] [:left_alt] nil {:alone :escape}] ;; jk escape
+          [[:m :comma] [:right_alt] nil {:alone :escape}] ;; jk escape mirror
+          [[:x :c] [:left_shift] nil {:alone :!Sz}]
+          [:z [:left_shift] nil {:alone :z}]
+          [:slash [:right_shift] nil {:alone :slash}]
+          [[:comma :period] [:right_shift] nil {:alone :!T6}]
+          [[:q :w] :!T6]]}
           ]}
-    {:des "double key number mode" :rules [[[:w :q] ["shift-mode-left" 0]]]}
-    {:des "esc jk" :rules [[[:c :v] :escape]]}
-    ;;{:des "command tab" :rules [[[:e :r] :!Ctab]]}
 
-    {:des "tab" :rules [[[:e :r] :tab]]} ;; :
-    {:des "something else, ctrl-shift-6?" :rules [[[:q :w] :!TS6]]}
     ;; each manipulator has a description and multiple rules
     ;;{:des "..."                               ;; -> description
     ;; :rules[
@@ -130,8 +125,6 @@
               [:right_shift :vk_none]
               [:right_control :vk_none]
               ]}
-    {:des "caps lock to control when combo, esc when alone"
-        :rules [[:caps_lock :left_control nil {:alone :escape}]]}
 
     {:des "right-command to enter when alone"
           :rules [[:right_command :right_command  nil {:alone :return_or_enter}]]}
@@ -225,43 +218,6 @@
             [:comma :!Scomma :shift-mode-left]
             [:period :!Speriod :shift-mode-left]
             [:slash :!Sslash :shift-mode-left]
-      ]
-    }
-    {:des "hold a or s for left-right control in combo"
-        :rules [
-          ;; easier reach to modifier keys
-          ;; need to split the keyboard in half to avoid rolls
-            [:q :!Tq :ctrl-mode-right]
-            [:w :!Tw :ctrl-mode-right]
-            [:e :!Te :ctrl-mode-right]
-            [:r :!Tr :ctrl-mode-right]
-            [:t :!Tt :ctrl-mode-right]
-            [:a :!Ta :ctrl-mode-right]
-            [:s :!Ts :ctrl-mode-right]
-            [:d :!Td :ctrl-mode-right]
-            [:f :!Tf :ctrl-mode-right]
-            [:g :!Tg :ctrl-mode-right]
-            [:z :!Tz :ctrl-mode-right]
-            [:x :!Tx :ctrl-mode-right]
-            [:c :!Tc :ctrl-mode-right]
-            [:v :!Tv :ctrl-mode-right]
-            [:b :!Tb :ctrl-mode-right]
-
-            [:y :!Ty :ctrl-mode-left]
-            [:u :!Tu :ctrl-mode-left]
-            [:i :!Ti :ctrl-mode-left]
-            [:o :!To :ctrl-mode-left]
-            [:p :!Tp :ctrl-mode-left]
-            [:h :!Th :ctrl-mode-left]
-            [:j :!Tj :ctrl-mode-left]
-            [:k :!Tk :ctrl-mode-left]
-            [:l :!Tl :ctrl-mode-left]
-            [:semicolon :!Tsemicolon :ctrl-mode-left]
-            [:n :!Tn :ctrl-mode-left]
-            [:m :!Tm :ctrl-mode-left]
-            [:comma :!Tcomma :ctrl-mode-left]
-            [:period :!Tperiod :ctrl-mode-left]
-            [:slash :!Tslash :ctrl-mode-left]
       ]
     }
 ] ;; main list

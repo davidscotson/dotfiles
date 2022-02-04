@@ -1,0 +1,48 @@
+alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id))
+
+" " Git{Hub,Lab} git clone via SSH yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+
+" " Only hint search results on Google and DDG
+bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
+bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
+
+" " b for buffer
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+
+:setnull searchurls
+set searchurls.!az https://www.amazon.co.uk/s/ref=nb_sb_noss?field-keywords=%s
+set searchurls.conj http://www.les-verbes.com/conjuguer.php?verbe=%s
+set searchurls.!ddg https://duckduckgo.com/html?q=%s
+set searchurls.!fdroid https://search.f-droid.org/?q=%s
+set searchurls.!g https://www.google.com/search?q=%s
+set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
+set searchurls.gi https://www.google.com/search?q=%s&tbm=isch
+set searchurls.ciu https://caniuse.com/?search=%s
+set searchurls.imdb https://www.imdb.com/find?q=%s
+set searchurls.mdn https://developer.mozilla.org/en-US/search?q=%s
+set searchurls.r https://old.reddit.com/r/%s
+set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
+set searchurls.ol https://openlibrary.org/search?mode=everything&q=%s
+set searchurls.ola https://openlibrary.org/search?mode=author&q=%s
+set searchurls.olw https://openlibrary.org/search?mode=work&q=%s
+set searchurls.wp https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
+set searchurls.wd https://www.wikidata.org/w/index.php?title=Special%3ASearch&search=%s
+set searchurls.ww https://en.wiktionary.org/w/index.php?title=Special%3ASearch&search=%s
+set searchurls.yt https://www.youtube.com/results?search_query=%s
+
+autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+autocmd DocLoad twitter.com urlmodify -t twitter.com nitter.net
+
+bind l forward
+bind # tab #
+bind h back
+bind <C-l> clearsearchhighlight
+
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+
+" " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" " vim: set filetype=tridactyl

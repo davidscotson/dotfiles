@@ -203,6 +203,8 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
     -- wrapper for git
     use 'tpope/vim-fugitive'
 
+    use 'tpope/vim-rsi'
+
     -- surrounding text objects with whatever you want (paranthesis, quotes, html tags...)
     use 'tpope/vim-surround'
     -- the . command can repeat whatever you want!
