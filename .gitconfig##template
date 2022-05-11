@@ -5,6 +5,7 @@
 [core]
     pager = delta
     editor = nvim
+#    fsmonitor = .git/hooks/fsmonitor-watchman
 [user]
     name = David Scotson
 {% if yadm.user == "david.scotson" %}
@@ -14,7 +15,10 @@
 {% endif %}
 [merge]
     ff = only
-    conflictstyle = diff3
+    conflictstyle = zdiff3
+    tool = nvimdiff1
+[mergetool]
+  prompt = false
 [pull]
     ff = only
 [difftool]
@@ -22,15 +26,13 @@
 [diff]
     colorMoved = default
     tool = nvimdiff
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [init]
     defaultBranch = main
 [interactive]
     diffFilter = delta --color-only
 [delta]
     navigate = true
-    syntax-theme = 'Monokai Extended Origin'
+    #syntax-theme = 'Monokai Extended Origin'
     side-by-side = true
     dark = true
     hyperlinks = true

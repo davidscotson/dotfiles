@@ -1,0 +1,15 @@
+{
+    /* ~/Library/KeyBindings/DefaultKeyBinding.dict
+
+        See https://gist.github.com/zsimic/1367779, prefix cheatsheet:
+        Char Short Key
+        $    S-    Shift ⇧
+        ^    C-    CTRL ⌃
+        ~    O-    Option ⌥ (⊞ Win key position on PC)
+        @    M-    Command ⌘ (Alt position on PC)
+        #          Numeric Keypad
+    */
+
+
+    "^w"   = "deleteWordBackward:";                            /* C-W        Delete word backward */
+}
