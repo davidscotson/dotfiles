@@ -42,11 +42,12 @@ local options = {
   foldminlines=5,
 }
 
+vim.opt.shortmess:append "c" -- skip some completion messages
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.opt.shortmess:append "c" -- skip some completion messages
 
 vim.g.netrw_browse_split = 4
 vim.g.netrw_banner = 0
