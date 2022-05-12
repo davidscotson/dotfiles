@@ -1,4 +1,4 @@
-set -gx EDITOR nvim 
+set -gx EDITOR nvim
 
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
@@ -28,6 +28,8 @@ end
 
 fish_ssh_agent
 
-source (brew --prefix asdf)/libexec/asdf.fish
-fish_add_path /usr/local/sbin
-caniuse --completion-fish | source
+fish_add_path   /opt/homebrew/sbin
+fish_add_path   /opt/homebrew/bin
+fish_add_path   --append --move /usr/local/sbin
+fish_add_path   --append --move /usr/local/bin
+

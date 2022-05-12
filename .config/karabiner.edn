@@ -14,6 +14,7 @@
 ;; TODO done: caps lock double shift, gu'[ etc.
 ;  ; TODO  arrows on alt/opt hjkl, means can use jk for other menus
 ;; TODO  tab, change tab, change tab backwards (actual tab, plus mirror?)
+
 ;; TODO map vim keys to standard controls? ctrl-o, i for back/forward?, change tab, bracket key left-right
 ;; TODO an app switcher hyper key to jump between: terminal (tabs?), firefox (tabs?), chrome, finder (folders)?
 ;; TODO leader double?
@@ -24,6 +25,7 @@
 ;; TODO ctrl-w or ctrl-ww for window toggle?
 ;; TODO hold tab, then left right (up-down) or alpha for jump to app
 ;; TODO remap ctrl-c to beep in vim, goku beep generally
+
 ;; layers are basically "hyper" keys
 ;; press this in combination with something else and depending on your rule, make things happen
 ;; this breaks key repeat and may cause false positives if common letters used.
@@ -36,7 +38,7 @@
 ;; to use more regular typing keys, use simlayers
 ;; can also trigger these with two keys
 :simlayers {
-  :number-mode {:key :spacebar} ;; would be good to get this happening on kinesis
+  :number-mode {:key :spacebar}
 } ;; simlayers
     :simlayer-threshold 250
 
@@ -49,8 +51,7 @@
           [[:k :l] [:right_control]]
 
           [[:c :v] [:left_shift] nil {:alone :escape}] ;; jk escape
-          [[:m :comma] [:right_shift] nil {:alone :tab}] ;; jk escape mirror
-
+          [[:m :comma] [:right_shift] nil {:alone :escape}] ;; jk escape mirror
           [[:x :c] [:left_alt] nil {:alone :!Sz}]
           [[:comma :period] [:right_alt] nil {:alone :!T6}]
           [[:q :w] :!T6]
@@ -93,7 +94,7 @@
     ;; ----------------------------------
     {:des "disable number/symbol row for training purposes"
         :rules[
-              [:2 [:doh :vk_none]]
+              [:2 :vk_none]
               [:3 :vk_none]
               [:4 :vk_none]
               [:5 :vk_none]
@@ -181,51 +182,6 @@
               [:b :!Sopen_bracket :number-mode] ;; ? question mark
           ]
         }
-
-    {:des "hold z or / for left-right shift in combo"
-        :rules [
-          ;; easier reach to modifier keys
-          ;; need to split the keyboard in half to avoid rolls
-            [:q :!Sq :shift-mode-right]
-            [:w :!Sw :shift-mode-right]
-            [:e :!Se :shift-mode-right]
-            [:r :!Sr :shift-mode-right]
-            [:t :!St :shift-mode-right]
-            [:y :!Sy :shift-mode-right]
-
-            [:a :!Sa :shift-mode-right]
-            [:s :!Ss :shift-mode-right]
-            [:d :!Sd :shift-mode-right]
-            [:f :!Sf :shift-mode-right]
-            [:g :!Sg :shift-mode-right]
-            [:h :!Sh :shift-mode-right]
-
-            [:z :!Sz :shift-mode-right]
-            [:x :!Sx :shift-mode-right]
-            [:c :!Sc :shift-mode-right]
-            [:v :!Sv :shift-mode-right]
-            [:b :!Sb :shift-mode-right]
-            [:n :!Sn :shift-mode-right]
-
-            [:y :!Sy :shift-mode-left]
-            [:u :!Su :shift-mode-left]
-            [:i :!Si :shift-mode-left]
-            [:o :!So :shift-mode-left]
-            [:p :!Sp :shift-mode-left]
-            [:h :!Sh :shift-mode-left]
-            [:j :!Sj :shift-mode-left]
-            [:k :!Sk :shift-mode-left]
-            [:l :!Sl :shift-mode-left]
-            [:semicolon :!Ssemicolon :shift-mode-left]
-            [:backslash :!Sbackslash :shift-mode-left] ;; pipe
-
-            [:n :!Sn :shift-mode-left]
-            [:m :!Sm :shift-mode-left]
-            [:comma :!Scomma :shift-mode-left]
-            [:period :!Speriod :shift-mode-left]
-            [:slash :!Sslash :shift-mode-left]
-      ]
-    }
 ] ;; main list
  ;; code won't read cheatsheet section
  ;; ! stand for mandatory

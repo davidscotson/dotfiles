@@ -1,7 +1,6 @@
 vim.cmd [[
   augroup _general_settings
     autocmd!
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end
@@ -32,6 +31,7 @@ augroup MYSTUFF
         autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
         autocmd FileType css,scss setlocal iskeyword+=-
         autocmd FileType scss setlocal iskeyword+=@-@
+        autocmd! BufWinEnter * if line('$')>winheight(0) | setlocal foldenable | endif
 augroup END
 
 augroup neovim_terminal

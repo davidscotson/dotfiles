@@ -1,12 +1,24 @@
 alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id))
+alias tabcloseallbykeyword jsb -p browser.tabs.query({}).then(tabs => tabs.forEach( t => { if(t.url.includes(JS_ARG)) browser.tabs.remove(t.id) }))
 
 " " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+
+" yank css that js understands, if ends in [] get attribute, otherwise text.
+" not found error?
+bind yi composite js document.querySelector("[data-issue-key]").getAttribute('data-issue-key') | clipboard yank
+
+" yank book
+
+" allow for fzf style limitations like 
+set hintfiltermode vimperator-reflow
+set hintnames numeric
 
 " " Only hint search results on Google and DDG
 bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
 bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
 
+document.querySelectr("[data-issue-key]").getAttribute('data-issue-key');
 " " b for buffer
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 
@@ -31,13 +43,16 @@ set searchurls.wd https://www.wikidata.org/w/index.php?title=Special%3ASearch&se
 set searchurls.ww https://en.wiktionary.org/w/index.php?title=Special%3ASearch&search=%s
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 
-autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
-autocmd DocLoad twitter.com urlmodify -t twitter.com nitter.net
+autocmd BeforeRequest *://www.reddit.com/* js tri.excmds.urlmodify("-t", "www", "old")
+autocmd BeforeRequest *://*.twitter.com/* js tri.excmds.urlmodify("-r", "(?mobile.)twitter.com", "nitter.net")
 
-bind l forward
-bind # tab #
-bind h back
+bind 9 forward
+bind 4 back
 bind <C-l> clearsearchhighlight
+
+bind C urlmodify -s theme synergycustom
+bind B urlmodify -s theme synergybase
+bind L urlmodify -s strings 1
 
 bind / fillcmdline find
 bind ? fillcmdline find -?

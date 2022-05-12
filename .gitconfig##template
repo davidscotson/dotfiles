@@ -22,17 +22,19 @@
 [pull]
     ff = only
 [difftool]
-    prompt = true
+    prompt = false
 [diff]
     colorMoved = default
     tool = nvimdiff
+[pretty.oneline]
+    abbrev-commit = false
 [init]
     defaultBranch = main
 [interactive]
     diffFilter = delta --color-only
 [delta]
     navigate = true
-    #syntax-theme = 'Monokai Extended Origin'
+    syntax-theme = 'Monokai Extended Origin'
     side-by-side = true
     dark = true
     hyperlinks = true

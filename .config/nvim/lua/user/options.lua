@@ -36,6 +36,10 @@ local options = {
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
   guicursor="i-c-ci:ver25,o-v-ve:block,cr-sm-n-r:hor20", -- different curser by mode
+  foldmethod="expr",
+  foldexpr="nvim_treesitter#foldexpr()",
+  foldlevel=4,
+  foldminlines=5,
 }
 
 for k, v in pairs(options) do

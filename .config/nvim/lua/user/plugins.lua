@@ -32,10 +32,15 @@ end
 return packer.startup(function(use)
     use 'wbthomason/packer.nvim' -- Packer can manage itself
     use 'lewis6991/impatient.nvim'
-
+    use{ 'anuvyklack/pretty-fold.nvim',
+        config = function()
+            require('pretty-fold').setup{}
+            require('pretty-fold.preview').setup()
+        end
+    }
     use 'nvim-lua/plenary.nvim' -- shared lib for multiple lua plugins
 
-
+    use 'bfrg/vim-jqplay'
     use 'dstein64/vim-startuptime'
     use 'tridactyl/vim-tridactyl'
     use 'airblade/vim-rooter'
@@ -48,6 +53,7 @@ return packer.startup(function(use)
     use "windwp/nvim-autopairs"
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    use "b0o/schemastore.nvim"
 
     use 'hrsh7th/cmp-nvim-lsp' -- completion
     use 'hrsh7th/cmp-buffer'
@@ -102,12 +108,14 @@ use {
         end
     }
     use {
-"lewis6991/gitsigns.nvim",
-      config = function()
-    require('gitsigns').setup()
-  end
-}
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
     use 'TimUntersberger/neogit'
+    use 'sindrets/diffview.nvim'
+    use 'pappasam/nvim-repl'
     use {
         'ruifm/gitlinker.nvim', -- fugitive inspired range links
         requires = 'nvim-lua/plenary.nvim',
@@ -118,14 +126,14 @@ use {
     --use 'ggandor/lightspeed.nvim'
     --use 'f-person/git-blame.nvim'
     use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- Neovim Tree sitter
     use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate"
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate"
     }
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -136,60 +144,60 @@ use {
     use 'rcarriga/nvim-notify'
 
     use {
-  "NTBBloodbath/rest.nvim",
-  requires = { "nvim-lua/plenary.nvim" },
-  config = function()
-    require("rest-nvim").setup({
-      -- Open request results in a horizontal spli:h alpha-examplet
-      result_split_horizontal = false,
-      -- Skip SSL verification, useful for unknown certificates
-      skip_ssl_verification = false,
-      -- Highlight request on run
-      highlight = {
-        enabled = true,
-        timeout = 150,
-      },
-      result = {
-        -- toggle showing URL, HTTP info, headers at top the of result window
-        show_url = true,
-        show_http_info = true,
-        show_headers = true,
-      },
-      -- Jump to request line on run
-      jump_to_request = false,
-      env_file = '.env',
-      custom_dynamic_variables = {},
-      yank_dry_run = true,
-    })
-  end
-}
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("rest-nvim").setup({
+                -- Open request results in a horizontal spli:h alpha-examplet
+                result_split_horizontal = false,
+                -- Skip SSL verification, useful for unknown certificates
+                skip_ssl_verification = false,
+                -- Highlight request on run
+                highlight = {
+                    enabled = true,
+                    timeout = 150,
+                },
+                result = {
+                    -- toggle showing URL, HTTP info, headers at top the of result window
+                    show_url = true,
+                    show_http_info = true,
+                    show_headers = true,
+                },
+                -- Jump to request line on run
+                jump_to_request = false,
+                env_file = '.env',
+                custom_dynamic_variables = {},
+                yank_dry_run = true,
+            })
+        end
+    }
 
-use 'duane9/nvim-rg'
+    use 'duane9/nvim-rg'
 
-use {'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make',
-    requires = {
-        'nvim-telescope/telescope.nvim',
-        'nvim-telescope/telescope-ghq.nvim',
-        'cljoly/telescope-repo.nvim',
-        'nvim-lua/plenary.nvim',
-        'mrjones2014/tldr.nvim',
-        "nvim-telescope/telescope-file-browser.nvim",
-        'nvim-telescope/telescope-rg.nvim',
-    },
-    config = function()
-        require'telescope'.load_extension'ghq'
-        require'telescope'.load_extension'repo'
-        require'telescope'.load_extension'fzf'
-    end,
-}
+    use {'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'nvim-telescope/telescope-ghq.nvim',
+            'cljoly/telescope-repo.nvim',
+            'nvim-lua/plenary.nvim',
+            'mrjones2014/tldr.nvim',
+            "nvim-telescope/telescope-file-browser.nvim",
+            'nvim-telescope/telescope-rg.nvim',
+        },
+        config = function()
+            require'telescope'.load_extension'ghq'
+            require'telescope'.load_extension'repo'
+            require'telescope'.load_extension'fzf'
+        end,
+    }
     use 'tami5/sql.nvim' -- needed for frecency
     -- use 'nvim-telescope/telescope-frecency.nvim'
     -- use 'LinArcX/telescope-command-palette.nvim'
 
     use {
-    'yamatsum/nvim-nonicons',
-    requires = {'kyazdani42/nvim-web-devicons'}
+        'yamatsum/nvim-nonicons',
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 
     -- treesitter themes
@@ -219,7 +227,7 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
     use 'tpope/vim-dadbod'
 
     -- gitk in vim
---    use 'junegunn/gv.vim' -- lazy load?
+    --    use 'junegunn/gv.vim' -- lazy load?
 
     -- php
     use {'alvan/vim-php-manual', ft = {'php'}}
@@ -233,7 +241,7 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
     use 'mustache/vim-mustache-handlebars' -- filetype
 
     -- browser integration
-     use {
+    use {
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end
     }
@@ -251,8 +259,8 @@ use {'nvim-telescope/telescope-fzf-native.nvim',
         end
     }
 
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+    -- Put this at the end after all plugins
+    if PACKER_BOOTSTRAP then
+        require("packer").sync()
+    end
 end)

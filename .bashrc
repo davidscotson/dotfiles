@@ -22,7 +22,6 @@ alias icat="kitty +kitten icat"
 source /dev/stdin <<<"$(kitty + complete setup bash)"
 
 alias vi=nvim
-alias nvimdiff'=nvim -d'
 alias ls=exa
 
 PS1="\u:\W > "
@@ -36,15 +35,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:./node_modules/.bin"
 
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-alias pip=/usr/local/bin/pip3
-
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 alias kdlang='rg --glob="**/lang/en/*.php"'
-
-
-alias luamake=/Users/davidscotson/github/sumneko/lua-language-server/3rd/luamake/luamake
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
