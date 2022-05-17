@@ -34,7 +34,7 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true
-    syntax-theme = 'Monokai Extended Origin'
+    syntax-theme = Monokai Extended Origin
     side-by-side = true
     dark = true
     hyperlinks = true
