@@ -38,6 +38,7 @@ brew "less"
 brew "exa"
 brew "openjdk"
 brew "asdf"
+brew "bat"
 
 brew "neovim"
 brew "fish"
