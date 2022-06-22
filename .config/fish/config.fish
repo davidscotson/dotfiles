@@ -33,3 +33,21 @@ fish_add_path   /opt/homebrew/bin
 fish_add_path   --append --move /usr/local/sbin
 fish_add_path   --append --move /usr/local/bin
 
+abbr -a -U -- gru 'git remote update'
+abbr -a -U -- ga 'git add'
+abbr -a -U -- gb 'git branch --verbose'
+abbr -a -U -- gsc 'git switch -c '
+abbr -a -U -- gcb 'git switch -c '
+abbr -a -U -- gd 'git diff'
+abbr -a -U -- gds 'git diff --staged'
+abbr -a -U -- gdu 'git diff @{upstream}..HEAD'
+abbr -a -U -- gpu 'git pull --upstream --ff-only --autostash'
+abbr -a -U -- gl 'git log'
+abbr -a -U -- glol 'git log --oneline --no-abbrev-commit'
+abbr -a -U -- gss 'git status --short'
+abbr -a -U -- gdt 'git difftool'
+abbr -a -U -- gmt 'git mergetool'
+
+abbr -a -U -- yrb 'yarn run build'
+abbr -a -U -- yrr 'yarn run run'
+
