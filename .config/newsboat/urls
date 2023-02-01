@@ -1,0 +1,58 @@
+http://getpocket.com/users/bawjaws/feed/unread
+https://www.noemamag.com/feed/
+https://evonomics.com/feed
+https://mondediplo.com/backend
+https://www.tbray.org/ongoing/ongoing.atom web
+https://www.data-is-plural.com/feed.xml
+https://cdn.jwz.org/blog/feed/
+https://rationalwiki.org/w/index.php?title=RationalWiki:What_is_going_on_in_the_world%3F&feed=atom&action=history
+https://rationalwiki.org/w/index.php?title=RationalWiki:What_is_going_on_in_the_blogosphere%3F&feed=atom&action=history
+https://www.reddit.com/r/rationalwiki.rss reddit
+https://www.bit-101.com/blog/feed/
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8bvbjqjxdLfWbq8UT3zBaA
+https://www.youtube.com/feeds/videos.xml?channel_id=UCzz4CoEgSgWNs9ZAvRMhW2A
+https://www.youtube.com/feeds/videos.xml?channel_id=UCn2YKsCiDpL3UjxIm4-RCoQ
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg
+https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom&categories=Published&notcategories=No%20publish%7CArchived%7CAutoArchived%7Cdisputed&namespace=0&count=30&hourcount=124&ordermethod=categoryadd&stablepages=only
+https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=rss&categories=Published%7CFeatured%20article&notcategories=No%20publish%7CDisputed%7CInterview&namespace=0&count=12&hourcount=336&ordermethod=categoryadd&stablepages=only
+https://feeds.feedburner.com/pudding/feed
+https://pluralistic.net/feed/
+https://wikiedu.org/feed/ wiki
+https://tools.wmflabs.org/mediawiki-feeds/feed.php?url=https%3A%2F%2Fen.wikipedia.org%2Fw%2F&category=Category%3AWikipedia+Signpost+RSS+feed&title=The+Signpost
+https://lwn.net/headlines/Features lwnfeatures
+"query:Free Articles:(tags # \"lwnfeatures\") and (title !~ \"..] \")"
+http://www.carboncommentary.com/feed cleantech
+"query:Unread Articles:unread = \"yes\""
+https://hnrss.org/active hackernews active
+https://hnrss.org/best hackernews best
+https://hnrss.org/classic hackernews classic
+https://hnrss.org/bestcomments hackernews
+"query:hackernews Articles:(tags # \"active\") and (tags # \"classic\")"
+https://github.com/davidscotson.atom github
+https://www.reddit.com/r/AV1.rss reddit
+https://www.reddit.com/r/RenewableEnergy.rss reddit
+https://www.reddit.com/r/neovim.rss reddit
+https://www.reddit.com/r/jpegxl.rss reddit
+"query:reddit Articles:tags # \"reddit\""
+https://feeds.arstechnica.com/arstechnica/index news
+https://www.blogger.com/feeds/7005412100005882053/posts/default cleantech
+http://www.thegatesnotes.com/RSS cleantech
+https://simonwillison.net/atom/entries/ web
+https://designreckons.blog.gov.uk/feed/atom/ web
+https://www.rifters.com/crawl/?feed=atom web
+https://web.dev/feed.xml web
+https://datasette.io/content/feed.atom opendata
+http://blog.openlibrary.org/feed/ opendata
+http://feeds.feedburner.com/DavidSimon
+http://multimedia.cx/eggs/feed/
+http://blog.getbootstrap.com/feed.xml
+http://publicdomainreview.org/feed/
+http://developer.mozilla.org/devnews/index.php/feed/atom/
+http://feeds.guardian.co.uk/theguardian/profile/charliebrooker/rss
+http://techblog.wikimedia.org/feed/
+http://www.lowtechmagazine.com/atom.xml
+http://www.antipope.org/charlie/blog-static/atom.xml
+http://css-tricks.com/feed/
+http://www.theguardian.com/profile/frankie-boyle/rss
+http://www.guardian.co.uk/profile/stewart-lee/rss
+https://raphlinus.github.io/feed.xml

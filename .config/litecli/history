@@ -1,0 +1,2910 @@
+
+# 2021-06-24 15:11:43.970204
++select * from qrank limit 10
+
+# 2021-06-24 15:11:58.176706
++select * from authors limit 10
+
+# 2021-06-24 15:12:07.209309
++schema
+
+# 2021-06-24 15:12:15.561390
++show databases
+
+# 2021-06-24 15:12:17.512190
++show tables
+
+# 2021-06-24 15:12:22.327595
++help
+
+# 2021-06-24 15:12:27.983499
++.schema
+
+# 2021-06-24 15:13:22.150611
++select * from authors, qrank where authors.wikidata = qrank.Entity limit 10
+
+# 2021-06-24 15:15:58.616562
++select * from authors, qrank where authors.wikidata = qrank.Entity order by qrank desc limit 100
+
+# 2021-06-24 15:22:13.380109
++exit
+
+# 2021-06-24 15:23:57.409186
++select * from authors, qrank where authors.wikidata = qrank.Entity order by qrank desc limit 100
+
+# 2021-06-24 15:26:25.170539
++.schema
+
+# 2021-06-24 15:26:32.178581
++exit
+
+# 2021-06-24 15:27:05.002590
++.schema
+
+# 2021-06-24 15:27:07.937148
++select * from authors, qrank where authors.wikidata = qrank.Entity order by qrank desc limit 100
+
+# 2021-06-24 16:23:40.536160
++exit
+
+# 2021-06-29 21:18:08.700683
++CREATE VIRTUAL TABLE tok1 USING fts3tokenize('unicode61');
+
+# 2021-06-29 21:18:23.683634
++create database test;
+
+# 2021-06-29 21:18:27.084290
++use test
+
+# 2021-06-29 21:18:34.530105
++CREATE VIRTUAL TABLE tok1 USING fts3tokenize('unicode61');
+
+# 2021-06-29 21:19:19.937417
++SELECT token, start, end, position 
++  FROM tok1
++ WHERE input='This is a test sentence.';
+
+# 2021-06-29 21:21:14.718088
++SELECT token, start, end, position 
++  FROM tok1
++ WHERE input='더글러스 애덤스';
+
+# 2021-06-29 21:21:51.575220
++SELECT token, start, end, position 
++  FROM tok1
++ WHERE input='Ντάγκλας Άνταμς';
+
+# 2021-06-29 21:22:18.029541
++SELECT token, start, end, position 
++  FROM tok1
++ WHERE input='Дъглас Адамс';
+
+# 2021-06-29 21:23:23.102298
++SELECT token, start, end, position 
++  FROM tok1
++ WHERE input='Albrecht Götze';
+
+# 2021-06-29 21:23:55.980510
++exit
+
+# 2021-06-29 21:34:28.268094
++select * from target where column like "douglas"
+
+# 2021-06-29 21:34:32.212724
++show tables;
+
+# 2021-06-29 21:34:35.220601
++status
+
+# 2021-06-29 21:34:36.363685
++list
+
+# 2021-06-29 21:34:38.339193
++\s
+
+# 2021-06-29 21:34:47.348029
++use target
+
+# 2021-06-29 21:34:54.371993
++list tables;
+
+# 2021-06-29 21:34:56.523927
++list tables
+
+# 2021-06-29 21:35:00.099654
++show tables
+
+# 2021-06-29 21:35:03.531510
++status
+
+# 2021-06-29 21:35:04.723470
++list
+
+# 2021-06-29 21:35:05.770332
++show
+
+# 2021-06-29 21:35:07.586220
++?
+
+# 2021-06-29 21:35:11.083554
++.tables
+
+# 2021-06-29 21:35:26.148960
++use main
+
+# 2021-06-29 21:35:28.738729
++.tables
+
+# 2021-06-29 21:35:39.826358
++exit
+
+# 2021-06-29 21:37:28.833129
++.databasas
+
+# 2021-06-29 21:37:32.590354
++.databases
+
+# 2021-06-29 21:37:41.548799
++use main
+
+# 2021-06-29 21:37:45.645970
++.tables
+
+# 2021-06-29 21:37:57.956808
++ls
+
+# 2021-06-29 21:38:00.325289
++exit
+
+# 2021-06-29 21:39:02.875443
++select * from target limit 3
+
+# 2021-06-29 21:39:17.890670
++exit
+
+# 2021-06-29 21:45:41.132843
++.databases
+
+# 2021-06-29 21:45:46.364146
++.tables
+
+# 2021-06-29 21:46:01.404760
++select * from target limit 4
+
+# 2021-06-29 21:46:26.539994
++select * from birth like '%fl%'
+
+# 2021-06-29 21:46:41.659150
++select * from birth like 'fl'
+
+# 2021-06-29 21:47:03.281809
++select * from birth regexp 'fl'
+
+# 2021-06-29 21:47:08.880641
++select * from birth regexp "fl"'
+
+# 2021-06-29 21:47:20.224926
++select * from birth regexp /fl/'
+
+# 2021-06-29 21:47:39.544291
++select * from birth regexp "/fl"'
+
+# 2021-06-29 21:48:04.806531
++select * from target where birth regexp /fl/
+
+# 2021-06-29 21:48:07.334523
++select * from target where birth regexp /fl
+
+# 2021-06-29 21:48:11.022043
++select * from target where birth regexp fl
+
+# 2021-06-29 21:48:13.556974
++select * from target where birth regexp 'fl'
+
+# 2021-06-29 21:48:34.717250
++select * from target where regexp birth = /fl/ 
+
+# 2021-06-29 21:48:43.651621
++select * from target where regexp birth = "fi" 
+
+# 2021-06-29 21:48:49.851972
++select * from target where regexp birth /fl/
+
+# 2021-06-29 22:09:08.084960
++exit
+
+# 2021-06-29 22:35:45.690648
++use target2.db
+
+# 2021-06-29 22:35:50.976164
++use target
+
+# 2021-06-29 22:35:57.560860
++use target2.db
+
+# 2021-06-29 22:36:05.608192
++.databases
+
+# 2021-06-29 22:36:32.182837
++select * from target where death = '19981
+
+# 2021-06-29 22:36:40.110755
++select * from target where death = '1981
+
+# 2021-06-29 22:36:44.868919
++select * from target where death = 1981
+
+# 2021-06-29 22:42:03.468426
++create virtual table search using fts5(name, personalname, title, birth, death)
+
+# 2021-06-29 22:43:29.057182
++select * from search where search match "iain"
+
+# 2021-06-29 22:45:44.450310
++CREATE VIRTUAL TABLE fts USING fts5(name, personalname, title, birth, death, content=target);
+
+# 2021-06-29 22:46:00.449297
++select * from fts where fts match "man"
+
+# 2021-06-29 22:50:02.780367
++INSERT INTO fts(fts) VALUES('rebuild');
+
+# 2021-06-29 22:50:10.828249
++select * from search where search match "iain"
+
+# 2021-06-29 22:50:24.243799
++select * from fts where fts match "iain"
+
+# 2021-06-29 22:50:52.090153
++select * from fts where fts match "iain Banks
+
+# 2021-06-29 22:50:58.098224
++select * from fts where fts match iain Banks
+
+# 2021-06-29 22:51:03.169613
++select * from fts where fts match 'iain Banks'
+
+# 2021-06-29 22:51:16.375652
++select * from fts where fts match 'bp'
+
+# 2021-06-29 22:53:15.810698
++select * from fts where fts match 'from old catalog'
+
+# 2021-06-29 23:12:49.422502
++select count(*) from fts where fts match '"[from old catalog]"'
+
+# 2021-06-29 23:13:18.765212
++:q
+
+# 2021-06-29 23:13:22.555834
++exit
+
+# 2021-06-29 23:46:08.657838
++select* from author
+
+# 2021-06-30 10:37:42.173492
++exit
+
+# 2021-06-30 11:26:30.063011
++select * from authorship
+
+# 2021-06-30 11:26:36.934263
++.schema
+
+# 2021-06-30 11:27:13.741224
++exit
+
+# 2021-06-30 12:14:44.713043
++.mode csv
+
+# 2021-06-30 12:15:02.214553
++.import ./olauthor.csv author
+
+# 2021-06-30 12:15:09.334664
++exit
+
+# 2021-06-30 12:17:02.595578
++.mode csv
+
+# 2021-06-30 12:17:16.356217
++.import ./olauthor.csv author
+
+# 2021-06-30 12:17:26.147459
++exit
+
+# 2021-06-30 12:26:44.959161
++.mode csv
+
+# 2021-06-30 12:26:54.679521
++.import ./olauthor.csv author
+
+# 2021-06-30 12:27:06.462078
++.schema
+
+# 2021-06-30 12:27:11.319503
++exit
+
+# 2021-06-30 12:27:36.463891
++.schema
+
+# 2021-06-30 12:27:42.294028
++select * from author
+
+# 2021-06-30 12:27:46.414567
++.mode csv
+
+# 2021-06-30 12:27:51.486621
++.import ./olauthor.csv author
+
+# 2021-06-30 12:37:58.817020
++exit
+
+# 2021-06-30 12:41:24.617198
++select * from author limit 10;
+
+# 2021-06-30 12:43:39.597576
++exit
+
+# 2021-06-30 13:15:34.200263
++.mode csv
+
+# 2021-06-30 13:15:37.158261
++.import ./olauthor.csv author
+
+# 2021-06-30 13:15:57.191855
++exit
+
+# 2021-06-30 17:40:19.696149
++select * from author limit 10
+
+# 2021-06-30 17:40:22.039315
++exit
+
+# 2021-06-30 21:13:25.484072
++select * from author limit 10
+
+# 2021-06-30 21:13:37.796062
++.schema
+
+# 2021-06-30 21:13:49.220331
++.mode csv
+
+# 2021-06-30 21:13:56.483296
++.import ./olauthor.csv author
+
+# 2021-06-30 21:14:26.289776
++exit
+
+# 2021-06-30 22:09:36.000553
++select * from authors limit 10
+
+# 2021-06-30 22:09:41.040870
++select * from author= limit 10
+
+# 2021-06-30 22:09:48.239749
++select * from author limit 10
+
+# 2021-06-30 22:10:13.367955
++select * from author order by death asc limit 10
+
+# 2021-06-30 22:10:33.888411
++select name, death from author order by death asc limit 10
+
+# 2021-06-30 22:10:55.766339
++select name, death from author order by death desc limit 10
+
+# 2021-06-30 22:11:13.805131
++select name, death from author order by death desc limit 100
+
+# 2021-06-30 22:12:37.273494
++select name, birth, death from author where wikidata = null order by birth desc limit 100
+
+# 2021-06-30 22:12:57.385043
++select wikidata from author limit 100
+
+# 2021-06-30 22:13:09.344156
++select wikidata from author order by wikidata limit 100
+
+# 2021-06-30 22:13:15.216222
++select wikidata from author order by wikidata desc limit 100
+
+# 2021-06-30 22:13:37.631936
++select wikidata, name, birth, death from author order by wikidata desc limit 100
+
+# 2021-06-30 22:20:57.892668
++select count(*) from author
+
+# 2021-06-30 22:21:04.684518
++exit
+
+# 2021-07-01 17:29:00.155614
++select * from author limit 10
+
+# 2021-07-01 17:32:14.746341
++CREATE VIRTUAL TABLE fts USING fts5(name, personal_name, content=author);
+
+# 2021-07-01 17:33:03.032059
++INSERT INTO ft(ft) VALUES('optimize');
+
+# 2021-07-01 17:33:10.496192
++INSERT INTO fts(fts) VALUES('optimize');
+
+# 2021-07-01 17:33:34.229576
++INSERT INTO fts(fts) VALUES('rebuild');
+
+# 2021-07-01 17:34:31.948542
++select * from author where fts  MATCH 'Iain M Banks' ORDER BY rank;
+
+# 2021-07-01 17:34:41.779952
++select * from fts where fts  MATCH 'Iain M Banks' ORDER BY rank;
+
+# 2021-07-01 17:34:55.987455
++select * from fts where fts  MATCH 'banks' ORDER BY rank;
+
+# 2021-07-01 17:35:15.729561
++select * from fts where fts  MATCH 'scotson' ORDER BY rank;
+
+# 2021-07-01 17:35:23.828093
++select * from fts where fts  MATCH 'Smyth' ORDER BY rank;
+
+# 2021-07-01 17:36:02.144736
++select * from fts where fts  MATCH 'Iain Banks' ORDER BY rank;
+
+# 2021-07-01 17:36:08.192464
++select * from fts where fts  MATCH 'Iain and Banks' ORDER BY rank;
+
+# 2021-07-01 17:36:29.662039
++select * from fts where fts  MATCH 'Iain + Banks' ORDER BY rank;
+
+# 2021-07-01 17:36:34.526170
++select * from fts where fts  MATCH 'Iain+Banks' ORDER BY rank;
+
+# 2021-07-01 17:36:43.318985
++select * from fts where fts  MATCH '"Iain+Banks"' ORDER BY rank;
+
+# 2021-07-01 17:36:47.989426
++select * from fts where fts  MATCH '"Iain Banks"' ORDER BY rank;
+
+# 2021-07-01 17:36:56.406266
++select * from fts where fts  MATCH 'Iain' ORDER BY rank;
+
+# 2021-07-01 17:37:37.292055
++select *, rank from fts where fts  MATCH 'Iain' ORDER BY rank;
+
+# 2021-07-01 17:38:18.147087
++select *, rank from fts where fts  MATCH 'Banks, Iain M' ORDER BY rank;
+
+# 2021-07-01 17:38:28.362208
++select *, rank from fts where fts  MATCH 'Banks Iain M' ORDER BY rank;
+
+# 2021-07-01 17:38:37.162103
++select *, rank from fts where fts  MATCH 'Banks, Iain M' ORDER BY rank;
+
+# 2021-07-01 17:38:45.369396
++select *, rank from fts where fts  MATCH '"Banks, Iain M"' ORDER BY rank;
+
+# 2021-07-01 17:38:51.761375
++select *, rank from fts where fts  MATCH "Banks, Iain M" ORDER BY rank;
+
+# 2021-07-01 17:39:56.534735
++select *, rank from fts where fts  MATCH "Smith, John" ORDER BY rank;
+
+# 2021-07-01 17:40:09.630087
++select *, rank from fts where fts  MATCH '"Smith, John"' ORDER BY rank;
+
+# 2021-07-01 17:40:23.213365
++select *, rank from fts where fts  MATCH '"Banks, Iain M"' ORDER BY rank;
+
+# 2021-07-01 17:40:28.772833
++select *, rank from fts where fts  MATCH '"Banks, Iain"' ORDER BY rank;
+
+# 2021-07-01 17:40:33.213155
++select *, rank from fts where fts  MATCH '"Banks Iain"' ORDER BY rank;
+
+# 2021-07-01 17:40:37.772218
++select *, rank from fts where fts  MATCH '"Banks"' ORDER BY rank;
+
+# 2021-07-01 17:40:50.908290
++select *, rank from fts where fts  MATCH '"ian Banks"' ORDER BY rank;
+
+# 2021-07-01 17:44:46.503407
++select distinct count(distinct wikidata) from author;
+
+# 2021-07-01 17:44:57.864091
++select count(*) from author
+
+# 2021-07-01 17:45:14.502887
++select * from author limit 100;
+
+# 2021-07-01 17:45:36.444309
++select *, rank from fts where fts  MATCH '"Banks"' ORDER BY rank;
+
+# 2021-07-01 17:46:04.484069
++exit
+
+# 2021-07-01 20:15:02.022916
++select * from author limit 10;
+
+# 2021-07-01 20:15:22.230952
++select distinct title from author;
+
+# 2021-07-01 20:16:11.520410
++select count(distinct title) from author;
+
+# 2021-07-01 20:21:39.766183
++CREATE VIRTUAL TABLE fts USING fts5(name, personal_name, content=author);
+
+# 2021-07-01 20:22:02.926061
++INSERT INTO fts(fts) VALUES('rebuild');
+
+# 2021-07-01 20:22:55.198599
++select *, rank from fts where fts  MATCH '"ian Banks"' ORDER BY rank;
+
+# 2021-07-01 20:23:14.990435
++select *, rank from fts where fts  MATCH '"iain Banks"' ORDER BY rank;
+
+# 2021-07-01 20:54:54.582424
++select *, rank from fts where fts  MATCH '"ian Banks"' ORDER BY rank;
+
+# 2021-07-01 20:55:23.501991
++select count(*) from author where wikidata != null;
+
+# 2021-07-01 20:55:42.639620
++select wikidata from author limit 10
+
+# 2021-07-01 20:56:00.127931
++select wikidata from author where wikidata != '' limit 10
+
+# 2021-07-01 20:56:21.335051
++select count(1) from author where wikidata != '' 
+
+# 2021-07-01 20:56:32.168388
++select count(1) from author where wikidata = '' 
+
+# 2021-07-01 20:57:41.816959
++select count(*) from author where wikidata != ''and name regexp ','
+
+# 2021-07-01 20:57:54.537959
++select count(*) from author where wikidata != ''and name match ','
+
+# 2021-07-01 20:58:03.808822
++select count(*) from author where wikidata != ''and name like  '%,%'
+
+# 2021-07-01 20:58:20.674095
++select name, personal_name from author where wikidata != ''and name like  '%,%'
+
+# 2021-07-01 21:04:51.287448
++select *, rank from fts where fts  MATCH '"sabran"' ORDER BY rank;
+
+# 2021-07-01 21:53:16.409272
++select *, rank from fts where fts  MATCH '"Johansson"' ORDER BY rank;
+
+# 2021-07-01 21:53:45.352653
++select *, rank from fts where fts  MATCH '"Erik"' ORDER BY rank;
+
+# 2021-07-01 21:57:08.564996
++select name, rank from fts where fts  MATCH '"Erik"' ORDER BY rank;
+
+# 2021-07-01 22:20:10.338051
++select name, rank from fts where fts  MATCH '"soren"' ORDER BY rank;
+
+# 2021-07-01 22:20:35.971079
++select name, rank from fts where fts  MATCH '"Sören Björkerud"' ORDER BY rank;
+
+# 2021-07-01 22:20:46.235408
++select name, rank from fts where fts  MATCH '"Sören"' ORDER BY rank;
+
+# 2021-07-01 22:21:04.155528
++select name, rank from fts where fts  MATCH '"kestrom"' ORDER BY rank;
+
+# 2021-07-01 22:21:13.946608
++select name, rank from fts where fts  MATCH '"ekstrom"' ORDER BY rank;
+
+# 2021-07-01 22:24:24.309614
++CREATE VIRTUAL TABLE demo USING spellfix1;
+
+# 2021-07-01 22:26:46.415222
++exit
+
+# 2021-07-01 22:29:26.434778
++.status
+
+# 2021-07-01 22:29:38.264789
++.schema
+
+# 2021-07-01 22:30:13.280107
++CREATE VIRTUAL TABLE demo USING spellfix1;
+
+# 2021-07-01 22:30:37.153611
++exit
+
+# 2021-07-01 22:30:54.370590
++CREATE VIRTUAL TABLE demo USING spellfix1;
+
+# 2021-07-01 22:51:29.456781
++.load /usr/local/lib/spellfix
+
+# 2021-07-01 22:51:36.306522
++CREATE VIRTUAL TABLE demo USING spellfix1;
+
+# 2021-07-01 22:57:32.701610
++CREATE VIRTUAL TABLE vocab USING fts5vocab('fts', 'row');
+
+# 2021-07-01 22:58:06.516869
++select * from vocab limit 10;
+
+# 2021-07-01 22:59:11.982303
++INSERT INTO demo(word,rank)
++   SELECT term, doc FROM vocab;
+
+# 2021-07-01 23:00:15.411380
++select word from demo where word match 'Ian Banks';
+
+# 2021-07-01 23:00:32.523089
++select word from demo where word match 'Scotson';
+
+# 2021-07-01 23:00:57.258889
++select word from demo where word match 'chaikovsky';
+
+# 2021-07-01 23:01:10.362578
++select word from demo where word match 'Lennon';
+
+# 2021-07-01 23:01:35.730489
++select word from demo where word match 'Bishop';
+
+# 2021-07-01 23:01:55.682324
++smythe
+
+# 2021-07-01 23:02:02.042496
++select word from demo where word match 'smythe';
+
+# 2021-07-01 23:02:15.770273
++select word from demo where word match 'one two three';
+
+# 2021-07-01 23:02:34.480903
++select word from demo where word match 'gainsbourg';
+
+# 2021-07-01 23:02:55.401772
++select word from demo where word match 'ginsburg';
+
+# 2021-07-01 23:04:30.896704
++select word,phonehash from demo where word match 'ginsburg';
+
+# 2021-07-01 23:04:54.928600
++select word,score,distance,phonehash from demo where word match 'ginsburg';
+
+# 2021-07-01 23:05:15.232369
++select word,score,distance,phonehash from demo where word match 'Ginsburg';
+
+# 2021-07-01 23:05:28.184621
++select word,score,distance,phonehash from demo where word match 'Scotson';
+
+# 2021-07-01 23:07:52.125298
++select * from demo_vocab where word = "scotson"
+
+# 2021-07-01 23:08:43.350060
++select * from demo_vocab where word = "Scotson"
+
+# 2021-07-01 23:09:50.157578
++select * from demo_vocab where word = "Güntsch"
+
+# 2021-07-01 23:10:01.869015
++select * from demo_vocab where word = "Münsch"
+
+# 2021-07-01 23:16:33.088909
++select * from demo_vocab where word = "Søren"
+
+# 2021-07-01 23:16:39.896845
++select * from demo_vocab where word = "Soren"
+
+# 2021-07-01 23:16:49.128320
++select * from demo_vocab where word = "Scotson"
+
+# 2021-07-01 23:17:11.847257
++select * from demo_vocab where word = "scotson"
+
+# 2021-07-01 23:17:22.906241
++select * from demo_vocab where word = "soren"
+
+# 2021-07-01 23:17:31.488372
++select * from demo_vocab where word = "søren"
+
+# 2021-07-01 23:22:38.213714
++CREATE VIRTUAL TABLE wikidata USING spellfix1;
+
+# 2021-07-01 23:23:43.963115
++INSERT INTO wikidata(word)
++   SELECT name FROM author;
+
+# 2021-07-03 08:01:01.280619
++select * from demo_vocab where word = "søren"
+
+# 2021-07-04 11:04:01.887286
++CREATE VIRTUAL TABLE tri USING fts5(name, personal_name, title, content="author", tokenize="trigram");
+
+# 2021-07-04 11:04:44.233127
++INSERT INTO tri(tri) VALUES('rebuild');
+
+# 2021-07-04 11:13:05.181277
++select * from tri limit 10
+
+# 2021-07-04 11:13:26.028059
++select * from tri_vocab limit 10
+
+# 2021-07-04 11:14:07.915294
++select from tri where match "Iain Banks"
+
+# 2021-07-04 11:14:15.203624
++select * from tri where match "Iain Banks"
+
+# 2021-07-04 11:14:19.411607
++select * from tri where match '"Iain Banks"'
+
+# 2021-07-04 11:14:26.043526
++select * from tri where match '"ban"'
+
+# 2021-07-04 11:14:31.714579
++select * from tri where match 'ban'
+
+# 2021-07-04 11:14:38.586455
++select * from tri where match = "ban"
+
+# 2021-07-04 11:14:47.338985
++select * from tri where tri match = "ban"
+
+# 2021-07-04 11:14:50.121478
++select * from tri where tri match "ban"
+
+# 2021-07-04 11:15:00.971254
++select * from tri where tri match "Iain Banks"
+
+# 2021-07-04 11:15:19.201515
++select * from tri where tri match "Ian Banks"
+
+# 2021-07-04 11:15:29.744674
++select * from tri where tri match "Iain Banks"
+
+# 2021-07-04 11:15:53.240072
++select * from author where name = 'iain-m-banks'
+
+# 2021-07-04 11:19:44.107804
++select * from tri where tri match "Ian M. Banks"
+
+# 2021-07-04 11:19:47.483210
++select * from tri where tri match "Ian M Banks"
+
+# 2021-07-04 11:20:23.378577
++select * from tri where tri match "Iain M Banks"
+
+# 2021-07-04 11:20:35.306273
++sir roger moore
+
+# 2021-07-04 11:20:45.344933
++select * from tri where tri match "sir roger moor"
+
+# 2021-07-04 11:20:48.529274
++select * from tri where tri match "sir roger moore"
+
+# 2021-07-04 11:22:11.046716
++select * from tri where author match "sir roger moore"
+
+# 2021-07-04 11:23:09.365793
++select * from tri_data limit 10
+
+# 2021-07-04 11:24:17.324687
++CREATE VIRTUAL TABLE unitri USING fts5(name, personal_name, title, content="author", tokenize="unicode61 trigram");
+
+# 2021-07-04 11:24:26.323261
++CREATE VIRTUAL TABLE unitri USING fts5(name, personal_name, title, content="author", tokenize="trigram unicode61");
+
+# 2021-07-04 11:27:38.039910
++select * from tri_data limit 10
+
+# 2021-07-04 11:28:03.535885
++select * from tri_idx limit 10
+
+# 2021-07-04 11:28:09.509384
++select * from tri_idx limit 100
+
+# 2021-07-04 11:28:33.221654
++select * from tri_idx limit 1000
+
+# 2021-07-04 11:30:32.355597
++select * from tri where author match '"sir roger moore"'
+
+# 2021-07-04 11:30:41.250940
++select * from tri where tri match "Iain M Banks"
+
+# 2021-07-04 11:31:01.467024
++select * from tri where tri match "Scotson"
+
+# 2021-07-04 11:31:18.865880
++select * from tri where tri match "Tolstoy"
+
+# 2021-07-04 11:32:06.872342
++select word,score,distance,phonehash from demo where word match 'Scotson';
+
+# 2021-07-04 11:32:32.146575
++select * from tri where tri match "Scotstoun"
+
+# 2021-07-04 11:32:40.246883
++select * from tri where tri match "scotstoun"
+
+# 2021-07-04 11:32:44.630582
++select * from tri where tri match "scotsman"
+
+# 2021-07-07 12:52:53.231388
++exit
+
+# 2021-07-07 22:16:32.001473
++describe author;
+
+# 2021-07-07 22:17:01.151209
++select * from author where revision > 100;
+
+# 2021-07-07 22:17:35.974535
++select olid, name from author order by revision desc limit 10
+
+# 2021-07-07 22:18:11.925195
++select olid, wikidata, viaf, name from author order by revision desc limit 10
+
+# 2021-07-07 22:18:32.684785
++select olid, wikidata, viaf, revision name from author order by revision desc limit 10
+
+# 2021-07-08 14:04:05.941287
++select olid, wikidata, viaf, revision name from author order by revision desc limit 100
+
+# 2021-07-08 14:04:51.931679
++select olid, wikidata, viaf, revision name from author where wikidata = null order by revision desc limit 100
+
+# 2021-07-08 14:05:00.219722
++select olid, wikidata, viaf, revision name from author where wikidata = '' order by revision desc limit 100
+
+# 2021-07-08 14:15:40.050135
++select olid, wikidata, viaf, revision name from author where wikidata = '' and revision > 5 order by olid desc limit 100
+
+# 2021-07-08 14:15:54.515062
++select olid, wikidata, viaf, revision name from author where wikidata = '' and revision > 5 order by olid asc limit 100
+
+# 2021-07-08 14:16:26.850641
++select len(olixd), olid, wikidata, viaf, revision name from author where wikidata = '' and revision > 5 order by len(olid), olid asc limit 100
+
+# 2021-07-08 14:16:35.203982
++select len(olid), olid, wikidata, viaf, revision name from author where wikidata = '' and revision > 5 order by len(olid), olid asc limit 100
+
+# 2021-07-08 14:16:55.482917
++select length(olid), olid, wikidata, viaf, revision name from author where wikidata = '' and revision > 5 order by length(olid), olid asc limit 100
+
+# 2021-07-08 14:19:12.108402
++select length(olid), olid, wikidata, viaf, revision, name from author where wikidata = '' and revision > 5 order by length(olid), olid asc limit 100
+
+# 2021-07-08 14:30:59.373746
++exit
+
+# 2021-10-30 21:18:02.759848
++count(*)
+
+# 2021-10-30 21:18:21.696105
++select * from author limit 10;
+
+# 2021-10-30 21:18:27.824341
++select * from works limit 10;
+
+# 2021-10-30 21:19:03.287959
++select * from works where remote_ids <> null limit 10
+
+# 2021-10-30 21:20:11.216135
++select remote_ids from works  null limit 10
+
+# 2021-10-30 21:20:15.655260
++select remote_ids from works limit 10
+
+# 2021-10-30 21:20:34.777669
++select remote_ids from works sort work asc limit 10
+
+# 2021-10-30 21:20:41.159096
++select remote_ids from works sort asc limit 10
+
+# 2021-10-30 21:20:48.527704
++select remote_ids from works sort remote_ids asc limit 10
+
+# 2021-10-30 21:20:53.262753
++select remote_ids from works sort by remote_ids asc limit 10
+
+# 2021-10-30 21:21:00.151923
++select remote_ids from works order by remote_ids asc limit 10
+
+# 2021-10-30 21:21:12.662907
++select remote_ids from works order by remote_ids desc limit 10
+
+# 2021-10-30 21:21:40.350710
++select authors from works order limit 10
+
+# 2021-10-30 21:21:45.911034
++select authors from works limit 10
+
+# 2021-10-30 21:22:10.431251
++select authors, title from works limit 10
+
+# 2021-10-30 21:22:26.582575
++select authors, title from works group by authors limit 10
+
+# 2021-10-30 21:22:50.323007
++ccccdnthn:Q
+
+# 2021-10-30 21:23:07.543062
++select authors, count(&) from works group by authors limit 10
+
+# 2021-10-30 21:23:16.454494
++select authors, count(*) from works group by authors limit 10
+
+# 2021-10-30 21:50:03.641462
++select authors, count(*) from works group by authors
+
+# 2021-10-30 21:52:03.037049
++select authors, count(*) as wks from works wher authors <> null sort wks desc group by authors having works > 100
+
+# 2021-10-30 21:52:11.932454
++select authors, count(*) as wks from works where authors <> null sort wks desc group by authors having works > 100
+
+# 2021-10-30 21:52:20.052530
++select authors, count(*) as wks from works where authors <> null sort by wks desc group by authors having works > 100
+
+# 2021-10-30 21:52:35.315461
++select authors, count(*) as wks from works where authors <> null order by wks desc group by authors having works > 100
+
+# 2021-10-30 21:52:49.219356
++select authors, count(*) as wks from works where authors <> null  group by authors having works > 100
+
+# 2021-10-30 21:53:02.651837
++select authors, count(*) as wks from works where authors <> null  group by authors having works > 50
+
+# 2021-10-30 21:53:10.483557
++select authors, count(*) as wks from works where authors <> null  group by authors having works > 5
+
+# 2021-10-30 21:53:42.858680
++select authors, count(*) as wks from works where authors <> null  group by authors
+
+# 2021-10-30 21:54:07.063094
++select authors, count(*) as wks from works  group by authors
+
+# 2021-10-31 09:49:24.170413
++ls
+
+# 2021-10-31 09:49:51.799822
++exit
+
+# 2021-11-04 20:26:32.397144
++show database.
+
+# 2021-11-04 20:26:45.579659
++use main
+
+# 2021-11-04 20:27:00.667009
++show tables;
+
+# 2021-11-04 20:27:04.795062
++list tables;
+
+# 2021-11-04 20:27:08.401988
++\t
+
+# 2021-11-04 20:27:09.954103
++help
+
+# 2021-11-04 20:27:15.977747
++.databases
+
+# 2021-11-04 20:27:26.169565
++exit
+
+# 2021-11-04 20:27:34.937969
++.databases
+
+# 2021-11-04 20:27:45.928567
++select * from main;
+
+# 2021-11-04 20:27:48.616716
++select *
+
+# 2021-11-04 20:27:54.456136
++use main
+
+# 2021-11-04 20:27:57.511666
++.tables
+
+# 2021-11-04 20:28:16.591122
++select * from main;
+
+# 2021-11-04 20:28:20.790756
++.tables
+
+# 2021-11-04 20:28:22.919261
++exit
+
+# 2021-11-04 20:30:47.264609
++use main
+
+# 2021-11-04 20:30:52.487062
++select * from authors;
+
+# 2021-11-04 20:30:54.679015
++.tables
+
+# 2021-11-04 20:31:00.502526
++.databases
+
+# 2021-11-04 20:31:08.823197
++use deathmatch
+
+# 2021-11-04 20:31:11.798281
++.tables
+
+# 2021-11-04 20:31:15.822987
++.databases
+
+# 2021-11-04 20:31:24.989135
++\help
+
+# 2021-11-04 20:31:35.261647
++\h
+
+# 2021-11-04 20:31:36.405071
++help
+
+# 2021-11-04 20:31:57.540187
++.status
+
+# 2021-11-04 20:32:05.259119
++.tables
+
+# 2021-11-04 20:32:21.066933
++\dt
+
+# 2021-11-04 20:32:38.314094
++exit
+
+# 2021-11-04 20:33:23.217746
++.tables
+
+# 2021-11-04 20:33:35.175345
++select * from authors limit 10;
+
+# 2021-11-04 20:35:01.539652
++select untitled_2, untitled_5, count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 limit 10;
+
+# 2021-11-04 20:35:38.784044
++select untitled_2, untitled_5, count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 limit 10;
+
+# 2021-11-04 20:36:08.064403
++select untitled_2, untitled_5, untitled_3, untitled_4  count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 limit 10;
+
+# 2021-11-04 20:36:20.023506
++select untitled_2, untitled_5, untitled_3, untitled_4,  count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 limit 10;
+
+# 2021-11-04 20:37:17.917132
++select untitled_2, untitled_5, untitled_3, untitled_4,  count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:37:52.139418
++select untitled_2, untitled_5, untitled_3, untitled_4,  count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*);
+
+# 2021-11-04 20:39:58.055922
++select concat(untitled_2, untitled_5, untitled_3, untitled_4) as con, len(con),   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:40:41.955111
++select untitled_2 || untitled_5 || untitled_3 || untitled_4 as con, len(con),   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:40:59.626807
++select untitled_2 || untitled_5 || untitled_3 || untitled_4    count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:41:14.825571
++select untitled_2 || untitled_5 || untitled_3 || untitled_4,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:42:18.486432
++select untitled_2 || ',' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:42:58.357142
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) limit 10;
+
+# 2021-11-04 20:43:20.827897
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc limit 10;
+
+# 2021-11-04 20:44:32.647696
++select * from authors where name == "Jerome'
+
+# 2021-11-04 20:44:37.887682
++select * from authors where name == "Jerome"
+
+# 2021-11-04 20:44:47.174195
++select * from authors where untitled_5 == "Jerome"
+
+# 2021-11-04 20:47:19.952939
++select * from authors where untitled_5 == "Jerome" order by untitled_11 
+
+# 2021-11-04 20:47:25.815864
++select * from authors where untitled_5 == "Jerome" order by untitled_9 
+
+# 2021-11-04 20:48:08.501278
++exit
+
+# 2021-11-04 20:49:58.384381
++select * from authors where name == "Jerome'
+
+# 2021-11-04 20:50:03.935562
++select * from authors where untitled_5 == "Jerome" order by untitled_9 
+
+# 2021-11-04 20:50:49.501598
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc limit 10;
+
+# 2021-11-04 20:51:17.204245
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 5 order by count(*) desc;
+
+# 2021-11-04 20:55:09.810172
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 3 order by count(*);
+
+# 2021-11-04 20:57:16.588006
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors group by untitled_3, untitled_4, untitled_5, untitled_2 where untitled_2 <> untitled_5 having count(*) > 3 order by count(*);
+
+# 2021-11-04 20:57:43.249216
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 3 order by count(*);
+
+# 2021-11-04 21:05:22.525316
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 1 order by count(*);
+
+# 2021-11-04 21:07:06.506880
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 1 order by len(con);
+
+# 2021-11-04 21:07:28.731980
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 1 order by size(con);
+
+# 2021-11-04 21:07:53.586709
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 1 order by length(con) desc;
+
+# 2021-11-04 21:09:14.520879
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 1 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:14:33.816859
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) 2 1 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:14:42.983387
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:21:50.515788
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), min(untitled_1) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:22:21.623215
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), max(untitled_1) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:22:43.837857
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), min(untitled_1) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:23:41.659480
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), min(untitled_10) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:24:24.138508
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), min(untitled_11) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:24:46.336814
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), min(untitled_9) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:25:27.311930
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), max(untitled_9) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:29:16.082050
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), min(untitled_6) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:29:38.551380
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*), max(untitled_6) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:30:08.078976
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:56:36.475400
++select (untitled_1 || ':' || untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:58:25.576760
++select (untitled_1 || ':' || untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors a inner join author a2  on a.untitled_2 = a2.untitled_2 AND a.untitled_5 == a2.untitled5 where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 21:58:44.934218
++select (untitled_1 || ':' || untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors a inner join authors a2  on a.untitled_2 = a2.untitled_2 AND a.untitled_5 == a2.untitled5 where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 22:00:02.715685
++select (a.untitled_1 || ':' || a.untitled_2 || ' aka ' || a.untitled_5 || " " ||  a.untitled_3 || '-' || a.untitled_4) as con,   count(*) from authors a inner join authors a2  on a.untitled_2 = a2.untitled_2 AND a.untitled_5 == a2.untitled5 where a.untitled_2 <> a.untitled_5 group by a.untitled_3, a.untitled_4, a.untitled_5, a.untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 22:00:22.067033
++select (a.untitled_1 || ':' || a.untitled_2 || ' aka ' || a.untitled_5 || " " ||  a.untitled_3 || '-' || a.untitled_4) as con,   count(*) from authors a inner join authors a2  on a.untitled_2 = a2.untitled_2 AND a.untitled_5 == a2.untitled_5 where a.untitled_2 <> a.untitled_5 group by a.untitled_3, a.untitled_4, a.untitled_5, a.untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 22:15:19.148339
++exit
+
+# 2021-11-04 23:26:16.405420
++select (a.untitled_1 || ':' || a.untitled_2 || ' aka ' || a.untitled_5 || " " ||  a.untitled_3 || '-' || a.untitled_4) as con,   count(*) from authors a inner join authors a2  on a.untitled_2 = a2.untitled_2 AND a.untitled_5 == a2.untitled_5 where a.untitled_2 <> a.untitled_5 group by a.untitled_3, a.untitled_4, a.untitled_5, a.untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 23:27:09.907234
++select (untitled_2 || ' aka ' || untitled_5 || " " ||  untitled_3 || '-' || untitled_4) as con,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 23:28:16.550625
++select untitled_2 as name, untitled_5 as personal_name, untitled_3 as born, untitled_4 as died,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(con) desc;
+
+# 2021-11-04 23:28:48.733549
++select untitled_2 as name, untitled_5 as personal_name, untitled_3 as born, untitled_4 as died,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(name || personal_name || birth || death);
+
+# 2021-11-04 23:28:57.908447
++select untitled_2 as name, untitled_5 as personal_name, untitled_3 as born, untitled_4 as died,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(name || personal_name || born || died);
+
+# 2021-11-04 23:30:03.641150
++help
+
+# 2021-11-04 23:30:58.535985
++tee output.csv
+
+# 2021-11-04 23:31:02.078007
++select untitled_2 as name, untitled_5 as personal_name, untitled_3 as born, untitled_4 as died,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(name || personal_name || born || died);
+
+# 2021-11-04 23:32:07.379371
++.mode csv
+
+# 2021-11-04 23:32:17.930392
++.output duplicates.csv
+
+# 2021-11-04 23:32:25.130162
++.output duplicates
+
+# 2021-11-04 23:32:32.049483
++output duplicates
+
+# 2021-11-04 23:32:46.688169
++select untitled_2 as name, untitled_5 as personal_name, untitled_3 as born, untitled_4 as died,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(name || personal_name || born || died);
+
+# 2021-11-04 23:33:59.213462
++tee -o duplicates.csv
+
+# 2021-11-04 23:34:01.733114
++select untitled_2 as name, untitled_5 as personal_name, untitled_3 as born, untitled_4 as died,   count(*) from authors where untitled_2 <> untitled_5 group by untitled_3, untitled_4, untitled_5, untitled_2 having count(*) > 2 order by count(*) desc, length(name || personal_name || born || died);
+
+# 2021-11-06 07:39:17.851829
++:q
+
+# 2021-11-06 07:39:21.067826
++exit
+
+# 2021-11-09 21:01:18.861784
++create database test;
+
+# 2021-11-09 21:01:24.531992
++create database
+
+# 2021-11-09 21:01:40.515525
++create table;
+
+# 2021-11-09 21:02:00.411507
++.schema 
+
+# 2021-11-09 21:02:36.859974
++.import ./authors.sql
+
+# 2021-11-09 21:02:47.684330
++create database test;
+
+# 2021-11-09 21:02:49.532275
++exit
+
+# 2021-11-09 21:03:04.276699
++.import ./authors.sql
+
+# 2021-11-09 21:03:16.652338
++./authors.sql
+
+# 2021-11-09 21:04:28.611337
++exit
+
+# 2021-11-09 21:13:08.247498
++.schema
+
+# 2021-11-09 21:13:21.394221
++select * from authors;
+
+# 2021-11-09 21:13:27.842042
++exit
+
+# 2021-11-09 21:16:55.596714
++select all from authorship;
+
+# 2021-11-09 21:17:25.738119
++select * from authorship limit 100;
+
+# 2021-11-09 21:17:54.986317
++exit
+
+# 2021-11-09 21:23:19.594043
++drop table authors;
+
+# 2021-11-09 21:23:23.681293
++exit
+
+# 2021-11-09 21:24:33.001593
++select * from authors limit 2;
+
+# 2021-11-09 21:24:53.703076
++exit
+
+# 2021-11-09 21:26:33.125604
++drop table authors;
+
+# 2021-11-09 21:26:41.589262
++truncate table authors;
+
+# 2021-11-09 21:26:52.636332
++truncate authors;
+
+# 2021-11-09 21:27:26.234991
++delete from authors;
+
+# 2021-11-09 21:27:29.866942
++exit
+
+# 2021-11-09 21:27:53.419631
++select * from authors where title <> null;
+
+# 2021-11-09 21:28:00.022677
++select * from authors where title is null;
+
+# 2021-11-09 21:28:05.107048
++select * from authors where title is not null;
+
+# 2021-11-09 21:28:45.097403
++select * from authors where name like "%John%";
+
+# 2021-11-09 21:29:22.728829
++select * from authors order by birth_date;
+
+# 2021-11-10 20:25:57.703030
++exit
+
+# 2021-11-15 12:06:06.358850
++select count(*) from author where wikidata != ''and name like  '%,%'
+
+# 2021-11-15 12:06:09.533851
++ls
+
+# 2021-11-15 12:06:12.885167
++.schema
+
+# 2021-11-15 12:06:28.597393
++exit
+
+# 2021-11-15 14:16:20.830881
++.schema
+
+# 2021-11-15 14:16:32.790885
++list * from authors;
+
+# 2021-11-15 14:16:38.278273
++select * from authors;
+
+# 2021-11-15 14:16:50.636489
++describe author;
+
+# 2021-11-15 14:16:53.453531
++ls
+
+# 2021-11-15 14:17:04.614913
++show tables;
+
+# 2021-11-15 14:17:08.175313
++.tables;
+
+# 2021-11-15 14:17:11.381439
++show authors
+
+# 2021-11-15 14:17:13.349044
++:q
+
+# 2021-11-15 14:17:15.516797
++exit
+
+# 2021-11-15 14:33:41.818809
++.schema
+
+# 2021-11-15 14:33:44.456175
++.tables
+
+# 2021-11-15 14:33:50.207769
++list * from authors;
+
+# 2021-11-15 14:33:52.312867
++list * from author;
+
+# 2021-11-15 14:33:58.576805
++select * from author;
+
+# 2021-11-15 14:34:02.895825
++select * from authors;
+
+# 2021-11-15 14:34:06.329414
++exit
+
+# 2021-11-15 15:30:31.570562
++select * from author;
+
+# 2021-11-15 15:30:35.649513
++.schema
+
+# 2021-11-15 15:30:43.842899
++exit
+
+# 2021-11-15 15:32:07.951087
++select * from author;
+
+# 2021-11-15 15:32:11.622002
++.tables;
+
+# 2021-11-15 15:32:16.956823
++.schema
+
+# 2021-11-15 15:32:20.110080
++exit
+
+# 2021-11-15 15:45:15.535372
++select * from author;
+
+# 2021-11-15 15:45:45.677231
++select  * where birth_date is null;
+
+# 2021-11-15 15:45:52.692714
++select  * from author where birth_date is null;
+
+# 2021-11-15 15:46:02.956472
++exit
+
+# 2021-11-15 15:51:25.017750
++update author;
+
+# 2021-11-15 15:51:37.360676
++delete author;
+
+# 2021-11-15 15:51:56.903985
++delete from author;
+
+# 2021-11-15 15:52:00.416130
++exit
+
+# 2021-11-15 15:52:17.359682
++select  * from author where birth_date is null;
+
+# 2021-11-15 15:52:29.695799
++delete from author;
+
+# 2021-11-15 15:52:32.958508
++exit
+
+# 2021-11-15 15:58:30.449733
++select  * from author where birth_date is null;
+
+# 2021-11-15 15:58:35.825299
++select count(*) from author where wikidata != ''and name like  '%,%'
+
+# 2021-11-15 15:58:40.592915
++select count(*) from author where wikidata != '';
+
+# 2021-11-15 15:58:44.521183
++select count(*) from author;
+
+# 2021-11-15 15:58:53.615360
++select .name  from author;
+
+# 2021-11-15 15:59:02.552018
++select 'name' from author
+
+# 2021-11-15 15:59:07.391625
++select name from author;
+
+# 2021-11-15 15:59:22.696146
++delete from author;
+
+# 2021-11-15 15:59:25.519214
++exit
+
+# 2021-11-15 15:59:59.630691
++select name from author;
+
+# 2021-11-15 16:00:12.268877
++delete from author;
+
+# 2021-11-15 16:00:14.470163
++ls
+
+# 2021-11-15 16:00:15.509786
++exit
+
+# 2021-11-15 16:15:48.839542
++delete from author;
+
+# 2021-11-15 16:15:59.701860
++exit
+
+# 2021-11-15 16:16:34.573130
++delete from author;
+
+# 2021-11-15 16:16:37.140745
++exit
+
+# 2021-11-15 16:18:52.790154
++select count(*) from author;
+
+# 2021-11-15 16:18:57.198726
++exit
+
+# 2021-11-15 16:19:22.702373
++delete from author;
+
+# 2021-11-15 16:19:25.197564
++exit
+
+# 2021-11-15 16:35:57.557948
++delete from author;
+
+# 2021-11-15 16:36:01.069172
++exit
+
+# 2021-11-15 16:36:20.549403
++delete from author;
+
+# 2021-11-15 16:36:23.132211
++ls
+
+# 2021-11-15 16:36:29.067894
++exit
+
+# 2021-11-15 16:37:39.841341
++delete from author;
+
+# 2021-11-15 16:37:43.481021
++exit
+
+# 2021-11-15 16:38:21.742550
++delete from author;
+
+# 2021-11-15 16:38:28.494512
++exit
+
+# 2021-11-15 16:42:19.718490
++delete from author;
+
+# 2021-11-15 16:42:27.405429
++vacuum;
+
+# 2021-11-15 16:42:30.548973
++exit
+
+# 2021-11-15 17:22:06.259396
++select count(*) from author;
+
+# 2021-11-15 17:22:24.959593
++select count(*) from author where url not null;
+
+# 2021-11-15 17:22:32.153156
++select count(*) from author where links not null;
+
+# 2021-11-15 17:22:47.161240
++exit
+
+# 2021-11-15 17:23:23.543466
++vacuum
+
+# 2021-11-15 17:24:26.825585
++exit
+
+# 2021-11-15 17:25:05.168283
++ls
+
+# 2021-11-15 17:25:10.425400
++select count(*) from author where links not null;
+
+# 2021-11-15 17:25:28.863441
++select * from author where links not null limit 100;
+
+# 2021-11-15 17:25:48.511894
++select name, links from author where links not null limit 100;
+
+# 2021-11-15 17:26:47.330811
++select name, links, website, wikidata from author where links not null limit 100;
+
+# 2021-11-15 17:28:00.553051
++select name, links, website, wikidata, viaf from author where links not null limit 100;
+
+# 2021-11-15 17:29:43.874914
++select name, links, website, wikidata, viaf from author where links not null limit;
+
+# 2021-11-15 17:29:48.299581
++select name, links, website, wikidata, viaf from author where links not null;
+
+# 2021-11-15 17:31:07.536585
++select name, links, website, wikidata, viaf from author where links not null limit 200;
+
+# 2021-11-15 17:31:28.134498
++select name, links, wikidata, viaf from author where links not null limit 200;
+
+# 2021-11-15 17:32:53.978343
++select name, links, wikidata, viaf from author where wikidata is null and links not null limit 200;
+
+# 2021-11-15 17:34:39.525271
++exit
+
+# 2021-11-15 17:36:13.065586
++select name, links, wikidata, viaf from author where wikidata is null and links not null limit 200;
+
+# 2021-11-15 17:36:35.703566
++select name, links, wikidata, viaf from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-15 17:39:02.336345
++select name, links, substr(wikidata,0,20), viaf from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-15 17:40:03.005233
++select name, links, substr(links,0,20), viaf from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-15 17:40:25.660105
++select name, links, substr(links,30), viaf from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-15 17:40:39.795121
++select name, links, substr(links,31), viaf from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-15 17:42:20.814458
++select id, wikidata from author where wikidata in (select substr(links,31) from author where wikidata is null and links like '%wikid%');
+
+# 2021-11-15 17:46:07.649550
++select id,name,bio,substr(links,31) as autoq, viaf, isni from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-15 17:47:10.455250
++.headers on
+
+# 2021-11-15 17:47:32.614822
++use author
+
+# 2021-11-15 17:47:37.366900
++.headers on
+
+# 2021-11-15 17:47:49.605817
++exit
+
+# 2021-11-16 10:58:11.469546
++vacuum
+
+# 2021-11-16 10:58:57.330918
++select id,name,bio,substr(links,31) as autoq, viaf, isni from author where wikidata is null and links like '%wikid%' limit 200;
+
+# 2021-11-16 10:59:43.609253
++select  * from author limit 111;
+
+# 2021-11-16 11:00:41.431651
++select  * from author order by id asc limit 1
+
+# 2021-11-16 11:00:48.064602
++select  * from author order by id asc limit 100
+
+# 2021-11-16 11:01:40.046527
++select  * from author where name is null;
+
+# 2021-11-16 11:02:28.621266
++select  * from author where name <> personal_name;
+
+# 2021-11-16 11:02:42.836504
++select  * from author where name <> personal_name limit 1
+
+# 2021-11-16 11:03:05.012067
++select  name, personal_name from author where name <> personal_name limit 1
+
+# 2021-11-16 11:03:11.435814
++select  name, personal_name from author where name <> personal_name limit 100;
+
+# 2021-11-16 11:03:38.250228
++select  name, personal_name, title from author where name <> personal_name limit 100;
+
+# 2021-11-16 11:04:20.800990
++select  name, personal_name, title from author where title = 'Cardinal' 100;
+
+# 2021-11-16 11:04:23.338669
++select  name, personal_name, title from author where title = 'Cardinal' limit 100;
+
+# 2021-11-16 11:06:09.948233
++select  name, personal_name, title from author where title = 'sir' collate nocase limit 100;
+
+# 2021-11-16 11:07:47.657485
++select name, personal_name, title from author group by name, personal_name, title having count(*) > 9; 
+
+# 2021-11-16 11:08:13.848026
++select name, personal_name, title, count(*) from author group by name, personal_name, title having count(*) > 9; 
+
+# 2021-11-16 11:11:04.914231
++exit
+
+# 2021-11-16 11:29:14.358848
++delete from works;
+
+# 2021-11-16 11:29:18.302376
++delete from work;
+
+# 2021-11-16 11:29:21.781075
++exit
+
+# 2021-11-16 11:31:43.721252
++delete from work;
+
+# 2021-11-16 11:31:46.514053
++exit
+
+# 2021-11-16 11:35:09.036037
++select title from works limit 100;
+
+# 2021-11-16 11:35:12.349237
++select title from work limit 100;
+
+# 2021-11-16 11:35:53.619855
++select * from work where first_published_date not null limit 10;
+
+# 2021-11-16 11:35:58.243488
++select * from work where first_publish_date not null limit 10;
+
+# 2021-11-16 11:36:16.034542
++select * from work where first_publish_date not null limit 100;
+
+# 2021-11-16 11:37:01.536890
++select * from work where first_publish_date not null order by first_publish_date limit 100;
+
+# 2021-11-16 11:38:04.232567
++select * from work where title like '%phlebas ' limit 100;
+
+# 2021-11-16 11:38:09.520374
++select * from work where title like '%phlebas' limit 100;
+
+# 2021-11-16 11:38:58.879215
++select * from work where links not null limit 100;
+
+# 2021-11-16 11:40:40.692794
++exit
+
+# 2021-11-16 12:13:47.947194
++select * from worklinks;
+
+# 2021-11-16 12:13:51.282034
++select * from worklinks
+
+# 2021-11-16 12:13:55.970113
++.tables;
+
+# 2021-11-16 12:14:00.722519
++exit
+
+# 2021-11-16 12:14:22.817158
++.tables;
+
+# 2021-11-16 12:14:25.330093
++exit
+
+# 2021-11-16 12:16:46.654223
++select * from worklinks;
+
+# 2021-11-16 12:22:27.541461
++delete from worklinks;
+
+# 2021-11-16 12:22:30.636089
++exit
+
+# 2021-11-16 12:24:10.059421
++delete from worklinks;
+
+# 2021-11-16 12:24:14.113329
++exit
+
+# 2021-11-16 12:32:34.697448
++vacuum
+
+# 2021-11-16 12:32:39.129858
++exit
+
+# 2021-11-16 12:32:45.769403
++vacuum
+
+# 2021-11-16 12:33:06.752249
++ls -lah .db
+
+# 2021-11-16 12:33:17.241567
++exit
+
+# 2021-11-16 12:35:01.475971
++delete from work;
+
+# 2021-11-16 12:35:04.162901
++exit
+
+# 2021-11-16 14:20:01.803262
++vacuum
+
+# 2021-11-16 14:22:57.081498
++exit
+
+# 2021-11-16 14:23:21.976317
++vacuum
+
+# 2021-11-16 14:26:10.830842
++.schome
+
+# 2021-11-16 14:26:12.559979
++.schema
+
+# 2021-11-16 14:26:34.367150
++select * from works limit 1
+
+# 2021-11-16 14:26:37.086943
++select * from works limit 100
+
+# 2021-11-16 14:26:59.694931
++ls
+
+# 2021-11-16 14:27:02.461464
++exit
+
+# 2021-11-16 16:38:50.772554
++exit
+
+# 2021-11-16 16:53:32.274942
++select  * from work as w, edition as e where e.workid = w.id limit 10;
+
+# 2021-11-16 16:53:39.346518
++select  * from work as w, editions as e where e.workid = w.id limit 10;
+
+# 2021-11-16 16:53:55.825515
++.tables;
+
+# 2021-11-16 16:54:55.846990
++select  * from work as w, editions as e where e.workid = w.id limit 10;
+
+# 2021-11-16 16:55:02.070233
++select  * from work as w, edition as e where e.workid = w.id limit 10;
+
+# 2021-11-16 16:55:12.917640
++exit
+
+# 2021-11-16 17:02:58.458702
++select editionid, count(*) from editionauthor group by editionid limit 100;
+
+# 2021-11-16 17:03:19.912046
++select editionid, count(*) from editioisbns group by editionid limit 100;
+
+# 2021-11-16 17:03:36.888306
++select editionid, count(*) from editionisbns group by editionid limit 100;
+
+# 2021-11-16 17:04:38.292899
++select editionid, count(*) as c from editionisbns group by editionid order by c desc limit 100;
+
+# 2021-11-16 17:10:27.469400
++select editionid, count(*) as c from editionisbns group by editionid having c > 1 order by c asc limit 100;
+
+# 2021-11-16 17:11:48.480533
++select editionid, count(*) as c from editionisbns group by editionid having c > 2 order by c asc limit 100;
+
+# 2021-11-16 21:06:35.307803
++exit
+
+# 2021-11-16 21:27:11.599099
++select count(*) from editionauthor;
+
+# 2021-11-16 21:27:15.694101
++exit
+
+# 2021-11-16 21:44:29.918696
++vacuum
+
+# 2021-11-16 21:45:06.540314
++exit
+
+# 2021-11-16 21:45:25.636876
++.tables
+
+# 2021-11-16 21:45:34.940383
++describe author;
+
+# 2021-11-16 21:45:48.242233
++describe authorworks
+
+# 2021-11-16 21:45:56.019100
++describe workauthor
+
+# 2021-11-16 21:46:03.851864
++describe editionauthor
+
+# 2021-11-16 21:46:45.433186
++describe authorlinks;
+
+# 2021-11-16 21:47:16.979128
++exit
+
+# 2021-11-17 18:19:14.324574
++select authorid, count(*) as c from authorship group by authorid having c > 1000;
+
+# 2021-12-05 09:30:42.116953
++select authorid, name, where wikidata <> null;
+
+# 2021-12-05 09:30:50.339663
++select authorid, name from author where wikidata <> null;
+
+# 2021-12-05 09:30:54.027338
++show author
+
+# 2021-12-05 09:30:56.025482
++show author;
+
+# 2021-12-05 09:30:58.667273
++describe author;
+
+# 2021-12-05 09:31:13.802658
++select authorid from author where wikidata <> null;
+
+# 2021-12-05 09:31:31.632324
++select  * from author limit 111;
+
+# 2021-12-05 09:31:34.577704
++exit
+
+# 2021-12-27 19:57:50.176685
++describe tables;
+
+# 2021-12-27 19:57:56.607638
++show editions;
+
+# 2021-12-27 19:58:02.143273
++use editions;
+
+# 2021-12-27 19:58:04.479178
++ls
+
+# 2021-12-27 19:58:06.647075
++show tables;
+
+# 2021-12-27 19:58:11.262745
++.tables
+
+# 2021-12-27 19:58:18.110437
++use main
+
+# 2021-12-27 19:58:23.110258
++.tables
+
+# 2021-12-27 19:58:28.222041
++exit
+
+# 2021-12-27 19:59:14.012034
++.tables
+
+# 2021-12-27 19:59:28.243484
++desc edition
+
+# 2021-12-27 19:59:35.675184
++quit
+
+# 2021-12-27 20:07:13.134452
++select * from editions limit 1;
+
+# 2021-12-27 20:07:36.764460
++exit
+
+# 2021-12-27 20:08:58.215025
++.tables
+
+# 2021-12-27 20:09:03.502674
++.databases
+
+# 2021-12-27 20:09:06.726549
++exit
+
+# 2021-12-27 20:09:14.933711
++.databases
+
+# 2021-12-27 20:09:18.613730
++use main
+
+# 2021-12-27 20:09:21.869652
++.tables
+
+# 2021-12-27 20:09:24.837391
++exit
+
+# 2021-12-27 20:09:31.716523
++.tables
+
+# 2021-12-27 20:09:38.028701
++use isbn
+
+# 2021-12-27 20:09:42.164483
++.tables
+
+# 2021-12-27 20:09:46.412335
++describe
+
+# 2021-12-27 20:09:54.291945
++exit
+
+# 2021-12-27 20:10:06.075419
++.tables
+
+# 2021-12-27 20:10:29.810250
++exit
+
+# 2021-12-27 20:49:22.683904
++.tables
+
+# 2021-12-27 20:49:29.956467
++select * from editions limit 1;
+
+# 2021-12-27 20:49:33.579469
++select * from edition limit 1;
+
+# 2021-12-27 20:49:44.290919
++select * from edition limit 1111111;
+
+# 2021-12-27 20:49:57.218697
++select * from edition limit 111;
+
+# 2021-12-27 20:50:18.129328
++select * from edition limit 1111;
+
+# 2021-12-27 20:50:26.784472
++exit
+
+# 2021-12-27 21:06:29.555054
++.tables
+
+# 2021-12-27 21:06:40.322257
++truncate editions;
+
+# 2021-12-27 21:06:57.193871
++delete * from  editions;
+
+# 2021-12-27 21:07:05.531146
++delete from editions;
+
+# 2021-12-27 21:07:12.690162
++vaacum
+
+# 2021-12-27 21:07:15.514541
++vacuum
+
+# 2021-12-27 21:07:22.778345
++exit
+
+# 2021-12-27 21:09:45.344166
++select olid,  count(*) from edition group by isbn order by count(*) limit 100;
+
+# 2021-12-27 21:10:02.533406
++select olid,  count(*) from edition group by isbn order by count(*) desc limit 100;
+
+# 2021-12-27 21:10:28.236576
++select isbn,  count(*) from edition group by isbn order by count(*) desc limit 100;
+
+# 2021-12-27 21:15:20.321749
++exit
+
+# 2021-12-28 09:40:24.340082
++select * from edition where isbn = '9781107615403';
+
+# 2021-12-28 09:40:52.405295
++select * from edition where isbn = '8601200710854';
+
+# 2021-12-28 09:42:39.546663
++select * from edition where isbn = '9781551927022';
+
+# 2021-12-28 09:42:52.226233
++describe edition;
+
+# 2021-12-28 09:43:32.889398
++select * from editon where olid = "82537";
+
+# 2021-12-28 09:43:39.984977
++select * from edition where olid = 8253";
+
+# 2021-12-28 09:43:44.121112
++select * from edition where olid = 8253;
+
+# 2021-12-28 09:44:25.088156
++select * from edition where olid > 8253 limit 1;
+
+# 2021-12-28 09:45:03.727925
++select * from edition where isbn = 9780295987736 limit 1;
+
+# 2021-12-28 09:45:07.959341
++select * from edition where isbn = 9780295987736;
+
+# 2021-12-28 09:45:22.735400
++select * from editon where olid = 82537;
+
+# 2021-12-28 09:45:27.615440
++select * from edition where olid = 82537;
+
+# 2021-12-28 09:46:23.805907
++exit
+
+# 2021-12-28 10:40:52.322479
++INSERT INTO work SELECT distinct olid FROM workisbn;
+
+# 2021-12-28 10:40:59.073182
++describe work
+
+# 2021-12-28 10:41:16.518622
++drop table work
+
+# 2021-12-28 10:41:21.400004
++exit
+
+# 2021-12-28 10:43:03.034655
++.tables
+
+# 2021-12-28 10:43:06.370755
++drop author;
+
+# 2021-12-28 10:43:13.834694
++drop table author;
+
+# 2021-12-28 10:44:08.520967
++INSERT INTO works SELECT distinct olid FROM workisbn;
+
+# 2021-12-28 10:44:55.014181
++INSERT INTO works SELECT distinct olid, null FROM workisbn;
+
+# 2021-12-28 10:46:24.208065
++INSERT INTO isbns SELECT distinct isbn FROM workisbn;
+
+# 2021-12-28 10:47:18.341474
++INSERT INTO isbns SELECT distinct isbn FROM workisbn On conflict ignore;
+
+# 2021-12-28 10:48:26.324361
++INSERT INTO isbns SELECT distinct isbn FROM workisbn On conflict IGNORE;
+
+# 2021-12-28 10:48:42.483449
++INSERT INTO isbns SELECT distinct isbn FROM workisbn ON CONFLICT IGNORE;
+
+# 2021-12-28 10:49:10.210361
++exit
+
+# 2021-12-28 10:51:40.937874
++INSERT or ignore INTO isbns SELECT distinct isbn FROM workisbn;
+
+# 2021-12-28 10:52:20.000279
++describe isbnwork
+
+# 2021-12-28 10:52:25.840962
++describe workisbn
+
+# 2021-12-28 10:52:36.104693
++quit
+
+# 2021-12-28 10:56:30.292595
++delete from workisbn where len(isbn) <> 13;
+
+# 2021-12-28 10:56:39.747568
++delete from workisbn where length(isbn) <> 13;
+
+# 2021-12-28 10:57:05.068527
++INSERT or ignore INTO isbns SELECT distinct isbn FROM workisbn;
+
+# 2021-12-28 11:00:06.388334
++select * from workisbn where olid = 82537;
+
+# 2021-12-28 11:00:33.922418
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:00:47.137726
++vacuum
+
+# 2021-12-28 11:00:58.112930
++exit
+
+# 2021-12-28 11:01:28.184479
++ls
+
+# 2021-12-28 11:01:35.735464
++describe .tables
+
+# 2021-12-28 11:01:37.735044
++.table
+
+# 2021-12-28 11:01:40.949480
++.tables
+
+# 2021-12-28 11:01:50.166470
++describe workisbns
+
+# 2021-12-28 11:02:17.685391
++INSERT or ignore INTO workisbns FROM workisbn;
+
+# 2021-12-28 11:02:32.468706
++INSERT or ignore INTO workisbns SELECT * FROM workisbn;
+
+# 2021-12-28 11:03:05.705701
++exit
+
+# 2021-12-28 11:06:59.286589
++vacuum
+
+# 2021-12-28 11:09:55.742023
++drop table workisbn;
+
+# 2021-12-28 11:10:15.109291
++tables
+
+# 2021-12-28 11:11:01.202880
++exit
+
+# 2021-12-28 11:12:14.816855
++tableformat = simple
+
+# 2021-12-28 11:12:23.895015
++tableformat = 'simple'
+
+# 2021-12-28 11:12:30.046720
++tableformat = grid;
+
+# 2021-12-28 11:12:33.862648
++tableformat=grid;
+
+# 2021-12-28 11:12:40.830555
++tableformat = 'grid';
+
+# 2021-12-28 11:12:55.629503
++table_format = plain;
+
+# 2021-12-28 11:13:02.669300
++table_format = plain
+
+# 2021-12-28 11:13:07.548897
++set table_format = plain
+
+# 2021-12-28 11:13:21.972604
++table_format = 'plain'
+
+# 2021-12-28 11:13:29.436405
++table_format = plain
+
+# 2021-12-28 11:13:46.075253
++.mode
+
+# 2021-12-28 11:13:48.923100
++.mode plain
+
+# 2021-12-28 11:13:54.034845
++describe workisbns
+
+# 2021-12-28 11:14:14.306402
++.mode pipe
+
+# 2021-12-28 11:14:15.690107
++describe workisbns
+
+# 2021-12-28 11:14:22.849457
++.mode ascii
+
+# 2021-12-28 11:14:24.009443
++describe workisbns
+
+# 2021-12-28 11:14:39.952659
++.mode grid
+
+# 2021-12-28 11:14:40.969028
++describe workisbns
+
+# 2021-12-28 11:14:46.160747
++.mode fancygrid
+
+# 2021-12-28 11:14:48.792530
++.mode fancy_grid
+
+# 2021-12-28 11:14:50.728168
++describe workisbns
+
+# 2021-12-28 11:15:09.119345
++describe simple
+
+# 2021-12-28 11:15:13.847132
++.mode simple
+
+# 2021-12-28 11:15:15.239123
++describe simple
+
+# 2021-12-28 11:15:20.382796
++describe workisbns
+
+# 2021-12-28 11:15:33.870801
++.mode json
+
+# 2021-12-28 11:15:35.814033
++describe workisbns
+
+# 2021-12-28 11:15:49.830022
++.mode double
+
+# 2021-12-28 11:15:51.333730
++describe workisbns
+
+# 2021-12-28 11:16:01.772836
++.mode github
+
+# 2021-12-28 11:16:03.340625
++describe workisbns
+
+# 2021-12-28 11:16:31.299571
++.mode fancy_grid
+
+# 2021-12-28 11:16:33.411314
++describe workisbns
+
+# 2021-12-28 11:18:31.022169
++exit
+
+# 2021-12-28 11:18:48.069781
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:19:00.204979
++.mode fancy_grid
+
+# 2021-12-28 11:19:02.108836
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:21:50.789294
++exit
+
+# 2021-12-28 11:22:14.484844
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:23:20.242621
++\T fancy_grid
+
+# 2021-12-28 11:23:23.537941
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:23:50.784804
++\T grid
+
+# 2021-12-28 11:23:52.200857
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:24:01.248444
++\T ascii
+
+# 2021-12-28 11:24:02.640545
++select * from workisbn where isbn = 9780320037788;
+
+# 2021-12-28 11:24:40.349657
++select * from workisbn where olid = 82537;
+
+# 2021-12-28 11:25:03.358472
++vacuum
+
+# 2021-12-28 11:25:13.267561
++exit
+
+# 2021-12-28 11:25:29.490840
++.tables
+
+# 2021-12-28 11:25:39.539718
++exit
+
+# 2021-12-28 11:26:10.897669
++drop table isbn;
+
+# 2021-12-28 11:26:16.690929
++drop table workisbn
+
+# 2021-12-28 11:26:33.185368
++drop table publication
+
+# 2021-12-28 11:26:42.312859
++drop table workisbn
+
+# 2021-12-28 11:26:47.392585
++.tables
+
+# 2021-12-28 11:26:53.408527
++drop table edition
+
+# 2021-12-28 11:27:05.167719
++vacuum
+
+# 2021-12-28 11:27:20.327150
++describe workisbns
+
+# 2021-12-28 11:27:26.639423
++exit
+
+# 2021-12-28 11:38:31.704477
++vacuum
+
+# 2021-12-28 11:40:00.961501
++select * from workisbns where work not in (select olid from works)
+
+# 2021-12-28 11:40:36.473890
++select * from workisbns where work not in (select olid from works) limit 10;
+
+# 2021-12-28 11:41:50.463035
++INSERT or ignore INTO works SELECT work FROM workisbns;
+
+# 2021-12-28 11:42:00.925940
++INSERT or ignore INTO works SELECT work, null FROM workisbns;
+
+# 2021-12-28 11:42:39.700450
++INSERT or ignore INTO isbns SELECT isbn FROM workisbns;
+
+# 2021-12-28 11:43:59.086202
++describe workisbns
+
+# 2021-12-28 11:44:02.038175
++describe works
+
+# 2021-12-28 11:44:17.605589
++select * from works limit 100;
+
+# 2021-12-28 11:44:34.493003
++INSERT or ignore INTO isbns SELECT isbn FROM workisbns;
+
+# 2021-12-28 11:49:48.031839
++select * from workisbns where isbn not in (select isbn from isbns) limit 10;
+
+# 2021-12-28 11:50:02.311436
++select * from workisbns where isbn not in (select isbn from isbns) limit 100;
+
+# 2021-12-28 11:50:44.381567
++insert into isbns (select isbn from workisbns where isbn not in (select isbn from isbns));
+
+# 2021-12-28 11:51:37.537465
++describe isbns
+
+# 2021-12-28 11:51:41.906683
++describe works
+
+# 2021-12-28 11:51:48.682659
++describe workisbns
+
+# 2021-12-28 11:52:17.121082
++.schema
+
+# 2021-12-28 11:53:13.022798
++select * from workisbns where isbn <= 9780000000000;
+
+# 2021-12-28 11:55:05.553237
++delete from workisbns where isbn <= 9780000000000;
+
+# 2021-12-28 11:55:17.417091
++INSERT or ignore INTO isbns SELECT isbn FROM workisbns;
+
+# 2021-12-28 11:55:50.534890
++select * from workisbns where isbn @ 9790000000000;
+
+# 2021-12-28 11:55:57.494524
++select * from workisbns where isbn > 9790000000000;
+
+# 2021-12-28 11:56:18.365830
++select * from workisbns where isbn > 9800000000000;
+
+# 2021-12-28 11:57:26.810835
++delete from workisbns where isbn > 9800000000000;
+
+# 2021-12-28 11:57:41.178193
++INSERT or ignore INTO isbns SELECT isbn FROM workisbns;
+
+# 2021-12-28 11:58:12.496665
++vacuum
+
+# 2021-12-28 11:59:56.852598
++select work,count(*) from workisbns group by work having count(*) > 4;
+
+# 2021-12-28 12:00:10.865404
++select work,count(*) from workisbns group by work having count(*) > 4 order by count(*);
+
+# 2021-12-28 12:00:21.658722
++select work,count(*) from workisbns group by work having count(*) > 4 order by count(*) desc;
+
+# 2021-12-28 12:10:43.995762
++select work,count(*) from workisbns group by isbns having count(*) > 4 order by count(*) desc;
+
+# 2021-12-28 12:10:50.387406
++select work,count(*) from workisbns group by isbn having count(*) > 4 order by count(*) desc;
+
+# 2021-12-28 12:13:30.485478
++select work from workisbns group by isbn having count(*) > 10  order by count(*) desc;
+
+# 2021-12-28 12:14:32.890540
++select * from workisbns where work in (select work from workisbns group by isbn having count(*) > 10  order by count(*) desc);
+
+# 2021-12-28 12:16:16.621330
++select * from workisbns where work in (select work from workisbns group by isbn having count(*) > 20);
+
+# 2021-12-28 12:16:51.444469
++select distinct work from workisbns where work in (select work from workisbns group by isbn having count(*) > 20);
+
+# 2021-12-28 12:18:45.279409
++select distinct work fselect work from workisbns group by isbn having count(*) > 20;
+
+# 2021-12-28 12:19:06.838011
++select work from workisbns group by isbn having count(*) > 20;
+
+# 2021-12-28 12:19:45.227934
++ls
+
+# 2021-12-28 12:20:22.154415
++select work, count(*) from workisbns group by isbn having count(*) > 20;
+
+# 2021-12-28 12:20:47.832991
++select work, count(*) from workisbns group by isbn having count(*) > 20 order by count(*) desc;
+
+# 2021-12-28 12:22:07.493194
++select * from workisbns where isbn =  9781849710398;
+
+# 2021-12-28 12:24:19.087311
++select work from workisbns where isbn in (select isbn from workisbns group by isbn having count(*) > 20);
+
+# 2021-12-28 12:24:46.077952
++select * from workisbns where isbn in (select isbn from workisbns group by isbn having count(*) > 20);
+
+# 2021-12-28 12:25:08.237145
++select * from workisbns where isbn in (select isbn from workisbns group by isbn having count(*) > 20) order by isbn;
+
+# 2021-12-28 12:29:06.201788
++select * from workisbns where isbn in (select isbn from workisbns group by isbn having count(*) = 5) order by isbn;
+
+# 2021-12-28 12:34:30.922785
++exit
+
+# 2021-12-28 12:34:36.529972
++vacuum
+
+# 2021-12-28 12:34:40.192303
++exit
+
+# 2021-12-28 12:36:38.404897
++select work, count(*) from workisbns group by work order by count(*) desc limit 100;
+
+# 2021-12-28 12:37:41.793768
++exit
+
+# 2021-12-28 12:57:39.064757
++drop table workswikidata;
+
+# 2021-12-28 12:57:47.073376
++drop table workwikidata;
+
+# 2021-12-28 12:57:51.160725
++exit
+
+# 2021-12-28 12:58:02.912000
++.tables
+
+# 2021-12-28 12:58:10.072390
++exit
+
+# 2021-12-28 12:59:59.460265
++select work, count(*) from workisbns group by work order by count(*) desc limit 100;
+
+# 2021-12-28 13:02:33.171773
++select work, count(*) from workisbns as wi join workswikidata as ww on wi.work==ww.work and wikidata as w on w.q == ww.wikidata group by work order by count(*) desc limit 100;
+
+# 2021-12-28 13:02:52.795424
++select work, count(*) from workisbns as wi join workswikidata as ww on wi.work==ww.work join wikidata as w on w.q == ww.wikidata group by work order by count(*) desc limit 100;
+
+# 2021-12-28 13:03:06.344738
++select work, count(*) from workisbns as wi join workwikidata as ww on wi.work==ww.work join wikidata as w on w.q == ww.wikidata group by work order by count(*) desc limit 100;
+
+# 2021-12-28 13:03:38.792759
++select wi.work, w.label, count(*) from workisbns as wi join workwikidata as ww on wi.work==ww.work join wikidata as w on w.q == ww.wikidata group by work order by count(*) desc limit 100;
+
+# 2021-12-28 13:03:48.128458
++select wi.work, w.label, count(*) from workisbns as wi join workwikidata as ww on wi.work==ww.work join wikidata as w on w.q == ww.wikidata group by wi.work order by count(*) desc limit 100;
+
+# 2021-12-28 13:09:52.263504
++    select wi.work, w.label
++    from workisbns as wi
++    right join workwikidata as ww on wi.work==ww.work
++    join wikidata as w on w.q == ww.wikidata
++
+
+# 2021-12-28 13:10:01.815032
++    select wi.work, w.label
++    from workisbns as wi
++    join workwikidata as ww on wi.work==ww.work
++    join wikidata as w on w.q == ww.wikidata
++
+
+# 2021-12-28 13:10:10.766653
++    select wi.work, w.label
++    from workisbns as wi
++    inner join workwikidata as ww on wi.work==ww.work
++    join wikidata as w on w.q == ww.wikidata
++
+
+# 2021-12-28 13:11:26.945528
++    select wi.work, w.label
++    from
++    workwikidata as ww
++    inner join wikidata as w on w.q == ww.wikidata
++
+
+# 2021-12-28 13:11:35.978501
++    select ww.work, w.label
++    from
++    workwikidata as ww
++    inner join wikidata as w on w.q == ww.wikidata
++
+
+# 2021-12-28 13:13:59.530256
++q
+
+# 2021-12-28 13:14:01.330009
++exit
+
+# 2021-12-28 13:14:10.850418
++select * from workswithwikidata;
+
+# 2021-12-28 13:14:51.695797
++select * from workswithwikidata group by wikidata;
+
+# 2021-12-28 13:14:55.425168
++select * from workswithwikidata group by q;
+
+# 2021-12-28 13:14:59.304788
++select * from workswithwikidata group by wikidata;
+
+# 2021-12-28 13:15:09.670950
++describe workswithwikidata;
+
+# 2021-12-28 13:15:29.215663
++select * from workwikidata group by wikidata;
+
+# 2021-12-28 13:15:52.646292
++select wikidata, count(*) from workwikidata group by wikidata;
+
+# 2021-12-28 13:16:13.685456
++select wikidata, count(*) from workwikidata group by wikidata having count(*) > 5;
+
+# 2021-12-28 13:16:20.212253
++select wikidata, count(*) from workwikidata group by wikidata having count(*) > 4;
+
+# 2021-12-28 13:16:23.426846
++select wikidata, count(*) from workwikidata group by wikidata having count(*) > 3;
+
+# 2021-12-28 13:17:17.426551
++select olid from workwikidata where select wikidata from workwikidata group by wikidata having count(*) > 3;
+
+# 2021-12-28 13:17:37.929442
++select olid from workwikidata where wikidata in (select wikidata from workwikidata group by wikidata having count(*) > 3);
+
+# 2021-12-28 13:17:59.270842
++select work from workwikidata where wikidata in (select wikidata from workwikidata group by wikidata having count(*) > 3);
+
+# 2021-12-28 13:19:01.421467
++vacuum
+
+# 2021-12-28 13:23:01.762083
++     select work.work, wiki.q wiki.label
++           from workwikidata as work
++           inner join wikidata as wiki
++            on wiki.q == work.wikidata
++;
+
+# 2021-12-28 13:23:12.642166
++     select work, wiki.q wiki.label
++           from workwikidata as work
++           inner join wikidata as wiki
++            on wiki.q == work.wikidata;
+
+# 2021-12-28 13:23:22.353825
++     select work.work, wiki.q, wiki.label
++           from workwikidata as work
++           inner join wikidata as wiki
++            on wiki.q == work.wikidata;
+
+# 2021-12-28 13:24:13.031392
++exit
+
+# 2021-12-28 13:25:19.588313
++select * from workswithwikidata;
+
+# 2021-12-28 14:06:11.166748
++exit
+
+# 2021-12-28 14:14:35.322244
++vacuum
+
+# 2021-12-28 14:15:04.499122
++select * from authorwikidata limit 11;
+
+# 2021-12-28 14:15:35.321669
++exit
+
+# 2021-12-28 14:17:37.653269
++select * from authorswithwikidata limit 11;
+
+# 2021-12-28 14:17:55.402939
++describe authorswithwikidata;
+
+# 2021-12-28 14:18:00.964848
++describe authorwikidata;
+
+# 2021-12-28 14:18:16.868410
++exit
+
+# 2021-12-28 14:18:56.965125
++drop table authorwikidata
+
+# 2021-12-28 14:19:05.709306
++exit
+
+# 2021-12-29 09:57:40.322873
++VACUUM
+
+# 2021-12-29 10:03:52.989342
++SELECT isbn, count(*) as c from workisbns group by isbn having c > 1 order by c desc;
+
+# 2021-12-29 12:25:15.289470
++VACUUM
+
+# 2021-12-29 13:48:45.169311
++exit
+
+# 2021-12-29 13:54:06.106268
++select distinct type from wikidata;
+
+# 2021-12-29 13:56:07.636011
++update wikidata set type = null where type == 43229;
+
+# 2021-12-29 13:56:09.875738
++select distinct type from wikidata;
+
+# 2021-12-29 13:56:12.898003
++exit
+
+# 2021-12-29 13:57:28.183396
++select distinct type from wikidata;
+
+# 2021-12-29 14:24:50.889747
++describe subjects
+
+# 2021-12-29 14:24:54.505165
++describe subject
+
+# 2021-12-29 14:25:53.116607
++describe subjects
+
+# 2021-12-29 14:28:35.532472
++describe subjectwikidata
+
+# 2021-12-29 14:28:44.846078
++drop table subjectwikidata
+
+# 2021-12-29 14:28:58.635931
++describe subjectwikidata
+
+# 2021-12-29 15:20:47.878624
++describe wikidata;
+
+# 2021-12-29 15:21:39.707002
++delete from wikidata where label == null and type == null;
+
+# 2021-12-29 15:22:11.871596
++delete from wikidata where label is null and type is null;
+
+# 2021-12-29 15:22:29.727598
++exit
+
+# 2021-12-29 15:22:39.974624
++VACUUM
+
+# 2021-12-29 15:22:55.783294
++exit
+
+# 2021-12-29 15:25:54.559052
++describe authorswithwikidata
+
+# 2021-12-29 15:26:02.022854
++exit
+
+# 2021-12-29 15:27:54.042079
++select  d from workswithwikidata limit 11;
+
+# 2021-12-29 15:28:02.368861
++select * from workswithwikidata limit 11;
+
+# 2021-12-29 15:28:12.880265
++select * from workswithwikidata limit 11 order by qrank;
+
+# 2021-12-29 15:28:25.751566
++select * from workswithwikidata order by qrank limit 11;
+
+# 2021-12-29 15:28:39.039062
++select * from workswithwikidata order by qrank desc limit 11;
+
+# 2021-12-29 15:37:23.492798
++exit
+
+# 2021-12-29 15:40:19.580908
++select * from workswithwikidata order by qrank desc limit 11;
+
+# 2021-12-29 15:40:26.300570
++exit
+
+# 2021-12-29 15:42:11.496001
++describe wikidata;
+
+# 2021-12-29 15:42:15.615433
++exit
+
+# 2021-12-29 15:42:23.686918
++describe wikidata;
+
+# 2021-12-29 15:42:31.495201
++exit
+
+# 2021-12-29 15:43:57.043977
++drop view *;
+
+# 2021-12-29 15:44:02.083300
++exit
+
+# 2021-12-29 15:44:11.601638
++drop view *;
+
+# 2021-12-29 15:44:21.762064
++drop VIEW;
+
+# 2021-12-29 15:44:29.529866
++.views
+
+# 2021-12-29 15:44:31.337529
++.view
+
+# 2021-12-29 15:44:33.601830
++.tables
+
+# 2021-12-29 15:44:40.897075
++drop view workswithwikidata
+
+# 2021-12-29 15:44:54.184679
++drop view subjectswithwikidata
+
+# 2021-12-29 15:45:05.703935
++drop view authorswithwikidata
+
+# 2021-12-29 15:45:12.215613
++exit
+
+# 2021-12-29 15:46:02.830042
++.tables
+
+# 2021-12-29 15:46:10.555218
++drop table wikidata_new_2f50168b4b80;
+
+# 2021-12-29 15:46:19.748302
++drop table wikidata_new_61aa1679e58e;
+
+# 2021-12-29 15:46:27.059799
++drop table wikidata_new_728b0d63bf01;
+
+# 2021-12-29 15:46:32.187608
++.tables
+
+# 2021-12-29 15:46:38.803575
++select * from workswithwikidata order by qrank desc limit 11;
+
+# 2021-12-29 15:47:04.890072
++select * from workswithwikidata order by qrank desc limit 111;
+
+# 2021-12-29 15:50:26.192284
++select * from workswithwikidata where work in (select olid from isbns group by isbn order by count(*) having count(*) > 51) order by qrank desc limit 111;
+
+# 2021-12-29 15:50:42.216096
++select * from workswithwikidata where work in (select olid from isbns group by isbn having count(*) > 51) order by qrank desc limit 111;
+
+# 2021-12-29 15:50:53.207254
++select * from workswithwikidata where work in (select work from isbns group by isbn having count(*) > 51) order by qrank desc limit 111;
+
+# 2021-12-29 16:06:25.888950
++VACUUM
+
+# 2021-12-29 16:08:58.723099
++exit

@@ -1,0 +1,23 @@
+{
+    "__meta__": {
+        "about": "HTTPie session file",
+        "help": "https://httpie.org/doc#sessions",
+        "httpie": "2.5.0"
+    },
+    "auth": {
+        "password": null,
+        "type": null,
+        "username": null
+    },
+    "cookies": {
+        "session": {
+            "expires": null,
+            "path": "/",
+            "secure": false,
+            "value": "/people/davidscotson%2C2021-10-10T19%3A44%3A38%2Cadaf5%24d4e4a0b555b6fac26bb4d981ae1d4b72"
+        }
+    },
+    "headers": {
+        "Accept": "application/json, */*;q=0.5"
+    }
+}

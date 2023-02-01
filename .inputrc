@@ -1,6 +1,12 @@
 set show-mode-in-prompt on
 set editing-mode vi
 
+set colored-stats on
+set colored-completion-prefix on
+
+set completion-ignore-case On
+set show-all-if-ambiguous On
+
 # operate-and-get-next allows you to navigagte to history
 # and then keep executing commands successively from 
 # that point onwards
@@ -89,7 +95,4 @@ Control-l: clear-screen
 set keymap vi-insert
 Control-l: clear-screen
 Control-w: backward-kill-word
-$endif
-set keymap vi-insert
-# these are only in insert mode
 $endif

@@ -26,6 +26,8 @@ if status is-interactive && test -f ~/.config/fish/custom/git_fzf.fish
     git_fzf_key_bindings
 end
 
+fzf_configure_bindings --history=
+
 fish_ssh_agent
 
 fish_add_path   /opt/homebrew/sbin
@@ -51,3 +53,5 @@ abbr -a -U -- gmt 'git mergetool'
 abbr -a -U -- yrb 'yarn run build'
 abbr -a -U -- yrr 'yarn run run'
 
+# Created by `pipx` on 2022-11-21 21:28:33
+set PATH $PATH /Users/davidscotson/.local/bin

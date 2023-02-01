@@ -1,0 +1,10 @@
+{
+	"optOut": false,
+	"lastUpdateCheck": 1657641107493,
+	"update": {
+		"latest": "7.1.1",
+		"current": "7.0.0",
+		"type": "minor",
+		"name": "web-ext"
+	}
+}

@@ -8,6 +8,9 @@ bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//
 " not found error?
 bind yi composite js document.querySelector("[data-issue-key]").getAttribute('data-issue-key') | clipboard yank
 
+" go to HN discussion https://hn.algolia.com/?q=https%3A%2F%2Fcsclub.uwaterloo.ca%2Fresources%2Ftech-talks%2Fcory-doctorow-the-war-on-general-purpose-computing%2F
+bind gy js document.location.href.replace("://","://hn.algolia.com/?q=")
+
 " yank book
 
 " allow for fzf style limitations like 
@@ -18,9 +21,12 @@ set hintnames numeric
 bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
 bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
 
-document.querySelectr("[data-issue-key]").getAttribute('data-issue-key');
-" " b for buffer
-" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" Comment toggler for Reddit, Hacker News and Lobste.rs
+bind ;c hint -Jc [class*="expand"],[class*="togg"],[class="comment_folder"]
+
+" make d take you to the left (I find it much less confusing)
+bind d composite tabprev; tabclose #
+bind D tabclose
 
 :setnull searchurls
 set searchurls.!az https://www.amazon.co.uk/s/ref=nb_sb_noss?field-keywords=%s
@@ -42,6 +48,7 @@ set searchurls.wp https://en.wikipedia.org/w/index.php?search=%s&title=Special%3
 set searchurls.wd https://www.wikidata.org/w/index.php?title=Special%3ASearch&search=%s
 set searchurls.ww https://en.wiktionary.org/w/index.php?title=Special%3ASearch&search=%s
 set searchurls.yt https://www.youtube.com/results?search_query=%s
+set searchurls.hn https://hn.algolia.com/?q=%s
 
 autocmd BeforeRequest *://www.reddit.com/* js tri.excmds.urlmodify("-t", "www", "old")
 autocmd BeforeRequest *://*.twitter.com/* js tri.excmds.urlmodify("-r", "(?mobile.)twitter.com", "nitter.net")
