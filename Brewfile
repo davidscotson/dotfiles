@@ -40,7 +40,7 @@ brew "wget"
 brew "less"
 brew "exa"
 brew "openjdk"
-brew "asdf"
+brew "mise"
 brew "bat"
 
 brew "neovim"
