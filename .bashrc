@@ -39,3 +39,4 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 alias kdlang='rg --glob="**/lang/en/*.php"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

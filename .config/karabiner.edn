@@ -13,7 +13,7 @@
 
 ;; TODO done: caps lock double shift, gu'[ etc.
 ;  ; TODO  arrows on alt/opt hjkl, means can use jk for other menus
-;; TODO  tab, change tab, change tab backwards (actual tab, plus mirror?)
+;; TODO  tab, change tab, change tab backwards (actual tab, plus mirror?) shift-H/L
 
 ;; TODO map vim keys to standard controls? ctrl-o, i for back/forward?, change tab, bracket key left-right
 ;; TODO an app switcher hyper key to jump between: terminal (tabs?), firefox (tabs?), chrome, finder (folders)?
@@ -48,7 +48,8 @@
     {:des "double key mods shift/command"
      :rules [
           [[:s :d] [:left_control] nil {:alone :tab}]
-          [[:k :l] [:right_control]]
+          ;;;[[:a :s :d] [:left_control :left_shift]]
+          [[:k :l] [:right_control]] ;; delay or something to prevent nt getting eaten?
 
           [[:c :v] [:left_shift] nil {:alone :escape}] ;; jk escape
           [[:m :comma] [:right_shift] nil {:alone :escape}] ;; jk escape mirror
@@ -98,7 +99,7 @@
               [:3 :vk_none]
               [:4 :vk_none]
               [:5 :vk_none]
-              [:6 :vk_none]
+              ; [:6 :vk_none]
               [:7 :vk_none]
               [:8 :vk_none]
               [:9 :vk_none]
@@ -116,22 +117,18 @@
               ]}
     {:des "option hjkl = arrows"
         :rules[
-              [:left_arrow :vk_none]
-              [:right_arrow :vk_none]
-              [:up_arrow :vk_none]
-              [:down_arrow :vk_none]
               [:!Oc :down_arrow]
               [:!Ov :up_arrow]
               [:!Op :right_arrow]
               [:!Oj :left_arrow]
               ]}
-    {:des "disable standard modifiers for training purposes"
-        :rules[
-              [:left_shift :vk_none]
-              [:left_control :vk_none]
-              [:right_shift :vk_none]
-              [:right_control :vk_none]
-              ]}
+    ; {:des "disable standard modifiers for training purposes"
+    ;     :rules[
+    ;           [:left_shift :vk_none]
+    ;           [:left_control :vk_none]
+    ;           [:right_shift :vk_none]
+    ;           [:right_control :vk_none]
+    ;           ]}
 
     {:des "right-command to enter when alone"
           :rules [[:right_command :right_command  nil {:alone :return_or_enter}]]}

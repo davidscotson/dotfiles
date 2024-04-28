@@ -10,3 +10,4 @@ fi
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
+. "$HOME/.cargo/env"
