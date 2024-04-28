@@ -46,3 +46,4 @@ abbr -a -- vg "nvim '+Telescope live_grep'"
 
 # Created by `pipx` on 2022-11-21 21:28:33
 set PATH $PATH /Users/davidscotson/.local/bin
+~/.local/bin/mise activate fish | source
