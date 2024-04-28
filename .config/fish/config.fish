@@ -21,13 +21,6 @@ function fish_user_key_bindings
     set fish_cursor_visual block
 end
 
-if status is-interactive && test -f ~/.config/fish/custom/git_fzf.fish
-    source ~/.config/fish/custom/git_fzf.fish
-    git_fzf_key_bindings
-end
-
-fzf_configure_bindings --history=
-
 fish_ssh_agent
 
 fish_add_path   /opt/homebrew/sbin
@@ -35,23 +28,21 @@ fish_add_path   /opt/homebrew/bin
 fish_add_path   --append --move /usr/local/sbin
 fish_add_path   --append --move /usr/local/bin
 
-abbr -a -U -- gru 'git remote update'
-abbr -a -U -- ga 'git add'
-abbr -a -U -- gb 'git branch --verbose'
-abbr -a -U -- gsc 'git switch -c '
-abbr -a -U -- gcb 'git switch -c '
-abbr -a -U -- gd 'git diff'
-abbr -a -U -- gds 'git diff --staged'
-abbr -a -U -- gdu 'git diff @{upstream}..HEAD'
-abbr -a -U -- gpu 'git pull --upstream --ff-only --autostash'
-abbr -a -U -- gl 'git log'
-abbr -a -U -- glol 'git log --oneline --no-abbrev-commit'
-abbr -a -U -- gss 'git status --short'
-abbr -a -U -- gdt 'git difftool'
-abbr -a -U -- gmt 'git mergetool'
+# git
+abbr -a -- ga 'git add' 
+abbr -a -- gst 'git status' 
+abbr -a -- gss 'git status --short'
+abbr -a -- gds 'git diff --staged'
+abbr -a -- gb 'git branch'
+abbr -a -- gd 'git diff'
+abbr -a -- gco 'git checkout'
+abbr -a -- glol 'git log --oneline --no-abbrev-commit'
+abbr -a -- yrr 'yarn run run'
+abbr -a -- yrb 'yarn run build'
+abbr -a -- gbv 'git branch --verbose'
 
-abbr -a -U -- yrb 'yarn run build'
-abbr -a -U -- yrr 'yarn run run'
+# neovim
+abbr -a -- vg "nvim '+Telescope live_grep'"
 
 # Created by `pipx` on 2022-11-21 21:28:33
 set PATH $PATH /Users/davidscotson/.local/bin
