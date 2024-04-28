@@ -1,6 +1,3 @@
-alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id))
-alias tabcloseallbykeyword jsb -p browser.tabs.query({}).then(tabs => tabs.forEach( t => { if(t.url.includes(JS_ARG)) browser.tabs.remove(t.id) }))
-
 " " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
@@ -11,6 +8,7 @@ bind yi composite js document.querySelector("[data-issue-key]").getAttribute('da
 " go to HN discussion https://hn.algolia.com/?q=https%3A%2F%2Fcsclub.uwaterloo.ca%2Fresources%2Ftech-talks%2Fcory-doctorow-the-war-on-general-purpose-computing%2F
 bind gy js document.location.href.replace("://","://hn.algolia.com/?q=")
 
+set editor /opt/homebrew/bin/nvim
 " yank book
 
 " allow for fzf style limitations like 
@@ -43,10 +41,12 @@ set searchurls.r https://old.reddit.com/r/%s
 set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
 set searchurls.ol https://openlibrary.org/search?mode=everything&q=%s
 set searchurls.ola https://openlibrary.org/search?mode=author&q=%s
+set searchurls.oli https://openlibrary.org/isbn/%s
 set searchurls.olw https://openlibrary.org/search?mode=work&q=%s
 set searchurls.wp https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
 set searchurls.wd https://www.wikidata.org/w/index.php?title=Special%3ASearch&search=%s
 set searchurls.ww https://en.wiktionary.org/w/index.php?title=Special%3ASearch&search=%s
+set searchurls.wbs https://en.wikipedia.org/wiki/Special:BookSources?isbn=%s 
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 set searchurls.hn https://hn.algolia.com/?q=%s
 
