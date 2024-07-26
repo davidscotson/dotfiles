@@ -13,3 +13,6 @@ vim.cmd [[
     augroup END
 ]]
 
+vim.cmd [[
+    au BufRead,BufNewFile *.mustache set filetype=glimmer
+]]

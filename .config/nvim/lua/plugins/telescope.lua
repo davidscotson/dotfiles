@@ -19,6 +19,10 @@ return {
           additional_args = { '--trim' },
           path_display =  {shorten = { len = 2, exclude = {-1, -2, -3} }},
         },
+         git_files = {
+          recurse_submodules = true,
+          show_untracked = false,
+        },
         help_tags = {
           mappings = {
             i = {

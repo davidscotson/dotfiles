@@ -1,12 +1,9 @@
 return {
-  -- add gruvbox
-  { "https://gitlab.com/__tpb/monokai-pro.nvim" },
-
-  -- Configure LazyVim to load gruvbox
+  { "https://github.com/loctvl842/monokai-pro.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "monokaipro",
+      colorscheme = "monokai-pro-machine",
     },
   },
 }
