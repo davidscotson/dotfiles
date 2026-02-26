@@ -1,4 +1,23 @@
 return {
+ {
+  "ibhagwan/fzf-lua",
+  opts = function(_, opts)
+    opts.winopts = vim.tbl_deep_extend("force", opts.winopts or {}, {
+      -- make the picker take (almost) the whole screen
+      width = 0.99,
+      height = 0.99,
+      row = 0.5,
+      col = 0.5,
+
+      -- put preview on the right half
+      preview = {
+        layout = "horizontal",
+        horizontal = "right:50%",
+      },
+    })
+  end,
+},
+
   {
     "telescope.nvim",
     opts = {
