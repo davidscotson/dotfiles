@@ -36,13 +36,19 @@ abbr -a -- gds 'git diff --staged'
 abbr -a -- gb 'git branch'
 abbr -a -- gd 'git diff'
 abbr -a -- gco 'git checkout'
-abbr -a -- glol 'git log --oneline --no-abbrev-commit'
+abbr -a -- glo 'git log --oneline'
 abbr -a -- yrr 'yarn run run'
 abbr -a -- yrb 'yarn run build'
 abbr -a -- gbv 'git branch --verbose'
 
-# neovim
-abbr -a -- vg "nvim '+Telescope live_grep'"
+# moodle-docker-compose
+abbr -a -- mdc 'moodle-docker-compose'
+abbr -a -- mdcp 'moodle-docker-compose exec webserver php'
+abbr -a -- mdci 'moodle-docker-compose exec webserver php moodle-plugin-ci.phar'
+
 
 # Created by `pipx` on 2022-11-21 21:28:33
 set PATH $PATH /Users/davidscotson/.local/bin
+
+set PATH $PATH /opt/homebrew/opt/php@7.4/bin
+set PATH $PATH /opt/homebrew/opt/php@7.4/sbin
