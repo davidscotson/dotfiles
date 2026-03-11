@@ -9,6 +9,7 @@ function fish_user_key_bindings
     # resetting all bindings.
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
+
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
     set fish_cursor_default block
@@ -19,6 +20,8 @@ function fish_user_key_bindings
 # The following variable can be used to configure cursor shape in
 # visual mode, but due to fish_cursor_default, is redundant here
     set fish_cursor_visual block
+
+    bind -M insert ctrl-f forward-token
 end
 
 fish_ssh_agent
@@ -49,6 +52,5 @@ abbr -a -- mdci 'moodle-docker-compose exec webserver php moodle-plugin-ci.phar'
 
 # Created by `pipx` on 2022-11-21 21:28:33
 set PATH $PATH /Users/davidscotson/.local/bin
+mise activate fish | source
 
-set PATH $PATH /opt/homebrew/opt/php@7.4/bin
-set PATH $PATH /opt/homebrew/opt/php@7.4/sbin

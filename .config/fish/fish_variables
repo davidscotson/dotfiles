@@ -16,6 +16,8 @@ SETUVAR _fisher_jorgebucaran_2F_hydro_files:\x7e/\x2econfig/fish/functions/fish_
 SETUVAR _fisher_laughedelic_2F_fish__logo_files:\x7e/\x2econfig/fish/functions/fish_logo\x2efish\x1e\x7e/\x2econfig/fish/completions/fish_logo\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1egazorby/fish\x2dabbreviation\x2dtips\x1elaughedelic/fish_logo\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR _hydro_git_10882:master\u2022\x20
+SETUVAR _hydro_git_6343:\x1d
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:81a1c1
