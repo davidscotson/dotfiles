@@ -14,20 +14,14 @@ return {
     -- Required.
     "nvim-lua/plenary.nvim",
 
-    -- see below for full list of optional dependencies 👇
   },
   opts = {
+    ui = { enable = false }, -- Let render-markdown handle the icons
     workspaces = {
-      {
-        name = "personal",
-        path = "~/vaults/personal",
-      },
       {
         name = "work",
         path = "~/vaults/work",
       },
     },
-
-    -- see below for full list of options 👇
   },
 }
