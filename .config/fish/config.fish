@@ -1,5 +1,11 @@
 set -gx EDITOR nvim
 
+# git prompt
+set -g __fish_git_prompt_showdirtystate 1
+set -g __fish_git_prompt_showupstream informative
+set -g __fish_git_prompt_char_upstream_ahead ↑
+set -g __fish_git_prompt_char_upstream_behind ↓
+
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
     fish_default_key_bindings -M insert
