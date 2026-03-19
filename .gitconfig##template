@@ -8,11 +8,7 @@
 #    fsmonitor = .git/hooks/fsmonitor-watchman
 [user]
     name = David Scotson
-{% if yadm.user == "david.scotson" %}
-    email = david.scotson@synergy-learning.com
-{% else %}
     email = david.scotson@gmail.com
-{% endif %}
 [merge]
     ff = only
     conflictstyle = zdiff3
@@ -24,14 +20,27 @@
 [difftool]
     prompt = false
 [diff]
-    colorMoved = default
+    colorMoved = dimmed-zebra
     tool = nvimdiff
-[pretty.oneline]
-    abbrev-commit = false
 [init]
     defaultBranch = main
 [interactive]
     diffFilter = delta --color-only
+[feature]
+    manyFiles = true
+[rebase]
+    autosquash = true
+    autostash = true
+[push]
+    autoSetupRemote = true
+[rerere]
+    enabled = true
+[fetch]
+    prune = true
+[commit]
+    verbose = true
+[branch]
+    sort = -committerdate
 [delta]
     navigate = true
     syntax-theme = Monokai Extended Origin
