@@ -28,6 +28,7 @@ fish_ssh_agent
 
 fish_add_path   /opt/homebrew/sbin
 fish_add_path   /opt/homebrew/bin
+fish_add_path   /Users/david.scotson/.local/bin
 fish_add_path   --append --move /usr/local/sbin
 fish_add_path   --append --move /usr/local/bin
 
@@ -48,9 +49,12 @@ abbr -a -- gbv 'git branch --verbose'
 abbr -a -- mdc 'moodle-docker-compose'
 abbr -a -- mdcp 'moodle-docker-compose exec webserver php'
 abbr -a -- mdci 'moodle-docker-compose exec webserver php moodle-plugin-ci.phar'
+abbr -a -- mdcc 'moodle-docker-compose exec webserver claude'
 
 
 # Created by `pipx` on 2022-11-21 21:28:33
 set PATH $PATH /Users/davidscotson/.local/bin
 mise activate fish | source
 
+
+fzf --fish | source
