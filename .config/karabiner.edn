@@ -122,13 +122,13 @@
               [:!S9 :vk_none]
               [:!S0 :vk_none]
               ]}
-    {:des "option hjkl = arrows"
-        :rules[
-              [:!Oc :down_arrow]
-              [:!Ov :up_arrow]
-              [:!Op :right_arrow]
-              [:!Oj :left_arrow]
-              ]}
+    ; {:des "option hjkl = arrows (left alt only; right alt passes through for app use)"
+    ;     :rules[
+    ;           [:!Oc :down_arrow]
+    ;           [:!Ov :up_arrow]
+    ;           [:!Op :right_arrow]
+    ;           [:!Oj :left_arrow]
+    ;           ]}
     ; {:des "disable standard modifiers for training purposes"
     ;     :rules[
     ;           [:left_shift :vk_none]
