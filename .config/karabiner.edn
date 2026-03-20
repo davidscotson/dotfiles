@@ -47,14 +47,21 @@
 :main [
     {:des "double key mods shift/command"
      :rules [
-          [[:s :d] [:left_control] nil {:alone :tab}]
+          ;; sd = ctrl (held) / tab (tap); optional modifier allows shift+sd = shift+tab
+          [{:sim [:s :d] :modi {:optional [:any]}} [:left_control] nil {:alone :tab :parameters {:simultaneous_threshold_milliseconds 20}}]
           ;;;[[:a :s :d] [:left_control :left_shift]]
-          [[:k :l] [:right_control]] ;; delay or something to prevent nt getting eaten?
+          ;; kl = right_ctrl; 20ms window to prevent accidental triggers
+          [[:k :l] [:right_control] nil {:parameters {:simultaneous_threshold_milliseconds 20}}]
 
-          [[:c :v] [:left_shift] nil {:alone :escape}] ;; jk escape
-          [[:m :comma] [:right_shift] nil {:alone :escape}] ;; jk escape mirror
+          ;; cv = shift (held) / escape (tap)
+          [{:sim [:c :v] :modi {:optional [:any]}} [:left_shift] nil {:alone :escape :parameters {:simultaneous_threshold_milliseconds 20}}]
+          ;; m, = right_shift (held) / escape (tap); mirror of cv
+          [{:sim [:m :comma] :modi {:optional [:any]}} [:right_shift] nil {:alone :escape :parameters {:simultaneous_threshold_milliseconds 20}}]
+          ;; xc = alt (held) / : colon (tap)
           [[:x :c] [:left_alt] nil {:alone :!Sz}]
+          ;; ,. = right_alt (held) / ctrl+6 switch to last used buffer/tab (tap)
           [[:comma :period] [:right_alt] nil {:alone :!T6}]
+          ;; qw = ctrl+6 switch to last used buffer/tab
           [[:q :w] :!T6]
 
           ;; todo py, fg, dh, iu, kx, mb,
