@@ -100,28 +100,28 @@
     ;; ----------------------------------
     ;; Key mappings
     ;; ----------------------------------
-    {:des "disable number/symbol row for training purposes"
-        :rules[
-              [:2 :vk_none]
-              [:3 :vk_none]
-              [:4 :vk_none]
-              [:5 :vk_none]
-              ; [:6 :vk_none]
-              [:7 :vk_none]
-              [:8 :vk_none]
-              [:9 :vk_none]
-              [:0 :vk_none]
-              [:!S1 :vk_none]
-              [:!S2 :vk_none]
-              [:!S3 :vk_none]
-              [:!S4 :vk_none]
-              [:!S5 :vk_none]
-              [:!S6 :vk_none]
-              [:!S7 :vk_none]
-              [:!S8 :vk_none]
-              [:!S9 :vk_none]
-              [:!S0 :vk_none]
-              ]}
+    ; {:des "disable number/symbol row for training purposes"
+    ;     :rules[
+    ;           [:2 :vk_none]
+    ;           [:3 :vk_none]
+    ;           [:4 :vk_none]
+    ;           [:5 :vk_none]
+    ;           ; [:6 :vk_none]
+    ;           [:7 :vk_none]
+    ;           [:8 :vk_none]
+    ;           [:9 :vk_none]
+    ;           [:0 :vk_none]
+    ;           [:!S1 :vk_none]
+    ;           [:!S2 :vk_none]
+    ;           [:!S3 :vk_none]
+    ;           [:!S4 :vk_none]
+    ;           [:!S5 :vk_none]
+    ;           [:!S6 :vk_none]
+    ;           [:!S7 :vk_none]
+    ;           [:!S8 :vk_none]
+    ;           [:!S9 :vk_none]
+    ;           [:!S0 :vk_none]
+    ;           ]}
     ; {:des "option hjkl = arrows (left alt only; right alt passes through for app use)"
     ;     :rules[
     ;           [:!Oc :down_arrow]
