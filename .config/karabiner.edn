@@ -11,6 +11,10 @@
     :gergoplex [{:vendor_id 4294976620 }]
 } ;; devices
 
+:applications {
+    :firefox ["^org\\.mozilla\\.firefox$"]
+}
+
 ;; TODO done: caps lock double shift, gu'[ etc.
 ;  ; TODO  arrows on alt/opt hjkl, means can use jk for other menus
 ;; TODO  tab, change tab, change tab backwards (actual tab, plus mirror?) shift-H/L
@@ -60,8 +64,10 @@
           ;; xc = alt (held) / : colon (tap)
           [[:x :c] [:left_alt] nil {:alone :!Sz}]
           ;; ,. = right_alt (held) / ctrl+6 switch to last used buffer/tab (tap)
+          [[:comma :period] [:right_alt] :firefox {:alone :!Ttab}]
           [[:comma :period] [:right_alt] nil {:alone :!T6}]
-          ;; qw = ctrl+6 switch to last used buffer/tab
+          ;; qw = ctrl+6 switch to last used buffer/tab (ctrl-tab in firefox)
+          [[:q :w] :!Ttab :firefox]
           [[:q :w] :!T6]
 
           ;; todo py, fg, dh, iu, kx, mb,
